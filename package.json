@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "thebe": "^0.9.3",
+    "thebe-core": "^0.5.0"
+  }
+}

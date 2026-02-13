@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "What is the output of 1 + 1 in Python?"
+answer.answer = "2"
+context = "Basic arithmetic in Python"
+id = "857d5207-3960-4df0-a4a7-af053bfc59f3"

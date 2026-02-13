@@ -1,0 +1,9 @@
+name: sql_book_binder
+channels:
+  - conda-forge
+dependencies:
+  - mysql
+  - xeus-sql
+  - pip
+  - pip:
+      - jjava
