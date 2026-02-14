@@ -2,40 +2,70 @@
 set -e
 export DEBIAN_FRONTEND=noninteractive
 
-echo "Installing MariaDB server (for binder MySQL support)"
-apt-get update
-apt-get install -y mariadb-server
+echo "Checking for an existing mysqld binary (e.g. from conda)"
+if command -v mysqld >/dev/null 2>&1; then
+  echo "Found mysqld in PATH — attempting to initialise and run it (will use /tmp/mysql.sock)"
+  DATADIR=/tmp/mysql-data
+  mkdir -p "$DATADIR"
+  # initialize data directory (ignore errors if already initialized)
+  mysqld --initialize-insecure --datadir="$DATADIR" 2>/dev/null || true
 
-# Ensure client/server use the socket under /tmp
-if [ -f /etc/mysql/my.cnf ]; then
-  sed -i 's|socket\s*=.*|socket = /tmp/mysql.sock|g' /etc/mysql/my.cnf || true
-fi
-
-echo "Starting temporary mysqld to create database and user"
-# Start mysqld in background; try service, otherwise use mysqld_safe
-if command -v service >/dev/null 2>&1; then
-  service mysql start || true
-fi
-if ! mysqladmin ping --silent --socket=/tmp/mysql.sock >/dev/null 2>&1; then
-  mysqld_safe --socket=/tmp/mysql.sock &
-  # give it some time
-  for i in {1..20}; do
-    if mysqladmin ping --silent --socket=/tmp/mysql.sock >/dev/null 2>&1; then
+  # start mysqld_safe pointing at our datadir and socket
+  mysqld_safe --datadir="$DATADIR" --socket=/tmp/mysql.sock &
+  for i in {1..30}; do
+    if mysqladmin ping --socket=/tmp/mysql.sock --silent >/dev/null 2>&1; then
       break
     fi
     sleep 1
   done
-fi
 
-echo "Creating database and example user"
-mysql --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+  if ! mysqladmin ping --socket=/tmp/mysql.sock --silent >/dev/null 2>&1; then
+    echo "Failed to start conda-provided mysqld within timeout." >&2
+    exit 1
+  fi
 
-echo "Stopping temporary mysqld"
-if command -v service >/dev/null 2>&1; then
-  service mysql stop || true
-fi
-if mysqladmin --socket=/tmp/mysql.sock ping >/dev/null 2>&1; then
+  echo "Creating database and example user (using conda mysqld)"
+  mysql --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+
+  echo "Shutting down temporary conda mysqld"
   mysqladmin --socket=/tmp/mysql.sock shutdown || true
-fi
+  echo "postBuild finished: used conda-provided mysqld to create database 'dbname'."
+else
+  echo "No mysqld found in PATH; installing MariaDB server (apt) for binder MySQL support"
+  apt-get update
+  apt-get install -y mariadb-server
 
-echo "postBuild finished: MariaDB installed and database 'dbname' created."
+  # Ensure client/server use the socket under /tmp
+  if [ -f /etc/mysql/my.cnf ]; then
+    sed -i 's|socket\s*=.*|socket = /tmp/mysql.sock|g' /etc/mysql/my.cnf || true
+  fi
+
+  echo "Starting temporary mysqld to create database and user"
+  # Start mysqld in background; try service, otherwise use mysqld_safe
+  if command -v service >/dev/null 2>&1; then
+    service mysql start || true
+  fi
+  if ! mysqladmin ping --silent --socket=/tmp/mysql.sock >/dev/null 2>&1; then
+    mysqld_safe --socket=/tmp/mysql.sock &
+    # give it some time
+    for i in {1..20}; do
+      if mysqladmin ping --silent --socket=/tmp/mysql.sock >/dev/null 2>&1; then
+        break
+      fi
+      sleep 1
+    done
+  fi
+
+  echo "Creating database and example user"
+  mysql --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+
+  echo "Stopping temporary mysqld"
+  if command -v service >/dev/null 2>&1; then
+    service mysql stop || true
+  fi
+  if mysqladmin --socket=/tmp/mysql.sock ping >/dev/null 2>&1; then
+    mysqladmin --socket=/tmp/mysql.sock shutdown || true
+  fi
+
+  echo "postBuild finished: MariaDB installed and database 'dbname' created."
+fi
