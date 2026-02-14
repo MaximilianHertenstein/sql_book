@@ -27,6 +27,8 @@ if command -v mysqld >/dev/null 2>&1; then
   echo "Creating database and example user (using conda mysqld)"
   # connect as root (no password after --initialize-insecure)
   mysql -u root --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+  # Also create a simple-password user to avoid parsing/quoting issues in %LOAD
+  mysql -u root --socket=/tmp/mysql.sock -e "CREATE USER IF NOT EXISTS 'user_simple'@'localhost' IDENTIFIED BY 'password123'; GRANT ALL PRIVILEGES ON dbname.* TO 'user_simple'@'localhost'; FLUSH PRIVILEGES;"
 
   echo "Shutting down temporary conda mysqld"
   mysqladmin --socket=/tmp/mysql.sock shutdown || true
@@ -60,6 +62,8 @@ else
   echo "Creating database and example user"
   # connect as root to create DB and user
   mysql -u root --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+  # Also create a simple-password user to avoid parsing/quoting issues in %LOAD
+  mysql -u root --socket=/tmp/mysql.sock -e "CREATE USER IF NOT EXISTS 'user_simple'@'localhost' IDENTIFIED BY 'password123'; GRANT ALL PRIVILEGES ON dbname.* TO 'user_simple'@'localhost'; FLUSH PRIVILEGES;"
 
   echo "Stopping temporary mysqld"
   if command -v service >/dev/null 2>&1; then
