@@ -4,6 +4,3 @@ channels:
 dependencies:
   - mysql
   - xeus-sql
-  - pip
-  - pip:
-      - jjava
