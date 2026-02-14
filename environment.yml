@@ -4,3 +4,4 @@ channels:
 dependencies:
   - mysql
   - xeus-sql
+  - soci-mysql
