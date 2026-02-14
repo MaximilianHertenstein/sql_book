@@ -25,7 +25,8 @@ if command -v mysqld >/dev/null 2>&1; then
   fi
 
   echo "Creating database and example user (using conda mysqld)"
-  mysql --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+  # connect as root (no password after --initialize-insecure)
+  mysql -u root --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
 
   echo "Shutting down temporary conda mysqld"
   mysqladmin --socket=/tmp/mysql.sock shutdown || true
@@ -57,7 +58,8 @@ else
   fi
 
   echo "Creating database and example user"
-  mysql --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+  # connect as root to create DB and user
+  mysql -u root --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
 
   echo "Stopping temporary mysqld"
   if command -v service >/dev/null 2>&1; then
