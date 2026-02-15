@@ -44,9 +44,9 @@ fi
 echo "Creating database and example user (dbname / user_simple)"
 
 # Create database and user (use socket so we connect as root without password)
-mysql -uroot --socket="$SOCKET" -e "CREATE DATABASE IF NOT EXISTS \`dbname\`;"
-mysql -uroot --socket="$SOCKET" -e "CREATE USER IF NOT EXISTS 'user_simple'@'%' IDENTIFIED BY 'password123';"
-mysql -uroot --socket="$SOCKET" -e "GRANT ALL PRIVILEGES ON \`dbname\`.* TO 'user_simple'@'%'; FLUSH PRIVILEGES;"
+mysql --no-defaults -uroot --socket="$SOCKET" -e "CREATE DATABASE IF NOT EXISTS \`dbname\`;"
+mysql --no-defaults -uroot --socket="$SOCKET" -e "CREATE USER IF NOT EXISTS 'user_simple'@'%' IDENTIFIED BY 'password123';"
+mysql --no-defaults -uroot --socket="$SOCKET" -e "GRANT ALL PRIVILEGES ON \`dbname\`.* TO 'user_simple'@'%'; FLUSH PRIVILEGES;"
 
 echo "Writing client config to $HOME/.my.cnf (user_simple/password123)"
 # Write a client config preferring TCP but including socket for compatibility
