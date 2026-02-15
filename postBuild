@@ -1,3 +1,5 @@
+export MAMBA_EXE=/usr/local/bin/micromamba
+export MAMBA_ROOT_PREFIX=/opt/conda
 #!/bin/bash
 set -euo pipefail
 
