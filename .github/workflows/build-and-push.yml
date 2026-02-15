@@ -42,7 +42,7 @@ jobs:
           DOCKER_BUILDKIT: 1
         run: |
           # build image; repo2docker outputs an r2d-<id> image
-          jupyter-repo2docker .
+          jupyter-repo2docker --no-run --user-id=1000 --user-name=jovyan .
 
       - name: Tag and push image to GHCR
         run: |
