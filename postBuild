@@ -36,42 +36,30 @@ if command -v mysqld >/dev/null 2>&1; then
 else
   echo "No mysqld found in PATH; installing MariaDB server (apt) for binder MySQL support"
   apt-get update
-  apt-get install -y mariadb-server
+  #!/bin/bash
+  set -euo pipefail
 
-  # Ensure client/server use the socket under /tmp
-  if [ -f /etc/mysql/my.cnf ]; then
-    sed -i 's|socket\s*=.*|socket = /tmp/mysql.sock|g' /etc/mysql/my.cnf || true
+  # Simplified postBuild: ensure MySQL client/server use /tmp/mysql.sock
+  CFG=/etc/mysql/my.cnf
+  echo "Ensuring MySQL socket config in $CFG"
+  if [ ! -f "$CFG" ]; then
+    touch "$CFG"
   fi
 
-  echo "Starting temporary mysqld to create database and user"
-  # Start mysqld in background; try service, otherwise use mysqld_safe
-  if command -v service >/dev/null 2>&1; then
-    service mysql start || true
-  fi
-  if ! mysqladmin ping --silent --socket=/tmp/mysql.sock >/dev/null 2>&1; then
-    mysqld_safe --socket=/tmp/mysql.sock &
-    # give it some time
-    for i in {1..20}; do
-      if mysqladmin ping --silent --socket=/tmp/mysql.sock >/dev/null 2>&1; then
-        break
-      fi
-      sleep 1
-    done
+  # If the socket line is not present, append the minimal config
+  if ! grep -q "socket=/tmp/mysql.sock" "$CFG" 2>/dev/null; then
+    cat >> "$CFG" <<'EOF'
+
+  [server]
+  socket=/tmp/mysql.sock
+
+  [client]
+  socket=/tmp/mysql.sock
+  EOF
+    echo "Appended socket config to $CFG"
+  else
+    echo "Socket config already present in $CFG"
   fi
 
-  echo "Creating database and example user"
-  # connect as root to create DB and user
-  mysql -u root --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
+  echo "postBuild done. This script no longer starts mysqld or creates databases. Start the server in the session with start_mysql.sh."
   # Also create a simple-password user to avoid parsing/quoting issues in %LOAD
-  mysql -u root --socket=/tmp/mysql.sock -e "CREATE USER IF NOT EXISTS 'user_simple'@'localhost' IDENTIFIED BY 'password123'; GRANT ALL PRIVILEGES ON dbname.* TO 'user_simple'@'localhost'; FLUSH PRIVILEGES;"
-
-  echo "Stopping temporary mysqld"
-  if command -v service >/dev/null 2>&1; then
-    service mysql stop || true
-  fi
-  if mysqladmin --socket=/tmp/mysql.sock ping >/dev/null 2>&1; then
-    mysqladmin --socket=/tmp/mysql.sock shutdown || true
-  fi
-
-  echo "postBuild finished: MariaDB installed and database 'dbname' created."
-fi
