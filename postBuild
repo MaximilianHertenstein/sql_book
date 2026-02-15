@@ -1,6 +1,6 @@
-export MAMBA_EXE=/usr/local/bin/micromamba
-export MAMBA_ROOT_PREFIX=/opt/conda
 #!/bin/bash
+export MAMBA_EXE=micromamba
+export MAMBA_ROOT_PREFIX=/opt/conda
 set -euo pipefail
 
 # Simplified postBuild: ensure MySQL client/server use /tmp/mysql.sock
