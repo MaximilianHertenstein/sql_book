@@ -37,35 +37,48 @@ jobs:
           python -m pip install --upgrade pip
           pip install jupyter-repo2docker
 
-      - name: Build image with repo2docker
+      - name: Build, detect repo2docker image, tag and push to GHCR
         env:
           DOCKER_BUILDKIT: 1
         run: |
-          # build image; ask repo2docker to produce a deterministic image name
-          IMAGE_NAME="r2d-${{ github.sha }}"
-          echo "Using image name: $IMAGE_NAME"
-          jupyter-repo2docker --image-name "$IMAGE_NAME" --no-run --user-id=1000 --user-name=jovyan .
+          set -euo pipefail
 
-      - name: Tag and push image to GHCR
-        run: |
-          echo "Listing docker images for debugging:"
-          docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}"
+          echo "Listing docker images before build:"
+          docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}" > /tmp/images_before.txt || true
+          cat /tmp/images_before.txt
 
-          # try to find repo2docker-produced image (repository usually starts with r2d-)
-          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep '^r2d-' | head -n1 || true)
-          if [ -z "$IMAGE" ]; then
-            # fallback: any repository name containing 'r2d-'
-            IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep 'r2d-' | head -n1 || true)
+          echo "Running repo2docker (logs -> /tmp/r2d-build.log)"
+          # run and capture logs
+          jupyter-repo2docker --no-run --user-id=1000 --user-name=jovyan . 2>&1 | tee /tmp/r2d-build.log || true
+
+          echo "Listing docker images after build:"
+          docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}" > /tmp/images_after.txt || true
+          cat /tmp/images_after.txt
+
+          # try to detect new image by diffing before/after
+          NEW=$(comm -13 <(sort /tmp/images_before.txt) <(sort /tmp/images_after.txt) | awk '{print $1}' | head -n1 || true)
+
+          if [ -z "$NEW" ]; then
+            echo "No new image detected by diff; attempting to parse repo2docker log."
+            # common repo2docker messages containing the image id/name
+            NEW_LOG=$(grep -Eo 'r2d-[0-9a-f]+' /tmp/r2d-build.log | head -n1 || true)
+            if [ -n "$NEW_LOG" ]; then
+              # try to find repository:tag containing that substring
+              NEW=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep "$NEW_LOG" | head -n1 || true)
+            fi
           fi
 
-          if [ -z "$IMAGE" ]; then
-            echo "Could not find repo2docker image; listing images with details:" 
+          echo "Detected image: '${NEW:-<none>}'"
+
+          if [ -z "$NEW" ]; then
+            echo "Could not find repo2docker image; full docker images list:" 
             docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}" || true
+            echo "--- repo2docker log ---"
+            sed -n '1,200p' /tmp/r2d-build.log || true
             exit 1
           fi
 
-          echo "Found image: $IMAGE"
-          docker tag "$IMAGE" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:latest
-          docker tag "$IMAGE" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:${{ github.sha }}
+          docker tag "$NEW" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:latest
+          docker tag "$NEW" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:${{ github.sha }}
           docker push ghcr.io/${{ env.LOWER_OWNER }}/sql_book:latest
           docker push ghcr.io/${{ env.LOWER_OWNER }}/sql_book:${{ github.sha }}
