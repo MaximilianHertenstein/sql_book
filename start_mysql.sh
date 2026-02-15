@@ -1,44 +1,31 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "Starting MySQL server for this session..."
-# If already running, exit
-if pgrep -x mysqld >/dev/null 2>&1; then
-  echo "mysqld already running"
-  exit 0
+# Simplified start script: only ensure /etc/mysql/my.cnf contains the /tmp socket
+CFG=/etc/mysql/my.cnf
+echo "Ensuring MySQL socket config in $CFG"
+if [ ! -f "$CFG" ]; then
+  touch "$CFG"
 fi
 
-# Prefer conda-provided mysqld (if available) and use a writable datadir under /tmp
-DATADIR=/tmp/mysql-data
-SOCKET=/tmp/mysql.sock
-LOG=/tmp/mysqld.log
-mkdir -p "$DATADIR"
-chmod 0777 "$DATADIR"
+if ! grep -q "socket=/tmp/mysql.sock" "$CFG" 2>/dev/null; then
+  cat >> "$CFG" <<'EOF'
 
-if command -v mysqld >/dev/null 2>&1; then
-  echo "Using mysqld from PATH: $(command -v mysqld)"
-  # initialize if needed
-  if [ ! -f "$DATADIR/ibdata1" ]; then
-    echo "Initializing datadir $DATADIR"
-    mysqld --initialize-insecure --datadir="$DATADIR" >/dev/null 2>&1 || true
-  fi
+[server]
+socket=/tmp/mysql.sock
 
-  # start mysqld pointing at our datadir, socket and bind to localhost:3306 (TCP + socket)
-  nohup mysqld --datadir="$DATADIR" --socket="$SOCKET" --bind-address=127.0.0.1 --port=3306 --pid-file=/tmp/mysqld.pid >"$LOG" 2>&1 &
+[client]
+socket=/tmp/mysql.sock
+EOF
+  echo "Appended socket config to $CFG"
 else
-  echo "mysqld not found in PATH — trying mysqld_safe (system)"
-  nohup mysqld_safe --socket="$SOCKET" --datadir="$DATADIR" --bind-address=127.0.0.1 --port=3306 >"$LOG" 2>&1 &
+  echo "Socket config already present in $CFG"
 fi
 
-echo "Waiting for MySQL socket to become available... (log: $LOG)"
-for i in {1..60}; do
-  if mysqladmin ping --socket="$SOCKET" --silent >/dev/null 2>&1; then
-    echo "MySQL started"
-    exit 0
-  fi
-  sleep 1
-done
-
-echo "Failed to start MySQL within timeout; see $LOG" >&2
-tail -n +1 "$LOG" || true
-exit 1
+cat <<'INFO'
+Note: this script no longer starts mysqld. Start the server in the session with your preferred command, for example:
+  mysqld --datadir=/tmp/mysql-data --socket=/tmp/mysql.sock &
+or
+  mysqld_safe --datadir=/tmp/mysql-data --socket=/tmp/mysql.sock &
+If you prefer, create a separate server-start script that initialises /tmp/mysql-data and starts mysqld.
+INFO
