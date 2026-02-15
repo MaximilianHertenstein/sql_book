@@ -1,5 +1,7 @@
 # SQL Book
 
+[![GHCR Image](https://img.shields.io/badge/ghcr.io%2FMaximilianHertenstein%2Fsql_book-latest-blue?logo=github)](https://ghcr.io/MaximilianHertenstein/sql_book)
+
 This repository contains notebooks and materials using `xeus-sql` with a local MariaDB server on Binder.
 
 Key files:
