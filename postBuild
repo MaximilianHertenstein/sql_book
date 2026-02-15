@@ -68,6 +68,33 @@ if command -v mysqld >/dev/null 2>&1; then
   else
     echo "Datadir already initialized"
   fi
+  
+  # Start a temporary mysqld instance (only during build) to create DB and user
+  if ! pgrep -f mysqld >/dev/null 2>&1; then
+    echo "Starting temporary mysqld to create DB/user"
+    nohup mysqld --datadir="$DATADIR" --socket=/tmp/mysql.sock --bind-address=127.0.0.1 --port=3306 --skip-networking=false > /tmp/mysqld-postbuild.log 2>&1 &
+    # wait for socket
+    for i in {1..60}; do
+      if mysqladmin --socket=/tmp/mysql.sock ping --silent >/dev/null 2>&1; then
+        echo "Temporary mysqld ready"
+        break
+      fi
+      sleep 1
+    done
+    if ! mysqladmin --socket=/tmp/mysql.sock ping --silent >/dev/null 2>&1; then
+      echo "Temporary mysqld did not start in postBuild; see /tmp/mysqld-postbuild.log" >&2
+    else
+      # Create database and user if not exists
+      mysql --no-defaults -uroot --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS \`dbname\`;"
+      mysql --no-defaults -uroot --socket=/tmp/mysql.sock -e "CREATE USER IF NOT EXISTS 'user_simple'@'%' IDENTIFIED BY 'password123';"
+      mysql --no-defaults -uroot --socket=/tmp/mysql.sock -e "GRANT ALL PRIVILEGES ON \`dbname\`.* TO 'user_simple'@'%'; FLUSH PRIVILEGES;"
+      # shutdown temporary server
+      mysqladmin --no-defaults -uroot --socket=/tmp/mysql.sock shutdown || true
+      echo "Created DB and user during build and shut down temporary mysqld"
+    fi
+  else
+    echo "mysqld already running during build; skipping temporary start"
+  fi
 else
   echo "mysqld not found at build time; skipping datadir pre-initialization"
 fi
