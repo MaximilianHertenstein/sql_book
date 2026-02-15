@@ -9,8 +9,12 @@ if [ ! -f "$CFG" ]; then
 fi
 
 # If the socket line is not present, append the minimal config
-if ! grep -q "socket=/tmp/mysql.sock" "$CFG" 2>/dev/null; then
-  cat >> "$CFG" <<'EOF'
+if grep -q "socket=/tmp/mysql.sock" "$CFG" 2>/dev/null; then
+  echo "Socket config already present in $CFG"
+else
+  # Prefer to append directly if file is writable
+  if [ -w "$CFG" ]; then
+    cat >> "$CFG" <<'EOF'
 
 [server]
 socket=/tmp/mysql.sock
@@ -18,9 +22,31 @@ socket=/tmp/mysql.sock
 [client]
 socket=/tmp/mysql.sock
 EOF
-  echo "Appended socket config to $CFG"
-else
-  echo "Socket config already present in $CFG"
+    echo "Appended socket config to $CFG"
+  # Otherwise try writing a conf file into /etc/mysql/conf.d if writable
+  elif [ -d /etc/mysql/conf.d ] && [ -w /etc/mysql/conf.d ]; then
+    CONF=/etc/mysql/conf.d/xeus-sql.cnf
+    cat > "$CONF" <<'EOF'
+[server]
+socket=/tmp/mysql.sock
+
+[client]
+socket=/tmp/mysql.sock
+EOF
+    echo "Wrote socket config to $CONF"
+  # Try using sudo+tee if sudo is available
+  elif command -v sudo >/dev/null 2>&1; then
+    printf '\n[server]\nsocket=/tmp/mysql.sock\n\n[client]\nsocket=/tmp/mysql.sock\n' | sudo tee -a "$CFG" >/dev/null
+    echo "Appended socket config to $CFG using sudo"
+  else
+    # Fallback: write client-only config in user's home (won't affect server)
+    USERCFG="$HOME/.my.cnf"
+    cat >> "$USERCFG" <<'EOF'
+[client]
+socket=/tmp/mysql.sock
+EOF
+    echo "Warning: could not write to /etc; wrote client socket config to $USERCFG (server socket not set system-wide)."
+  fi
 fi
 
 echo "postBuild done. This script no longer starts mysqld or creates databases. Start the server in the session with start_mysql.sh."
