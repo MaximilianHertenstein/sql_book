@@ -46,13 +46,22 @@ jobs:
 
       - name: Tag and push image to GHCR
         run: |
-          # find the repo2docker-produced image (repository starts with r2d-)
-          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep '^r2d-' | head -n1)
+          echo "Listing docker images for debugging:"
+          docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}"
+
+          # try to find repo2docker-produced image (repository usually starts with r2d-)
+          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep '^r2d-' | head -n1 || true)
           if [ -z "$IMAGE" ]; then
-            echo "Could not find repo2docker image; listing images:" 
-            docker images || true
+            # fallback: any repository name containing 'r2d-'
+            IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep 'r2d-' | head -n1 || true)
+          fi
+
+          if [ -z "$IMAGE" ]; then
+            echo "Could not find repo2docker image; listing images with details:" 
+            docker images --format "{{.Repository}}:{{.Tag}} {{.ID}}" || true
             exit 1
           fi
+
           echo "Found image: $IMAGE"
           docker tag "$IMAGE" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:latest
           docker tag "$IMAGE" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:${{ github.sha }}
