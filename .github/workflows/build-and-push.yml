@@ -41,8 +41,10 @@ jobs:
         env:
           DOCKER_BUILDKIT: 1
         run: |
-          # build image; repo2docker outputs an r2d-<id> image
-          jupyter-repo2docker --no-run --user-id=1000 --user-name=jovyan .
+          # build image; ask repo2docker to produce a deterministic image name
+          IMAGE_NAME="r2d-${{ github.sha }}"
+          echo "Using image name: $IMAGE_NAME"
+          jupyter-repo2docker --image-name "$IMAGE_NAME" --no-run --user-id=1000 --user-name=jovyan .
 
       - name: Tag and push image to GHCR
         run: |
