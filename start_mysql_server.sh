@@ -41,9 +41,19 @@ if ! mysqladmin ping --socket="$SOCKET" --silent >/dev/null 2>&1 && ! mysqladmin
   exit 1
 fi
 
+echo "Creating database and example user (dbname / user_simple)"
+
+# Create database and user (use socket so we connect as root without password)
+mysql --socket="$SOCKET" -e "CREATE DATABASE IF NOT EXISTS \`dbname\`;"
+mysql --socket="$SOCKET" -e "CREATE USER IF NOT EXISTS 'user_simple'@'%' IDENTIFIED BY 'password123';"
+mysql --socket="$SOCKET" -e "GRANT ALL PRIVILEGES ON \`dbname\`.* TO 'user_simple'@'%'; FLUSH PRIVILEGES;"
+
 echo "Writing client config to $HOME/.my.cnf (user_simple/password123)"
+# Write a client config preferring TCP but including socket for compatibility
 cat > "$HOME/.my.cnf" <<'EOF'
 [client]
+host=127.0.0.1
+port=3306
 socket=/tmp/mysql.sock
 user=user_simple
 password=password123
@@ -51,4 +61,4 @@ EOF
 
 chmod 600 "$HOME/.my.cnf" || true
 
-echo "MySQL started and client config written. Test with: mysql -e 'SHOW DATABASES;'"
+echo "MySQL started, database and user created, and client config written. Test with: mysql -h 127.0.0.1 -P 3306 -u user_simple -p'password123' -e 'SHOW DATABASES;'"
