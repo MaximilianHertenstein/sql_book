@@ -51,3 +51,6 @@ fi
 
 echo "postBuild done. This script no longer starts mysqld or creates databases. Start the server in the session with start_mysql.sh."
   echo "Creating database and example user (using conda mysqld)"
+
+# Ensure the repo start wrapper is executable so Binder will use it at container start
+chmod +x ./start || true
