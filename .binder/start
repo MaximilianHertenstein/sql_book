@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+
+# Ensure we run from the repository root (parent of .binder)
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$REPO_ROOT"
+
+echo "[binder start] repo_root=$REPO_ROOT" >> /tmp/binder_start.log 2>&1
+echo "[binder start] running $REPO_ROOT/start" >> /tmp/binder_start.log 2>&1
+
+# Exec the repo start wrapper; log stdout/stderr for debugging
+exec "$REPO_ROOT/start" "$@" >> /tmp/binder_start.log 2>&1

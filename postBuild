@@ -54,6 +54,7 @@ echo "postBuild done. This script no longer starts mysqld or creates databases. 
 
 # Ensure the repo start wrapper is executable so Binder will use it at container start
 chmod +x ./start || true
+chmod +x ./.binder/start || true
 
 # Pre-initialize a datadir at build time to speed up runtime startup on Binder.
 DATADIR=/tmp/mysql-data
