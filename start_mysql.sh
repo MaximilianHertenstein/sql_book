@@ -23,11 +23,11 @@ if command -v mysqld >/dev/null 2>&1; then
     mysqld --initialize-insecure --datadir="$DATADIR" >/dev/null 2>&1 || true
   fi
 
-  # start mysqld pointing at our datadir and socket
-  nohup mysqld --datadir="$DATADIR" --socket="$SOCKET" --pid-file=/tmp/mysqld.pid >"$LOG" 2>&1 &
+  # start mysqld pointing at our datadir, socket and bind to localhost:3306 (TCP + socket)
+  nohup mysqld --datadir="$DATADIR" --socket="$SOCKET" --bind-address=127.0.0.1 --port=3306 --pid-file=/tmp/mysqld.pid >"$LOG" 2>&1 &
 else
   echo "mysqld not found in PATH — trying mysqld_safe (system)"
-  nohup mysqld_safe --socket="$SOCKET" --datadir="$DATADIR" >"$LOG" 2>&1 &
+  nohup mysqld_safe --socket="$SOCKET" --datadir="$DATADIR" --bind-address=127.0.0.1 --port=3306 >"$LOG" 2>&1 &
 fi
 
 echo "Waiting for MySQL socket to become available... (log: $LOG)"
