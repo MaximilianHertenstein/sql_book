@@ -1,65 +1,27 @@
 #!/bin/bash
-set -e
-export DEBIAN_FRONTEND=noninteractive
+set -euo pipefail
 
-echo "Checking for an existing mysqld binary (e.g. from conda)"
-if command -v mysqld >/dev/null 2>&1; then
-  echo "Found mysqld in PATH — attempting to initialise and run it (will use /tmp/mysql.sock)"
-  DATADIR=/tmp/mysql-data
-  mkdir -p "$DATADIR"
-  # initialize data directory (ignore errors if already initialized)
-  mysqld --initialize-insecure --datadir="$DATADIR" 2>/dev/null || true
+# Simplified postBuild: ensure MySQL client/server use /tmp/mysql.sock
+CFG=/etc/mysql/my.cnf
+echo "Ensuring MySQL socket config in $CFG"
+if [ ! -f "$CFG" ]; then
+  touch "$CFG"
+fi
 
-  # start mysqld_safe pointing at our datadir and socket
-  mysqld_safe --datadir="$DATADIR" --socket=/tmp/mysql.sock &
-  for i in {1..30}; do
-    if mysqladmin ping --socket=/tmp/mysql.sock --silent >/dev/null 2>&1; then
-      break
-    fi
-    sleep 1
-  done
+# If the socket line is not present, append the minimal config
+if ! grep -q "socket=/tmp/mysql.sock" "$CFG" 2>/dev/null; then
+  cat >> "$CFG" <<'EOF'
 
-  if ! mysqladmin ping --socket=/tmp/mysql.sock --silent >/dev/null 2>&1; then
-    echo "Failed to start conda-provided mysqld within timeout." >&2
-    exit 1
-  fi
+[server]
+socket=/tmp/mysql.sock
 
-  echo "Creating database and example user (using conda mysqld)"
-  # connect as root (no password after --initialize-insecure)
-  mysql -u root --socket=/tmp/mysql.sock -e "CREATE DATABASE IF NOT EXISTS dbname; CREATE USER IF NOT EXISTS 'user1'@'localhost' IDENTIFIED BY 'Password123#@!'; GRANT ALL PRIVILEGES ON dbname.* TO 'user1'@'localhost'; FLUSH PRIVILEGES;"
-  # Also create a simple-password user to avoid parsing/quoting issues in %LOAD
-  mysql -u root --socket=/tmp/mysql.sock -e "CREATE USER IF NOT EXISTS 'user_simple'@'localhost' IDENTIFIED BY 'password123'; GRANT ALL PRIVILEGES ON dbname.* TO 'user_simple'@'localhost'; FLUSH PRIVILEGES;"
-
-  echo "Shutting down temporary conda mysqld"
-  mysqladmin --socket=/tmp/mysql.sock shutdown || true
-  echo "postBuild finished: used conda-provided mysqld to create database 'dbname'."
+[client]
+socket=/tmp/mysql.sock
+EOF
+  echo "Appended socket config to $CFG"
 else
-  echo "No mysqld found in PATH; installing MariaDB server (apt) for binder MySQL support"
-  apt-get update
-  #!/bin/bash
-  set -euo pipefail
+  echo "Socket config already present in $CFG"
+fi
 
-  # Simplified postBuild: ensure MySQL client/server use /tmp/mysql.sock
-  CFG=/etc/mysql/my.cnf
-  echo "Ensuring MySQL socket config in $CFG"
-  if [ ! -f "$CFG" ]; then
-    touch "$CFG"
-  fi
-
-  # If the socket line is not present, append the minimal config
-  if ! grep -q "socket=/tmp/mysql.sock" "$CFG" 2>/dev/null; then
-    cat >> "$CFG" <<'EOF'
-
-  [server]
-  socket=/tmp/mysql.sock
-
-  [client]
-  socket=/tmp/mysql.sock
-  EOF
-    echo "Appended socket config to $CFG"
-  else
-    echo "Socket config already present in $CFG"
-  fi
-
-  echo "postBuild done. This script no longer starts mysqld or creates databases. Start the server in the session with start_mysql.sh."
-  # Also create a simple-password user to avoid parsing/quoting issues in %LOAD
+echo "postBuild done. This script no longer starts mysqld or creates databases. Start the server in the session with start_mysql.sh."
+  echo "Creating database and example user (using conda mysqld)"
