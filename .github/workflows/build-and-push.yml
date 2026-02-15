@@ -32,14 +32,29 @@ jobs:
         run: |
           echo "LOWER_OWNER=$(echo $GITHUB_REPOSITORY_OWNER | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
-      - name: Build and push image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          platforms: linux/amd64
-          tags: |
-            ghcr.io/${{ env.LOWER_OWNER }}/sql_book:latest
-            ghcr.io/${{ env.LOWER_OWNER }}/sql_book:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+      - name: Install repo2docker
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter-repo2docker
+
+      - name: Build image with repo2docker
+        env:
+          DOCKER_BUILDKIT: 1
+        run: |
+          # build image; repo2docker outputs an r2d-<id> image
+          jupyter-repo2docker .
+
+      - name: Tag and push image to GHCR
+        run: |
+          # find the repo2docker-produced image (repository starts with r2d-)
+          IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep '^r2d-' | head -n1)
+          if [ -z "$IMAGE" ]; then
+            echo "Could not find repo2docker image; listing images:" 
+            docker images || true
+            exit 1
+          fi
+          echo "Found image: $IMAGE"
+          docker tag "$IMAGE" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:latest
+          docker tag "$IMAGE" ghcr.io/${{ env.LOWER_OWNER }}/sql_book:${{ github.sha }}
+          docker push ghcr.io/${{ env.LOWER_OWNER }}/sql_book:latest
+          docker push ghcr.io/${{ env.LOWER_OWNER }}/sql_book:${{ github.sha }}
