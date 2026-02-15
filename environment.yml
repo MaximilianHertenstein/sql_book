@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python=3.14.2
+  - mamba
   - jupyterlab
   - xeus-sql
   - soci-mysql
