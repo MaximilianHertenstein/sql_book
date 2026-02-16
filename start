@@ -1,22 +1,22 @@
-#!/bin/bash
-set -euo pipefail
+# #!/bin/bash
+# set -euo pipefail
 
-# Start the MySQL server helper in background (if present)
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
-if [ -x "$REPO_DIR/start_mysql_server.sh" ]; then
-  echo "Starting MySQL server helper..."
-  # run in background and don't block the notebook start
-  "$REPO_DIR/start_mysql_server.sh" >"/tmp/start_mysql_server.out" 2>&1 &
-else
-  echo "No start_mysql_server.sh found or not executable; skipping MySQL auto-start"
-fi
+# # Start the MySQL server helper in background (if present)
+# REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+# if [ -x "$REPO_DIR/start_mysql_server.sh" ]; then
+#   echo "Starting MySQL server helper..."
+#   # run in background and don't block the notebook start
+#   "$REPO_DIR/start_mysql_server.sh" >"/tmp/start_mysql_server.out" 2>&1 &
+# else
+#   echo "No start_mysql_server.sh found or not executable; skipping MySQL auto-start"
+# fi
 
-# Exec the default notebook start script so Binder launches the Jupyter server
-if command -v start-notebook.sh >/dev/null 2>&1; then
-  exec start-notebook.sh "$@"
-elif command -v start.sh >/dev/null 2>&1; then
-  exec start.sh "$@"
-else
-  # fallback to jupyter lab
-  exec jupyter lab --ip=0.0.0.0 --no-browser "$@"
-fi
+# # Exec the default notebook start script so Binder launches the Jupyter server
+# if command -v start-notebook.sh >/dev/null 2>&1; then
+#   exec start-notebook.sh "$@"
+# elif command -v start.sh >/dev/null 2>&1; then
+#   exec start.sh "$@"
+# else
+#   # fallback to jupyter lab
+#   exec jupyter lab --ip=0.0.0.0 --no-browser "$@"
+# fi
