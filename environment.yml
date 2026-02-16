@@ -6,4 +6,5 @@ dependencies:
   - jupyterlab
   - xeus-sql
   - soci-mysql
+  -qt-main  
   
