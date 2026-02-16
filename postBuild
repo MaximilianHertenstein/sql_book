@@ -1,21 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# Ensure micromamba binary exists at build time so activation wrappers work.
-# Repo2docker builds typically run as root during image build, so install
-# micromamba into /usr/local/bin if it's not already present.
-if ! command -v micromamba >/dev/null 2>&1; then
-  echo "micromamba not found; installing to /usr/local/bin"
-  mkdir -p /usr/local/bin
-  # download the micromamba binary from the official snakpit endpoint
-  wget -qO- https://micromamba.snakepit.net/api/micromamba/linux-64/latest \
-    | tar -xvj -C /usr/local/bin --strip-components=1 bin/micromamba || true
-  chmod +x /usr/local/bin/micromamba || true
-fi
 
-# Export the executable name (not a full path) so the mamba wrapper accepts it.
-export MAMBA_EXE=micromamba
-export MAMBA_ROOT_PREFIX=/opt/conda
 
 # Simplified postBuild: ensure MySQL client/server use /tmp/mysql.sock
 CFG=/etc/mysql/my.cnf
