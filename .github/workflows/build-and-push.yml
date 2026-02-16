@@ -35,8 +35,8 @@ jobs:
       - name: Install repo2docker
         run: |
           python -m pip install --upgrade pip
-          pip install jupyter-repo2docker==2025.08.0
-
+          pip install jupyter-repo2docker==2024.07.0
+          
       - name: Build, detect repo2docker image, tag and push to GHCR
         env:
           DOCKER_BUILDKIT: 1
