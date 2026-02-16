@@ -35,6 +35,25 @@ Notes about Binder and hosted services:
 - If you are building locally with `repo2docker`, you can change these settings on your machine.
 - If you are using a remote Binder service (mybinder.org) you cannot change host limits — try rebuilding later or use a different host.
 
+Prefer a prebuilt image on public Binder
+--------------------------------------
+
+The public mybinder.org build hosts have strict inotify/open-file limits that you cannot change. The most reliable way to avoid the "too many open files" error on mybinder.org is to have Binder pull a prebuilt image instead of performing a fresh repo2docker build on the public builders.
+
+Options:
+- Use the image we publish to GitHub Container Registry: `ghcr.io/maximilianhertenstein/sql_book:latest`. This avoids building on mybinder.org and the service will just pull and run the image.
+- Note: mybinder.org's public service does not accept arbitrary prebuilt images directly for security reasons. If you want mybinder.org to use a prebuilt image, you must use one of their supported mechanisms (prebuilds) or run a Binder instance that you control. See the Binder docs for details.
+
+How to use our GHCR image locally or in a private BinderHub:
+
+```bash
+# pull and run locally
+docker pull ghcr.io/maximilianhertenstein/sql_book:latest
+docker run --rm -p 8888:8888 ghcr.io/maximilianhertenstein/sql_book:latest
+```
+
+If you do not control the BinderHub (for example using mybinder.org) and cannot rely on prebuilt images, the `.dockerignore` file in this repo reduces the build context so the remote builder has fewer files to watch. This often helps but does not guarantee a successful build on overloaded public builders.
+
 Start the local MySQL server inside Binder session (after image build completes):
 
 ```bash

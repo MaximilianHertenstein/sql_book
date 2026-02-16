@@ -1,0 +1,10 @@
+node_modules
+.git
+.cache
+.venv
+__pycache__
+*.pyc
+*.log
+dist
+build
+/.github/actions
