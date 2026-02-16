@@ -2,6 +2,7 @@ name: sql_book_binder
 channels:
   - conda-forge
 dependencies:
+  - python=3.14
   - xeus-sql
   - soci-mysql
   
