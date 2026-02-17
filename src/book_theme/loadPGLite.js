@@ -2,7 +2,7 @@
 window._pgliteReady = import("https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.3.15/dist/index.js")
   .then(m => new (m.PGlite || m.default || m)());
 
-// Register the pglite engine
+// Register pglite engine
 window.codapi ||= {};
 window.codapi.engines ||= {};
 window.codapi.engines.pglite = {
