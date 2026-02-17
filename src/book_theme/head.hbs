@@ -16,11 +16,10 @@
 <script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js"></script>
 
 <script>
-    window.codapi = window.codapi || {};
-    window.codapi.engines = window.codapi.engines || {};
+   
     window.codapi.engines.pglite = {
         exec: async (req) => {
-            try {
+            
                 const inst = window._pglite || (await window._pgliteReady);
                 if (!inst) return { ok: false, duration: 0, stdout: '', stderr: 'pglite not available' };
 
@@ -38,9 +37,7 @@
                     stdout: typeof result === 'string' ? result : JSON.stringify(result),
                     stderr: '',
                 };
-            } catch (e) {
-                return { ok: false, duration: 0, stdout: '', stderr: String(e) };
-            }
+            
         },
     };
 </script>
