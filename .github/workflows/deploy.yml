@@ -36,13 +36,7 @@ jobs:
       - name: Install admonish assets
         run: mdbook-admonish install .
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '24'
 
-      - name: Install npm dependencies
-        run: npm install
 
       - name: Build Book
         run: |
