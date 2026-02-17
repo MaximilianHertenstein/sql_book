@@ -1,36 +1,5 @@
-<script type="text/x-thebe-config">
-{
-  "useBinder": true,
-  "useJupyterLite": false,
-  "selector": "pre code.language-sql",
-  "codeMirrorConfig": {
-    "theme": "abcdef"
-  },
-  "requestKernel": true,
-  "kernelOptions": {
-    "name": "xsql"
-  },
-    "binderOptions": {
-    "repo": "MaximilianHertenstein/sql_book",
-    "ref": "main",
-    "binderUrl": "https://mybinder.org"
-  },
-  "codeMirrorConfig": {
-    "mode": "text/x-mysql"
-  },
+<script src="https://unpkg.com/sql-workbench-embedded@0.1.2"></script>
+<script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js"></script>
+<script type="module" src="https://unpkg.com/livecodes@1?module"></script>
 
-  "kernelMapping": {
-    "sql": "xsql"
-  }
-}
-</script>
-
-
-
-
-<link rel="stylesheet" href="thebe/thebe.css">
-<script src="thebe/thebe-core.min.js"></script>
-<script src="thebe/index.js"></script>
-
-
-
+{{!-- Jupyter/Thebe integration removed. Using CodeAPI / SQL-Workbench embeds instead. --}}

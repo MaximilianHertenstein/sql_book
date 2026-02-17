@@ -6,7 +6,7 @@ src = "src"
 
 [output.html]
 theme = "src/book_theme"
-additional-css = ["./mdbook-admonish.css", "src/book_theme/additional.css"]
+additional-css = ["./mdbook-admonish.css"]
 
 
 
