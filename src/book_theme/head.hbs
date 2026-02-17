@@ -8,10 +8,105 @@
 
 <script src="https://unpkg.com/@antonz/runno@0.6.1/dist/runno.js"></script>
 <script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/engine/wasi.js"></script>
-<script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/engine/pglite.js"></script>
+
+<!-- NOTE: we intentionally do NOT load codapi's pglite engine here to avoid
+    race conditions with the pglite module import. We provide our own adapter
+    below (window.codapi.engines.pglite). -->
 
 <script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js"></script>
 
+<!-- Adapter: tolerant pglite engine for codapi -->
+<script>
+;(function(){
+    function makeAdapter(){
+        let inst = null;
+        async function ensure(){
+            if(inst) return inst;
+            const P = window.PGlite || (window.pgliteModule && window.pgliteModule.PGlite) || null;
+            if(!P) throw new Error('PGlite not available');
+            try{
+                        if(typeof P === 'function'){
+                            try{ inst = new P();
+                                if(typeof inst.init === 'function') await inst.init();
+                                return inst
+                            }catch(e){}
+                            try{ inst = await P();
+                                if(typeof inst.init === 'function') await inst.init();
+                                return inst
+                            }catch(e){}
+                        }
+                        if(typeof P.init === 'function'){ inst = await P.init(); return inst }
+                        if(typeof P.create === 'function'){ inst = await P.create(); return inst }
+                        if(typeof P === 'object'){ inst = P; if(typeof inst.init === 'function') await inst.init(); return inst }
+                throw new Error('Unsupported PGlite shape')
+            }catch(e){ throw e }
+        }
+        async function exec(req){
+            try{
+                const client = await ensure();
+                const sql = (req && req.files && req.files['']) ? req.files[''] : (typeof req === 'string' ? req : '');
+                if(!sql) return { ok:false, duration:0, stdout:'', stderr:'No SQL provided' };
+                                let rows = null;
+                                if(typeof client.query === 'function') rows = await client.query(sql);
+                                else if(typeof client.exec === 'function') rows = await client.exec(sql);
+                                else if(typeof client.run === 'function') rows = await client.run(sql);
+                                else if(typeof client.evaluate === 'function') rows = await client.evaluate(sql);
+                                else throw new Error('no supported execution method on pglite instance');
 
+                                // normalize possible result shapes
+                                // pglite may return { rows: [...] } or { result: [...] } or direct array
+                                if(rows && typeof rows === 'object'){
+                                    if(Array.isArray(rows)){
+                                        // ok
+                                    }else if(Array.isArray(rows.rows)){
+                                        rows = rows.rows;
+                                    }else if(Array.isArray(rows.result)){
+                                        rows = rows.result;
+                                    }else if(Array.isArray(rows.data)){
+                                        rows = rows.data;
+                                    } else if(typeof rows.stdout === 'string'){
+                                        // already string
+                                    } else {
+                                        // leave as object
+                                    }
+                                }
+
+                                let stdout = '';
+                                if(Array.isArray(rows)) stdout = JSON.stringify(rows);
+                                else if(typeof rows === 'object') try{ stdout = JSON.stringify(rows) }catch(e){ stdout = String(rows) }
+                                else stdout = String(rows);
+                return { ok:true, duration:0, stdout:stdout, stderr:'' };
+            }catch(e){
+                return { ok:false, duration:0, stdout:'', stderr: String(e) };
+            }
+        }
+        return { init: ensure, exec };
+    }
+    try{
+        window.codapi = window.codapi || {};
+        window.codapi.engines = window.codapi.engines || {};
+        window.codapi.engines.pglite = makeAdapter();
+        console.log('[pglite-adapter] installed; PGlite on window:', !!(window.PGlite));
+    }catch(e){ console.warn('failed to install pglite adapter', e) }
+    // If PGlite is not present on window, attempt to import it asynchronously
+    (async function tryLoadPGlite(){
+        if(window.PGlite) return;
+        const candidates = [
+            'https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.3.15/dist/index.js',
+            'https://unpkg.com/@electric-sql/pglite@0.3.15/dist/index.js'
+        ];
+        for(const url of candidates){
+            try{
+                console.log('[pglite-adapter] attempting dynamic import', url);
+                const m = await import(url);
+                window.pgliteModule = m;
+                window.PGlite = m.PGlite || m.default || m;
+                console.log('[pglite-adapter] loaded from', url, 'PGlite?', !!window.PGlite);
+                break;
+            }catch(e){ console.warn('[pglite-adapter] import failed', url, e); }
+        }
+    })();
+})();
+</script>
 
 <script src="https://unpkg.com/sql-workbench-embedded@0.1.2"></script>
