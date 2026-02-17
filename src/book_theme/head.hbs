@@ -23,31 +23,33 @@
 <script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js"></script>
 
 <script>
-    (() => {
-        const response = (ok, stdout = '', stderr = '') => ({ ok, duration: 0, stdout, stderr });
-        window.codapi = window.codapi || {};
-        window.codapi.engines = window.codapi.engines || {};
-        window.codapi.engines.pglite = {
-            exec: async (req) => {
-                try {
-                    const inst = window._pglite || (await window._pgliteReady);
-                    if (!inst) return response(false, '', 'pglite not available');
+    window.codapi = window.codapi || {};
+    window.codapi.engines = window.codapi.engines || {};
+    window.codapi.engines.pglite = {
+        exec: async (req) => {
+            try {
+                const inst = window._pglite || (await window._pgliteReady);
+                if (!inst) return { ok: false, duration: 0, stdout: '', stderr: 'pglite not available' };
 
-                    const sql = req?.files?.[''] || (typeof req === 'string' ? req : '');
-                    if (!sql) return response(false, '', 'No SQL provided');
+                const sql = req?.files?.[''] || (typeof req === 'string' ? req : '');
+                if (!sql) return { ok: false, duration: 0, stdout: '', stderr: 'No SQL provided' };
 
-                    const fn = inst.query || inst.exec || inst.run || inst.evaluate;
-                    if (typeof fn !== 'function') throw new Error('no supported execution method on pglite instance');
+                const fn = inst.query || inst.exec || inst.run || inst.evaluate;
+                if (typeof fn !== 'function') throw new Error('no supported execution method on pglite instance');
 
-                    let result = await fn.call(inst, sql);
-                    if (!Array.isArray(result)) result = result?.rows || result?.result || result;
-                    return response(true, typeof result === 'string' ? result : JSON.stringify(result));
-                } catch (e) {
-                    return response(false, '', String(e));
-                }
-            },
-        };
-    })();
+                let result = await fn.call(inst, sql);
+                if (!Array.isArray(result)) result = result?.rows || result?.result || result;
+                return {
+                    ok: true,
+                    duration: 0,
+                    stdout: typeof result === 'string' ? result : JSON.stringify(result),
+                    stderr: '',
+                };
+            } catch (e) {
+                return { ok: false, duration: 0, stdout: '', stderr: String(e) };
+            }
+        },
+    };
 </script>
 
 <script src="https://unpkg.com/sql-workbench-embedded@0.1.2"></script>
