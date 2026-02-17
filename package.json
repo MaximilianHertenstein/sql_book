@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "@antonz/codapi": "^0.20.0",
-    "@electric-sql/pglite": "^0.3.15",
+    "@electric-sql/pglite": "^0.3.15"
   }
 }
