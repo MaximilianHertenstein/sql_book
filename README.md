@@ -2,18 +2,33 @@
 
 [![GHCR Image](https://img.shields.io/badge/ghcr.io%2FMaximilianHertenstein%2Fsql_book-latest-blue?logo=github)](https://ghcr.io/MaximilianHertenstein/sql_book)
 
-This repository contains notebooks and materials using `xeus-sql` with a local MariaDB server on Binder.
+An interactive SQL book built with [mdBook](https://rust-lang.github.io/mdBook/), featuring live, browser-based SQL execution powered by [PGlite](https://github.com/electric-sql/pglite) and [codapi](https://github.com/nalgeon/codapi).
 
-Key files:
+**📖 [Read the book online](https://maximilianhertenstein.github.io/sql_book)**  
+**🔗 [GitHub Repository](https://github.com/MaximilianHertenstein/sql_book)**
 
-- `postBuild` — installs `mariadb-server` and creates the `dbname` database during the build image step.
-- `start_mysql.sh` — helper to start the MariaDB server in your Binder session.
-- `notebooks/mysql_example.ipynb` — example notebook that starts the server and loads `dbname` for `xeus-sql`.
-- `BINDER_INSTRUCTIONS.md` — troubleshooting and Binder-specific notes.
+## Features
 
-To run on Binder:
+- **Interactive SQL snippets** — Run PostgreSQL queries directly in the browser (no server required).
+- **Multiple engines** — Supports PGlite (Postgres), SQLite (via WASI), and MySQL sandbox environments.
+- **Quiz support** — Uses `mdbook-quiz` for interactive learning exercises.
 
-1. Build the Binder image (Binder runs `postBuild`). If the remote builder fails with a "too many open files" error, see `BINDER_INSTRUCTIONS.md` for troubleshooting.
-2. Open `notebooks/mysql_example.ipynb`.
-3. Run the first cell to start MariaDB in the session.
-4. Switch the kernel to the `xeus-sql` SQL kernel and run the SQL cell.
+## Key Files
+
+- `src/` — Markdown source files for book chapters.
+- `src/book_theme/` — Custom theme templates and scripts:
+  - `head.hbs` — Loads codapi dependencies.
+  - `loadPGLite.js` — Minimal PGlite engine adapter for codapi.
+- `book.toml` — mdBook configuration.
+
+## Building
+
+```bash
+mdbook build
+```
+
+The built site is output to `book/`.
+
+## Usage
+
+Open `book/index.html` in a browser, navigate to a chapter with SQL snippets, and click **Run** to execute queries in-browser.
