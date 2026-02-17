@@ -1,21 +1,14 @@
 <script type="module">
-    try {
+    
         const mod = await import('https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.3.15/dist/index.js');
         const P = mod?.PGlite || mod?.default || mod;
         window._pgliteReady = (async () => {
-            try {
                 const inst = typeof P === 'function' ? new P() : P;
                 if (inst?.init) await inst.init();
                 return (window._pglite = inst);
-            } catch (e) {
-                console.warn('pglite init failed:', e);
-                return null;
-            }
+            
         })();
-    } catch (e) {
-        console.warn('failed to import pglite module', e);
-        window._pgliteReady = Promise.resolve(null);
-    }
+     
 </script>
 
 <script src="https://unpkg.com/@antonz/runno@0.6.1/dist/runno.js"></script>
