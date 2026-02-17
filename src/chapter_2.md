@@ -10,9 +10,10 @@ select 1 = 1 as message;
 
 
 
-<pre><code>
+
+```sql
 select 1 = 1 as message;
-</code></pre>
+```
 
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
