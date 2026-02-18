@@ -178,7 +178,7 @@ In *SQL* gibt es eine ähnliche Regel. Diese besagt, dass `AND` vor `OR` ausgewe
 
 
 ```sql
-SELECT TRUE OR FALSE AND FALSE;
+SELECT true OR false AND false;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
@@ -187,7 +187,7 @@ SELECT TRUE OR FALSE AND FALSE;
 Auch hier kann mithilfe von Klammern die Reihenfolge vorgegeben werden.
 
 ```sql
-SELECT (TRUE OR FALSE) AND FALSE;
+SELECT (true OR false) AND false;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
@@ -241,7 +241,13 @@ Verfügung:
 1.  `%` steht für beliebig viele Zeichen.
 
     ```sql
-    SELECT 'Huber' LIKE 'Hu%','Huber' LIKE 'Hun%';
+    SELECT 'Huber' LIKE 'Hu%';
+    ```
+    <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+    </codapi-snippet>
+
+    ```sql
+    SELECT 'Huber' LIKE 'Hun%';
     ```
     <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
     </codapi-snippet>
@@ -250,10 +256,17 @@ Verfügung:
 2.  `_` steht für genau ein Zeichen.
 
     ```sql
-    SELECT 'Huber' LIKE 'Hu_' ,'Huber' LIKE 'Hu___';
+    SELECT 'Huber' LIKE 'Hu_';
     ```
     <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
     </codapi-snippet>
+    
+     ```sql
+    SELECT 'Huber' LIKE 'Hu___';
+    ```
+    <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+    </codapi-snippet>
+
 
 
 ## Datumswerte
