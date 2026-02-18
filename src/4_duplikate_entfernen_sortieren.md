@@ -3,10 +3,12 @@
 Die Geschlechter der Kunden können mit der folgenden Abfrage angezeigt
 werden.
 
-``` SQL
+```sql
 SELECT geschlecht
 FROM Kunden;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
         *\#* *geschlecht*
   ---------- --------------
@@ -24,10 +26,12 @@ Bei der Erzeugung der Ergebnistabelle werden alle Zeilen der Tabelle
 nicht automatisch entfernt. Dies ist mit dem Schlüsselwort
 `DISTINCT`{.SQL} möglich.
 
-``` SQL
+```sql
 SELECT DISTINCT geschlecht
 FROM Kunden;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     *\#* *geschlecht*
   ------ --------------
@@ -43,11 +47,13 @@ Spalte sortiert werden. Hierfür schreibt man hinter die Schlüsselwörter
 `ORDER BY`{.SQL} den Spaltennamen und `ASC`{.SQL} für eine aufsteigende
 oder `DESC`{.SQL} für eine absteigende Sortierung.
 
-``` SQL
+```sql
 SELECT Vorname, Name 
 FROM Kunden
 ORDER BY Name DESC;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
         *\#* *name*     *vorname*
   ---------- ---------- -----------
@@ -68,11 +74,13 @@ mit der Reihenfolge anzugeben. Diese werden durch Kommas voneinander
 getrennt. Wenn die Werte in der ersten angegeben Spalte gleich sind,
 wird nach den Werten in der zweiten angegebenen Spalte sortiert.
 
-``` SQL
+```sql
 SELECT vorname, name 
 FROM Kunden
 ORDER BY name DESC, vorname ASC;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
         *\#* *name*     *vorname*
   ---------- ---------- -----------

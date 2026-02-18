@@ -66,10 +66,12 @@ und den Namen der Spalte schreibt. Um die Spalten im Ergebnis
 auseinander halten zu können müssen diese mit `AS`{.SQL} umbenannt
 werden.
 
-``` SQL
+```sql
 SELECT FA.bezeichnung AS Fahrradartbezeichnung, F.bezeichnung AS Fahrradbezeichnung
 FROM Fahrradarten FA, Fahrraeder F;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
         *\#* *Fahrradartbezeichnung*        *Fahrradbezeichnung*
   ---------- ------------------------------ ----------------------
@@ -110,10 +112,12 @@ Zeilen aus der Tabelle *Fahrradarten* kombiniert werden, bei denen der
 Wert in den Spalten mit dem Namen *fahrradartNr* übereinstimmt. Dies
 wird mit der folgenden Abfrage realisiert.
 
-``` SQL
+```sql
 SELECT FA.bezeichnung AS Fahrradartbezeichnung, F.bezeichnung AS Fahrradbezeichnung
 WHERE FA.fahrradartNr = F.fahrradartNr;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
   *\#*       *Fahrradartbezeichnung*        *Fahrradbezeichnung*
   ---------- ------------------------------ ----------------------

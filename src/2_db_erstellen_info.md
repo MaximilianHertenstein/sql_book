@@ -8,23 +8,27 @@ Datenbanken. Hinter jedem Befehl muss ein Semikolon (`;`{.SQL}) stehen.
 Mit dem Befehl `CREATE SCHEMA`{.SQL} kann man eine Datenbank erstellen.
 Hinter `SCHEMA`{.SQL} folgt der Name der Datenbank.
 
-``` SQL
+```sql
 CREATE SCHEMA Schule;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 Jetzt können wir die neu erstelle Datenbank mit dem Befehl `USE`{.SQL}
 nutzen. Hinter `USE`{.SQL} steht wieder der Name der Datenbank.
 
-``` SQL
+```sql
 USE Schule;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 ## Erstellen von Tabellen
 
 Die neu erstellte Datenbank enthält noch keine Tabellen. Um neue
 Tabellen zu erstellen, nutzen wir den Befehl `CREATE TABLE`{.SQL}.
 
-``` SQL
+```sql
 CREATE TABLE klassen (
     klassen_id int,
     stufe varchar(255),
@@ -32,6 +36,8 @@ CREATE TABLE klassen (
     klassenzimmer varchar(255)
     );
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 Hinter `CREATE TABLE`{.SQL} steht der Name der Tabelle. Anschließend
 folgen in Klammern die Namen der Spalten mit dem entsprechenden
@@ -42,13 +48,15 @@ Datentyp. Diese werden durch Kommas voneinander getrennt.
 Nach der Angabe der Spalten und deren Datentypen können wir einen
 Primärschlüssel festlegen.
 
-``` {.SQL escapeinside="||"}
+```sql
 CREATE TABLE klassen (
     klassen_id int,
     |$\vdots$|
     PRIMARY KEY(klassen_id)
     );
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 Hierfür schreibt man in einer neuen Zeile die Schlüsselwörter
 `PRIMARY KEY`{.SQL} und anschließend in Klammern die Spalte, die man als
@@ -62,7 +70,7 @@ Anschließend folgt das Schlüsselwort `REFERENCES`{.SQL}, der Name der
 Tabelle aus der der Fremdschlüssel stammt und der Name dieser Spalte in
 dieser Tabelle.
 
-``` {.SQL escapeinside="||"}
+```sql
 CREATE TABLE schueler (
     schuelernummer int,
     |$\vdots$|
@@ -71,6 +79,8 @@ CREATE TABLE schueler (
     FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)
     );
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 ## Zeilen Einfügen
 
@@ -80,11 +90,13 @@ Anschließend folgen in Klammern und durch Kommas getrennt die
 Spaltennamen der Tabelle. Nach dem Schlüsselwort `VALUES`{.SQL} folgen
 die konkreten Werte, die in diese Spalten eingefügt werden sollen.
 
-``` SQL
+```sql
 INSERT INTO klassen
 Values 
 (1, '12', 'D', 'H207');
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     *klassen_id* *stufe*   *klasse*   *klassenzimmer*
   -------------- --------- ---------- -----------------
@@ -94,12 +106,14 @@ Values
 Wir können auch mehre Zeilen auf einmal in eine Tabelle einfügen, wenn
 wir diese durch Kommas trennen.
 
-``` SQL
+```sql
 INSERT INTO klassen
 Values 
 (2, 'BF1', 'P', 'H205'),
 (3, '12', 'TGI', 'G252');
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     *klassen_id* *stufe*   *klasse*   *klassenzimmer*
   -------------- --------- ---------- -----------------

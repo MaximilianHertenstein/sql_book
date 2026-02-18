@@ -39,10 +39,12 @@ Um eine ganze Tabelle anzuzeigen, schreibt man hinter `SELECT`{.SQL} ein
 den Namen der gewünschte Tabelle. Die oben aufgeführte Tabelle erhält
 man mit dem folgenden Befehl.
 
-``` SQL
+```sql
 SELECT *
 FROM Kunden;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 ## Projektionen
 
@@ -52,10 +54,12 @@ Namen der gewünschten Spalten. Zwischen zwei Spaltennamen muss ein Komma
 stehen. Anschließend folgt das Schlüsselwort `FROM`{.SQL} und der Name
 der Tabelle, aus der die Spalten stammen.
 
-``` {.SQL escapeinside="||"}
-SELECT |\textcolor{green}{vorname}|, |\textcolor{blue}{name}| 
-FROM |\textcolor{red}{Kunden}|;
+```sql
+SELECT vorname, name 
+FROM Kunden;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 ::: center
 :::
@@ -114,10 +118,12 @@ Tagesmietpreis unter 10 € liegt.
 Um auch diese Information anzuzeigen, könnte er die folgende Abfrage
 stellen:
 
-``` SQL
+```sql
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10
 FROM Fahrraeder;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     *fahrradnr* *bezeichnung*         *tagesmietpreis \< 10*
   ------------- --------------------- ------------------------
@@ -135,10 +141,12 @@ in der Ergebnistabelle angezeigt.
 Um nicht immer den Ausdruck selbst im Kopf der Spalte anzuzeigen, ist es
 sinnvoll, mit dem Schlüsselwort `AS`{.SQL} zu arbeiten.
 
-::: minted
-SQL SELECT fahrradNr, bezeichnung, tagesmietpreis \< 10 AS
+```sql
+SELECT fahrradNr, bezeichnung, tagesmietpreis < 10 AS
 'Tagesmietpreis unter 10 Euro' FROM Fahrraeder;
-:::
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     *fahrradnr* *bezeichnung*         *Tagesmietpreis unter 10 Euro*
   ------------- --------------------- --------------------------------
@@ -185,11 +193,13 @@ Zeile, die mit `WHERE`{.SQL} beginnt. Hinter `WHERE`{.SQL} steht eine
 Bedingung, die eine Zeile erfüllen muss, um im Ergebnis angezeigt zu
 werden.
 
-``` SQL
+```sql
 SELECT fahrradNr, bezeichnung
 FROM Fahrraeder
 WHERE tagesmietpreis < 10;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 ::: center
     *fahrradnr* *bezeichnung*

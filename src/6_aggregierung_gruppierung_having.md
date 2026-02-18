@@ -6,10 +6,12 @@ Aggregierungsfunktionen ist die Funktion `AVG`{.SQL}. Diese berechnet
 den durchschnittlichen Wert in einer Spalte. Damit kann der
 durchschnittliche *Tagesmietpreis* aller Fahrräder berechnet werden.
 
-``` SQL
+```sql
 SELECT AVG(tagesmietpreis) 
 FROM Fahrraeder;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     *AVG(tagesmietpreis)*
   -----------------------
@@ -19,10 +21,12 @@ FROM Fahrraeder;
 Aus kosmetischen Gründen sollte man das Ergebnis runden und einen Alias
 verwenden.
 
-``` SQL
+```sql
 SELECT ROUND(AVG(tagesmietpreis), 3) AS 'Durchschnittlicher Tagesmietpreis' 
 FROM Fahrraeder;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     *Durchschnittlicher Tagesmietpreis*
   -------------------------------------
@@ -49,17 +53,21 @@ Funktionsnamen nicht den Namen einer Spalte sondern das Zeichen
 in einer Spalte berechnen, muss in der Klammer hinter `COUNT`{.SQL} vor
 dem Spaltenname `DISTINCT`{.SQL} stehen.
 
-``` {.SQL samepage=""}
+```sql
 SELECT COUNT(DISTINCT bezeichnung)
 FROM Fahrraeder;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 Es können auch mehrere aggregierte Werte auf einmal abgefragt werden.
 
-``` {.SQL samepage=""}
+```sql
 SELECT COUNT(fahrradNr), AVG(tagesmietpreis) 
 FROM Fahrraeder;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
     COUNT(fahrradNr)   AVG(tagesmietpreis)
   ------------------ ---------------------
@@ -95,11 +103,13 @@ Gruppen wurde dann die Anzahl der Fahrräder in der Gruppe berechnet.\
 Dafür schreibt man hinter die Schlüsselwörter `GROUP`{.SQL} und
 `BY`{.SQL} den Ausdruck, nach dem gruppiert werden soll.
 
-``` {.SQL samepage=""}
+```sql
 SELECT COUNT(fahrradNr), bezeichnung 
 FROM Fahrraeder 
 GROUP BY bezeichnung;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 Die Anzahl der Gruppen entspricht dann der Anzahl der verschiedenen
 Werte, die der Ausdruck in den Zeilen der Tabelle annimmt. In diesem
@@ -132,12 +142,14 @@ mit Aggregierungsfunktionen oder der Gruppierungsausdruck verwendet
 werden. Für alle anderen Ausdrücke ist wieder nicht klar, ob diese pro
 Gruppe nur einen Wert haben.
 
-``` SQL
+```sql
 SELECT COUNT(fahrradNr), bezeichnung 
 FROM Fahrraeder 
 GROUP BY bezeichnung
 HAVING COUNT(fahrradNr) > 4;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
         *\#*          *COUNT(FahrradNr)* *Bezeichnung*
   ---------- --------------------------- -------------------------------------------
