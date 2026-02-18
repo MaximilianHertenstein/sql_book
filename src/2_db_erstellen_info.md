@@ -1,5 +1,14 @@
 # Datenbanken erstellen
 
+## Was sind Datenbanken
+
+Eine Datenbank ist eine strukturierte Sammlung von Informationen. In
+einer relationalen Datenbank liegen die Informationen als Tabellen vor.
+In jeder Tabelle sind ähnliche Objekte aus der echten Welt gespeichert.
+Jede Zeile einer Tabelle steht für ein solches Objekt. Jede Spalte steht
+für eine Eigenschaft, die alle Objekte in dieser Tabelle haben. 
+
+
 ## Datenbankschema erstellen und verwenden
 
 In SQL nutzt man Befehle zum Erstellen, Verändern oder Abfragen von

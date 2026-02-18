@@ -4,12 +4,104 @@ SQL wird in der Regel nicht als Taschenrechner sondern als
 Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
 *Structured Query Language* aus.
 
-Eine Datenbank ist eine strukturierte Sammlung von Informationen. In
-einer relationalen Datenbank liegen die Informationen als Tabellen vor.
-In jeder Tabelle sind ähnliche Objekte aus der echten Welt gespeichert.
-Jede Zeile einer Tabelle steht für ein solches Objekt. Jede Spalte steht
-für eine Eigenschaft, die alle Objekte in dieser Tabelle haben. Als
-Beispiel sind hier die ersten Zeilen der Tabelle zu sehen, in der die
+```sql
+CREATE TABLE fahrradarten (
+    fahrradartNr     int NOT NULL,
+    bezeichnung      varchar(50),
+    kurzerlaeuterung varchar(60),
+    PRIMARY KEY (fahrradartNr)
+);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+INSERT INTO fahrradarten VALUES
+(1, 'Mountain-Bike', 'Geländefahrrad meist mit Federung'),
+(2, 'Cross-Bike', 'sportlicher Einsatz Straße & Gelände (Trekking-Touren)'),
+(3, 'BMX-Bike', 'Fahrräder ohne Zulassung StVZO für Bahnen'),
+(4, 'DirtBike', 'Extremkletterer zum Springen und für Tourniere ohne StVZO'),
+(5, 'Einrad', 'Funrad mit nur einem Rad'),
+(6, 'Tandem', 'Fahrrad für 2 Personen'),
+(7, 'Kinderfahrrad ab 20 Zoll', 'Fahrrad für Kinder ab 5 Jahren'),
+(8, 'Jugendfahrrad', 'Fahrrad für Jugendliche'),
+(9, 'Kinderrad Fahrrad 12-18 Zoll', 'Fahrrad ab 3 Jahre'),
+(10, 'Jugendfahrrad ab 26 Zoll', 'Fahrrad ab 7 Jahren'),
+(11, 'Rennrad', 'Straßenrennrad'),
+(12, 'Damen City-Bike', 'Damenräder für Straßen und Wege'),
+(13, 'Herren City-Bike', 'Herrenräder für Straßen und Wege'),
+(14, 'Kinderanhänger', 'Anhänger für den Transport von Kindern');
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+CREATE TABLE fahrraeder (
+    fahrradNr        int NOT NULL,
+    bezeichnung      varchar(50),
+    rahmenNummer     varchar(10),
+    tagesmietpreis   double precision,
+    anschaffungswert double precision,
+    kaufdatum        date,
+    fahrradartNr     int,
+    herstellerNr     int,
+    PRIMARY KEY (fahrradNr),
+    FOREIGN KEY (fahrradartNr) REFERENCES fahrradarten (fahrradartNr)
+);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+INSERT INTO fahrraeder VALUES
+(1, 'Comus Einrad', '4590/H2', 8.40, 56.00, '2021-05-23', 5, 22),
+(2, 'Panther Thedy', '340/90089', 9.45, 145.00, '2022-01-17', 9, 5),
+(3, 'Scott Comtessa', '56/32', 10.50, 189.00, '2022-05-05', 9, 4),
+(4, 'Scott Voltage Jr 16', '76/67654e', 12.60, 246.00, '2021-09-05', 9, 4),
+(5, 'Yazoo FSV-3.6N', '198H45', 17.85, 310.00, '2021-09-21', 10, 5),
+(6, 'Scott Aspect 50', 'MTB/B88', 19.95, 398.00, '2021-07-23', 1, 4),
+(7, 'Yazoo FSV-3.6N', '198H47', 17.85, 310.00, '2021-09-21', 10, 5),
+(8, 'Comus Einrad XM', '4890/H2', 8.40, 56.00, '2022-01-02', 5, 22);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+CREATE TABLE kunden (
+    kundenNr   int NOT NULL,
+    name       varchar(30),
+    vorname    varchar(20),
+    strasse    varchar(30),
+    ortNr      int,
+    geschlecht varchar(1),
+    gebTag     date,
+    PRIMARY KEY (kundenNr)
+);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+INSERT INTO kunden VALUES 
+(232, 'Schneider', 'Heinrich', 'Goezstraße 25', 29740, 'm', '1985-06-16'),
+(233, 'Schlauch', 'Franz', 'Ulmer Weg 56', 30050, 'm', '1993-08-23'),
+(234, 'Schlauch', 'Franziska', 'Ulmer Weg 56', 30050, 'w', '2013-05-24'),
+(235, 'Böckle', 'Jennifer', 'Hermann-Hesse-Str. 3', 11553, 'w', '2013-04-21'),
+(236, 'Hauffe', 'Johann', 'Seestraße 21', 29003, 'm', '1997-07-31'),
+(237, 'Yilmaz', 'Ali', 'Wehrstraße 87', 29315, 'm', '2011-03-13'),
+(238, 'Berger', 'Johann', 'Vaihinger Str. 103', 29875, 'm', '2012-03-25');
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
+
+Als Beispiel sind hier die ersten Zeilen der Tabelle zu sehen, in der die
 Kunden des Fahrradverleihs gespeichert sind.
 
 Um schnell einen Überblick über eine Datenbank zu bekommen, nutzt man
