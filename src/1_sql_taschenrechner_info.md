@@ -79,6 +79,8 @@ In *SQL* kann man auch mit Wahrheitswerten arbeiten.
 ```sql
 SELECT true, false;
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic">
+</codapi-snippet>
 
 
 Beim Vergleich von zwei Werten erhält man immer einen Wahrheitswert.
