@@ -9,7 +9,7 @@ theme = "src/book_theme"
 additional-js = ["src/book_theme/loadPGLite.js"]
 
 additional-css = ["./mdbook-admonish.css"]
-
+mathjax-support = true
 
 
 #[preprocessor.lint]

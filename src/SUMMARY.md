@@ -1,5 +1,4 @@
 # Summary
 
-- [Chapter 1](./chapter_1.md)
-- [Chapter 2](./chapter_2.md)
-- [Chapter 3](./chapter_3.md)
+- [Chapter 0](./test_sql_execution.md)
+- [1. SQL als Taschenrechner](./sql_taschenrechner_info.md)
