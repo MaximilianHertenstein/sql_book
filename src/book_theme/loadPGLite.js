@@ -1,48 +1,24 @@
-(async () => {
-  try {
-    const module = await import(
-      "https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.3.15/dist/index.js"
-    );
-    const PGlite = module.PGlite || module.default || module;
-    const db = new PGlite();
+const dbReady = import("https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.3.15/dist/index.js")
+  .then(m => new (m.PGlite || m.default || m)());
 
-    window.codapi ||= {};
-    window.codapi.engines ||= {};
-
-    window.codapi.engines.pglite = {
-      exec: async req => {
-        const sql = req?.files?.[""] || "";
-        const started = Date.now();
-
-        try {
-          const result = await db.query(sql, [], { rowMode: "array" });
-          const fields = result.fields || [];
-          const rows = result.rows || [];
-
-          if (!fields.length) {
-            return { ok: true, duration: Date.now() - started, stdout: [], stderr: "" };
-          }
-
-          // Handle duplicate column names
-          const seen = new Map();
-          const headers = fields.map(f => {
-            const name = f?.name || "column";
-            const count = (seen.get(name) || 0) + 1;
-            seen.set(name, count);
-            return count === 1 ? name : `${name}_${count}`;
-          });
-
-          const tableRows = rows.map(row =>
-            Object.fromEntries(headers.map((h, i) => [h, row[i]]))
-          );
-
-          return { ok: true, duration: Date.now() - started, stdout: tableRows, stderr: "" };
-        } catch (err) {
-          return { ok: false, duration: 0, stdout: "", stderr: String(err) };
-        }
-      }
-    };
-  } catch (err) {
-    console.error("Failed to initialize PGlite engine", err);
+window.codapi ||= {};
+window.codapi.engines ||= {};
+window.codapi.engines.pglite = {
+  exec: async req => {
+    const started = Date.now();
+    try {
+      const db = await dbReady;
+      const { fields = [], rows = [] } = await db.query(req?.files?.[""] || "", [], { rowMode: "array" });
+      const seen = new Map();
+      const headers = fields.map(f => {
+        const n = f?.name || "column";
+        const c = (seen.get(n) || 0) + 1;
+        seen.set(n, c);
+        return c === 1 ? n : `${n}_${c}`;
+      });
+      return { ok: true, duration: Date.now() - started, stdout: rows.map(r => Object.fromEntries(headers.map((h,i)=>[h,r[i]]))), stderr: "" };
+    } catch (e) {
+      return { ok: false, duration: 0, stdout: "", stderr: String(e) };
+    }
   }
-})();
+};
