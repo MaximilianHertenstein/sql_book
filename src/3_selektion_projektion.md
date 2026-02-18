@@ -107,7 +107,7 @@ Um schnell einen Überblick über eine Datenbank zu bekommen, nutzt man
 Diagramme, in denen alle Tabellen der Datenbank und deren Spalten, aber
 keine Einträge aufgeführt sind. Jedes Rechteck steht für eine Tabelle
 der Datenbank. Ganz oben steht jeweils der Tabellenname. Darunter stehen
-die Spaltennamen und der Datentyp der Einträge in dieser Spalte. Beziehungen zwischen den Tabellen sind als Pfeile eingezeichnet.
+die Spaltennamen und der Datentyp der Einträge in dieser Spalte. Beziehungen zwischen den Tabellen sind als Linien eingezeichnet.
 
 ![](eer_diagram_fahrradverleih.svg)
 
