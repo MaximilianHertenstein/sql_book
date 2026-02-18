@@ -1,8 +1,10 @@
-# Datenbanken
+# Datenbankabfragen
 
 SQL wird in der Regel nicht als Taschenrechner sondern als
 Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
-*Structured Query Language* aus.
+*Structured Query Language* aus. 
+
+Um Abfragen zu schreiben müssen wir zunächst eine Datenbank erstellen.
 
 ```sql
 CREATE TABLE fahrradarten (
@@ -101,28 +103,14 @@ INSERT INTO kunden VALUES
 
 
 
-Als Beispiel sind hier die ersten Zeilen der Tabelle zu sehen, in der die
-Kunden des Fahrradverleihs gespeichert sind.
-
 Um schnell einen Überblick über eine Datenbank zu bekommen, nutzt man
 Diagramme, in denen alle Tabellen der Datenbank und deren Spalten, aber
 keine Einträge aufgeführt sind. Jedes Rechteck steht für eine Tabelle
 der Datenbank. Ganz oben steht jeweils der Tabellenname. Darunter stehen
-die Spaltennamen und der Datentyp[^1] der Einträge in dieser Spalte. Die
-Tabelle mit den Kunden befindet sich rechts unten.
+die Spaltennamen und der Datentyp der Einträge in dieser Spalte. Beziehungen zwischen den Tabellen sind als Pfeile eingezeichnet.
 
-<figure id="fig:DB_Fahrrad" data-latex-placement="H">
-<div class="center">
+![](eer_diagram_fahrradverleih.svg)
 
-</div>
-<figcaption>Datenbank eines Fahrradverleihs</figcaption>
-</figure>
-
-# SQL als Abfragesprache
-
-Mit `SELECT`-Statements lassen sich nicht nur Berechnungen
-durchführen. Die Sprache *SQL (Structured Query Language)* wurde
-speziell dafür entwickelt, Informationen aus Datenbanken abzufragen.
 
 ## Ganze Tabellen anzeigen
 
@@ -153,24 +141,8 @@ FROM Kunden;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-::: center
-:::
 
-Im Ergebnis sind dann nur noch die ausgewählten Spalten enthalten.
 
-::: center
-  *vorname*   *name*
-  ----------- -----------
-  Heinrich    Schneider
-  Franz       Schlauch
-  Franziska   Schlauch
-  Jennifer    Böckle
-  Johann      Hauffe
-  Ali         Yilmaz
-  $\vdots$    $\vdots$
-
-\
-:::
 
 Eine solche Auswahl von Spalten einer Tabelle nennt man Projektion.
 
@@ -183,29 +155,6 @@ von Spalten verbinden.
 Ein Kunde könnte sich zum Beispiel für Fahrräder interessieren, deren
 Tagesmietpreis unter 10 € liegt.
 
-:::: minipage
-::: flushleft
-    *fahrradnr* *bezeichnung*           *tagesmietpreis* 
-  ------------- --------------------- ------------------ --
-              1 Comus Einrad                         8.4 
-              2 Panther Thedy                       9.45 
-              3 Scott Comtessa                      10.5 
-              4 Scott Voltage Jr 16                 12.6 
-       $\vdots$ $\vdots$                        $\vdots$ 
-:::
-::::
-
-:::: minipage
-::: center
-               *tagesmietpreis unter 10*
-  --------------------------------------
-    [$\checkmark$]{style="color: green"}
-    [$\checkmark$]{style="color: green"}
-                  []{style="color: red"}
-                  []{style="color: red"}
-                                $\vdots$
-:::
-::::
 
 Um auch diese Information anzuzeigen, könnte er die folgende Abfrage
 stellen:
@@ -217,15 +166,7 @@ FROM Fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-    *fahrradnr* *bezeichnung*         *tagesmietpreis \< 10*
-  ------------- --------------------- ------------------------
-              1 Comus Einrad          1
-              2 Panther Thedy         1
-              3 Scott Comtessa        0
-              4 Scott Voltage Jr 16   0
-       $\vdots$ $\vdots$              $\vdots$
 
-\
 Für jede Zeile in der Tabelle *Fahrraeder* wird dann aus dem Wert in der
 Spalte *tagesmietpreis* der Wert des angegeben Ausdrucks berechnet und
 in der Ergebnistabelle angezeigt.
@@ -235,20 +176,12 @@ sinnvoll, mit dem Schlüsselwort `AS` zu arbeiten.
 
 ```sql
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10 AS
-'Tagesmietpreis unter 10 Euro' FROM Fahrraeder;
+tagesmietpreis_unter_10_euro FROM Fahrraeder;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-    *fahrradnr* *bezeichnung*         *Tagesmietpreis unter 10 Euro*
-  ------------- --------------------- --------------------------------
-              1 Comus Einrad          1
-              2 Panther Thedy         1
-              3 Scott Comtessa        0
-              4 Scott Voltage Jr 16   0
-       $\vdots$ $\vdots$              $\vdots$
 
-\
 
 ## Selektion
 
@@ -256,29 +189,6 @@ Wenn man sich nur für die Fahrräder interessiert, deren Tagesmietpreis
 unter 10 € liegt, kann man auch nur die Fahrräder anzeigen, die diese
 Bedingung erfüllen.
 
-:::: minipage
-::: flushleft
-    *fahrradnr* *bezeichnung*           *tagesmietpreis* 
-  ------------- --------------------- ------------------ --
-              1 Comus Einrad                         8.4 
-              2 Panther Thedy                       9.45 
-              3 Scott Comtessa                      10.5 
-              4 Scott Voltage Jr 16                 12.6 
-       $\vdots$ $\vdots$                        $\vdots$ 
-:::
-::::
-
-:::: minipage
-::: center
-               *tagesmietpreis unter 10*
-  --------------------------------------
-    [$\checkmark$]{style="color: green"}
-    [$\checkmark$]{style="color: green"}
-                  []{style="color: red"}
-                  []{style="color: red"}
-                                $\vdots$
-:::
-::::
 
 Dafür erweitert man das `SELECT`-*Statement* um eine weitere
 Zeile, die mit `WHERE` beginnt. Hinter `WHERE` steht eine
@@ -293,16 +203,7 @@ WHERE tagesmietpreis < 10;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-::: center
-    *fahrradnr* *bezeichnung*
-  ------------- -----------------
-              1 Comus Einrad
-              2 Panther Thedy
-              8 Comus Einrad XM
-       $\vdots$ $\vdots$
 
-\
-:::
 
 Eine solche Auswahl von Zeilen nennt man Selektion.
 
@@ -323,6 +224,3 @@ zu sehen.
 <figcaption>Datenfluss bei <code
 class="sourceCode sql"><span class="kw">SELECT</span></code>-Statements</figcaption>
 </figure>
-
-[^1]: mit den Datentypen, die wir noch nicht kennen und weiteren
-    Komponenten des Diagramms werden wir uns später beschäftigen
