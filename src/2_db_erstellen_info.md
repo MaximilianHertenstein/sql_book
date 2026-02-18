@@ -20,8 +20,7 @@ nutzen. Hinter `USE` steht wieder der Name der Datenbank.
 ```sql
 USE Schule;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
-</codapi-snippet>
+
 
 ## Erstellen von Tabellen
 
@@ -36,8 +35,7 @@ CREATE TABLE klassen (
     klassenzimmer varchar(255)
     );
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
-</codapi-snippet>
+
 
 Hinter `CREATE TABLE` steht der Name der Tabelle. Anschließend
 folgen in Klammern die Namen der Spalten mit dem entsprechenden
@@ -99,11 +97,16 @@ Values
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-    *klassen_id* *stufe*   *klasse*   *klassenzimmer*
-  -------------- --------- ---------- -----------------
-               1 12        D          H207
 
-\
+Die geänderte Tabelle können wir mit dem folgenden Befehl anzeigen.
+
+```sql
+SELECT * FROM klassen;
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
 Wir können auch mehre Zeilen auf einmal in eine Tabelle einfügen, wenn
 wir diese durch Kommas trennen.
 
@@ -116,10 +119,9 @@ Values
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-    *klassen_id* *stufe*   *klasse*   *klassenzimmer*
-  -------------- --------- ---------- -----------------
-               1 12        D          H207
-               2 BF1       P          H205
-               3 12        TGI        G252
 
-\
+```sql
+SELECT * FROM klassen;
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
