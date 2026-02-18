@@ -219,8 +219,5 @@ Zeile, die nicht durch die `WHERE`-Klausel herausgefiltert wird,
 berechnet. Alle Ergebnisse zusammen sind dann in einer Ergebnistabelle
 zu sehen.
 
-<figure id="fig:meine-grafik" data-latex-placement="H">
-<img src="SQL-Select" style="width:70.0%" />
-<figcaption>Datenfluss bei <code
-class="sourceCode sql"><span class="kw">SELECT</span></code>-Statements</figcaption>
-</figure>
+![](SQL-SELECT.jpg)
+

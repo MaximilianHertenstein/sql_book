@@ -1,4 +1,36 @@
+
+```sql
+CREATE TABLE kunden (
+    kundenNr   int NOT NULL,
+    name       varchar(30),
+    vorname    varchar(20),
+    strasse    varchar(30),
+    ortNr      int,
+    geschlecht varchar(1),
+    gebTag     date,
+    PRIMARY KEY (kundenNr)
+);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+INSERT INTO kunden VALUES 
+(232, 'Schneider', 'Heinrich', 'Goezstraße 25', 29740, 'm', '1985-06-16'),
+(233, 'Schlauch', 'Franz', 'Ulmer Weg 56', 30050, 'm', '1993-08-23'),
+(234, 'Schlauch', 'Franziska', 'Ulmer Weg 56', 30050, 'w', '2013-05-24'),
+(235, 'Böckle', 'Jennifer', 'Hermann-Hesse-Str. 3', 11553, 'w', '2013-04-21'),
+(236, 'Hauffe', 'Johann', 'Seestraße 21', 29003, 'm', '1997-07-31'),
+(237, 'Yilmaz', 'Ali', 'Wehrstraße 87', 29315, 'm', '2011-03-13'),
+(238, 'Berger', 'Johann', 'Vaihinger Str. 103', 29875, 'm', '2012-03-25');
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
 # Doppelte Ergebnisse entfernen
+
 
 Die Geschlechter der Kunden können mit der folgenden Abfrage angezeigt
 werden.
@@ -10,16 +42,7 @@ FROM Kunden;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-        *\#* *geschlecht*
-  ---------- --------------
-           1 m
-           2 m
-           3 w
-           4 w
-           5 m
-    $\vdots$ $\vdots$
 
-\
 Bei der Erzeugung der Ergebnistabelle werden alle Zeilen der Tabelle
 *Kunden* durchlaufen. Für jede Zeile wird der Wert in der Spalte
 `geschlecht` zum Ergebnis hinzugefügt. Dabei werden doppelte Ergebnisse
@@ -33,12 +56,7 @@ FROM Kunden;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-    *\#* *geschlecht*
-  ------ --------------
-       1 m
-       2 w
 
-\
 
 # Abfrageergebnisse sortieren
 
@@ -55,20 +73,6 @@ ORDER BY Name DESC;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-        *\#* *name*     *vorname*
-  ---------- ---------- -----------
-           1 Yilmaz     Ali
-           2 Watzke     Bernd
-    $\vdots$ $\vdots$   $\vdots$
-          10 Schlauch   Rudolf
-          11 Schlauch   Franziska
-          12 Schlauch   Franz
-          13 Schlauch   Angelika
-    $\vdots$ $\vdots$   $\vdots$
-          77 Alber      Rolf
-          78 Albanesi   Dario
-
-\
 Es ist auch möglich, mehrere Spalten, nach denen sortiert werden soll,
 mit der Reihenfolge anzugeben. Diese werden durch Kommas voneinander
 getrennt. Wenn die Werte in der ersten angegeben Spalte gleich sind,
@@ -82,17 +86,4 @@ ORDER BY name DESC, vorname ASC;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-        *\#* *name*     *vorname*
-  ---------- ---------- -----------
-           1 Yilmaz     Ali
-           2 Watzke     Bernd
-    $\vdots$ $\vdots$   $\vdots$
-          10 Schlauch   Angelika
-          11 Schlauch   Franz
-          12 Schlauch   Franziska
-          13 Schlauch   Rudolf
-    $\vdots$ $\vdots$   $\vdots$
-          77 Alber      Rolf
-          78 Albanesi   Dario
 
-\
