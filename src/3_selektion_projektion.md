@@ -28,14 +28,14 @@ Tabelle mit den Kunden befindet sich rechts unten.
 
 # SQL als Abfragesprache
 
-Mit `SELECT`{.SQL}-Statements lassen sich nicht nur Berechnungen
+Mit `SELECT`-Statements lassen sich nicht nur Berechnungen
 durchführen. Die Sprache *SQL (Structured Query Language)* wurde
 speziell dafür entwickelt, Informationen aus Datenbanken abzufragen.
 
 ## Ganze Tabellen anzeigen
 
-Um eine ganze Tabelle anzuzeigen, schreibt man hinter `SELECT`{.SQL} ein
-`*`{.SQL} und in die nächste Zeile das Schlüsselwort `FROM`{.SQL} und
+Um eine ganze Tabelle anzuzeigen, schreibt man hinter `SELECT` ein
+`*` und in die nächste Zeile das Schlüsselwort `FROM` und
 den Namen der gewünschte Tabelle. Die oben aufgeführte Tabelle erhält
 man mit dem folgenden Befehl.
 
@@ -48,10 +48,10 @@ FROM Kunden;
 
 ## Projektionen
 
-Mit `SELECT`{.SQL}-Befehlen können wir auch nur ausgewählte Spalten
-einer Tabelle anschauen. Hierfür schreibt man hinter `SELECT`{.SQL} die
+Mit `SELECT`-Befehlen können wir auch nur ausgewählte Spalten
+einer Tabelle anschauen. Hierfür schreibt man hinter `SELECT` die
 Namen der gewünschten Spalten. Zwischen zwei Spaltennamen muss ein Komma
-stehen. Anschließend folgt das Schlüsselwort `FROM`{.SQL} und der Name
+stehen. Anschließend folgt das Schlüsselwort `FROM` und der Name
 der Tabelle, aus der die Spalten stammen.
 
 ```sql
@@ -84,7 +84,7 @@ Eine solche Auswahl von Spalten einer Tabelle nennt man Projektion.
 
 ## Berechnete Spalten
 
-Wir haben bereits gesehen, dass man mit `SELECT`{.SQL}-*Statements* die
+Wir haben bereits gesehen, dass man mit `SELECT`-*Statements* die
 Werte von Ausdrücken berechen kann. Dies können wir auch mit der Abfrage
 von Spalten verbinden.
 
@@ -139,7 +139,7 @@ Spalte *tagesmietpreis* der Wert des angegeben Ausdrucks berechnet und
 in der Ergebnistabelle angezeigt.
 
 Um nicht immer den Ausdruck selbst im Kopf der Spalte anzuzeigen, ist es
-sinnvoll, mit dem Schlüsselwort `AS`{.SQL} zu arbeiten.
+sinnvoll, mit dem Schlüsselwort `AS` zu arbeiten.
 
 ```sql
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10 AS
@@ -188,8 +188,8 @@ Bedingung erfüllen.
 :::
 ::::
 
-Dafür erweitert man das `SELECT`{.SQL}-*Statement* um eine weitere
-Zeile, die mit `WHERE`{.SQL} beginnt. Hinter `WHERE`{.SQL} steht eine
+Dafür erweitert man das `SELECT`-*Statement* um eine weitere
+Zeile, die mit `WHERE` beginnt. Hinter `WHERE` steht eine
 Bedingung, die eine Zeile erfüllen muss, um im Ergebnis angezeigt zu
 werden.
 
@@ -217,12 +217,12 @@ Eine solche Auswahl von Zeilen nennt man Selektion.
 ## Veranschaulichung
 
 Bei den Anfragen, die wir bis jetzt geschrieben haben, wird in einer
-`FROM`{.SQL}-Klausel eine Tabelle angegeben. In der
-`WHERE`{.SQL}-Klausel wird eine Bedingung für die Zeilen der Tabelle
+`FROM`-Klausel eine Tabelle angegeben. In der
+`WHERE`-Klausel wird eine Bedingung für die Zeilen der Tabelle
 angegeben. Nur die Zeilen, die diese Bedingung erfüllen, werden im
-Ergebnis berücksichtigt. Hinter `SELECT`{.SQL} verwendet man
+Ergebnis berücksichtigt. Hinter `SELECT` verwendet man
 Spaltennamen oder allgemeiner Ausdrücke. Diese Ausdrücke werden für jede
-Zeile, die nicht durch die `WHERE`{.SQL}-Klausel herausgefiltert wird,
+Zeile, die nicht durch die `WHERE`-Klausel herausgefiltert wird,
 berechnet. Alle Ergebnisse zusammen sind dann in einer Ergebnistabelle
 zu sehen.
 

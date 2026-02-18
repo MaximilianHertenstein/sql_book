@@ -2,7 +2,7 @@
 
 Mithilfe von Aggregierungsfunktionen können wir aus allen Werten in
 einer Spalte einen einzelnen Wert berechnen. Ein Beispiel für eine
-Aggregierungsfunktionen ist die Funktion `AVG`{.SQL}. Diese berechnet
+Aggregierungsfunktionen ist die Funktion `AVG`. Diese berechnet
 den durchschnittlichen Wert in einer Spalte. Damit kann der
 durchschnittliche *Tagesmietpreis* aller Fahrräder berechnet werden.
 
@@ -13,11 +13,6 @@ FROM Fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-    *AVG(tagesmietpreis)*
-  -----------------------
-        19.19166666666666
-
-\
 Aus kosmetischen Gründen sollte man das Ergebnis runden und einen Alias
 verwenden.
 
@@ -38,20 +33,20 @@ aufgeführt.
 
        Name       Rückgabewert
   --------------- --------------------------------------
-    `MAX`{.SQL}   größter Wert in der Spalte
-    `MIN`{.SQL}   kleinster Wert in der Spalte
-    `SUM`{.SQL}   Summe der Werte in der Spalte
-    `AVG`{.SQL}   Durchschnitt der Werte in der Spalte
-   `COUNT`{.SQL}  Anzahl der Werte in der Spalte
+    `MAX`   größter Wert in der Spalte
+    `MIN`   kleinster Wert in der Spalte
+    `SUM`   Summe der Werte in der Spalte
+    `AVG`   Durchschnitt der Werte in der Spalte
+   `COUNT`  Anzahl der Werte in der Spalte
 
   : Wichtige Aggregierungssfunktionen
 
-Mit der Funktion `COUNT`{.SQL} kann auch die Anzahl der zurückgegebenen
+Mit der Funktion `COUNT` kann auch die Anzahl der zurückgegebenen
 Zeilen gezählt werden. Hierfür schreibt man in die Klammer hinter dem
 Funktionsnamen nicht den Namen einer Spalte sondern das Zeichen
-`*`{.SQL}. Wenn man die Anzahl der verschiedenen *verschiedenen* Werte
-in einer Spalte berechnen, muss in der Klammer hinter `COUNT`{.SQL} vor
-dem Spaltenname `DISTINCT`{.SQL} stehen.
+`*`. Wenn man die Anzahl der verschiedenen *verschiedenen* Werte
+in einer Spalte berechnen, muss in der Klammer hinter `COUNT` vor
+dem Spaltenname `DISTINCT` stehen.
 
 ```sql
 SELECT COUNT(DISTINCT bezeichnung)
@@ -69,9 +64,7 @@ FROM Fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-    COUNT(fahrradNr)   AVG(tagesmietpreis)
-  ------------------ ---------------------
-                  36     19.19166666666666
+
 
 Es ist aber nicht möglich gleichzeitig Spalten und aggregierte Werte
 abzufragen, da eine Spalte mehrere Werte enthalten kann und das Ergebnis
@@ -100,8 +93,8 @@ Gruppen wurde dann die Anzahl der Fahrräder in der Gruppe berechnet.\
 ::: minipage
 :::
 
-Dafür schreibt man hinter die Schlüsselwörter `GROUP`{.SQL} und
-`BY`{.SQL} den Ausdruck, nach dem gruppiert werden soll.
+Dafür schreibt man hinter die Schlüsselwörter `GROUP` und
+`BY` den Ausdruck, nach dem gruppiert werden soll.
 
 ```sql
 SELECT COUNT(fahrradNr), bezeichnung 
@@ -116,7 +109,7 @@ Werte, die der Ausdruck in den Zeilen der Tabelle annimmt. In diesem
 Beispiel gibt es genau so viele Gruppen, wie es verschiedene
 *Bezeichnungen* in der Tabelle *Fahrräder* gibt.
 
-Wenn `GROUP BY`{.SQL} genutzt wird, dürfen hinter `SELECT`{.SQL} nur
+Wenn `GROUP BY` genutzt wird, dürfen hinter `SELECT` nur
 Ausdrücke mit Aggregierungsfunktionen und der Ausdruck nach dem
 gruppiert wurde, genutzt werden. Für alle anderen Ausdrücke ist nicht
 klar, ob diese pro Gruppe nur einen Wert haben.
@@ -130,12 +123,12 @@ mit Gruppierung</figcaption>
 
 # Having
 
-In der `WHERE`{.SQL}-Klausel kann man eine Bedingung angegeben. Damit
-werden nur die Zeilen der Tabelle, die in der `FROM`{.SQL}-Klausel
+In der `WHERE`-Klausel kann man eine Bedingung angegeben. Damit
+werden nur die Zeilen der Tabelle, die in der `FROM`-Klausel
 angegeben wird, betrachtet, die diese Bedingung erfüllen.
 
 Durch Gruppierung entsteht eine neue Tabelle. Auch diese kann nochmal
-gefiltert werden. Dafür nutzt man die `HAVING`{.SQL}-Klausel. In dieser
+gefiltert werden. Dafür nutzt man die `HAVING`-Klausel. In dieser
 gibt man eine Bedingung für die Gruppen an, die im Ergebnis
 berücksichtigt werden sollen. In dieser Bedingung können nur Ausdrücke
 mit Aggregierungsfunktionen oder der Gruppierungsausdruck verwendet
@@ -157,8 +150,8 @@ HAVING COUNT(fahrradNr) > 4;
            2    [5]{style="color: blue"} [Fishbone FR 100]{style="color: blue"}
     $\vdots$                    $\vdots$ $\vdots$
 
-Der Datenfluss bei einem `SELECT`{.SQL}-Statement mit Gruppierung und
-`HAVING`{.SQL}-Klausel ist in
+Der Datenfluss bei einem `SELECT`-Statement mit Gruppierung und
+`HAVING`-Klausel ist in
 [3](#fig:SQL-SELECT-AGGR-GROUP_Having){reference-type="ref+label"
 reference="fig:SQL-SELECT-AGGR-GROUP_Having"} zu sehen.
 

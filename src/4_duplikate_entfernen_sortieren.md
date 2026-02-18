@@ -24,7 +24,7 @@ Bei der Erzeugung der Ergebnistabelle werden alle Zeilen der Tabelle
 *Kunden* durchlaufen. Für jede Zeile wird der Wert in der Spalte
 `geschlecht` zum Ergebnis hinzugefügt. Dabei werden doppelte Ergebnisse
 nicht automatisch entfernt. Dies ist mit dem Schlüsselwort
-`DISTINCT`{.SQL} möglich.
+`DISTINCT` möglich.
 
 ```sql
 SELECT DISTINCT geschlecht
@@ -44,8 +44,8 @@ FROM Kunden;
 
 Abfrageergebnisse können auch nach den Werten in einer ausgewählten
 Spalte sortiert werden. Hierfür schreibt man hinter die Schlüsselwörter
-`ORDER BY`{.SQL} den Spaltennamen und `ASC`{.SQL} für eine aufsteigende
-oder `DESC`{.SQL} für eine absteigende Sortierung.
+`ORDER BY` den Spaltennamen und `ASC` für eine aufsteigende
+oder `DESC` für eine absteigende Sortierung.
 
 ```sql
 SELECT Vorname, Name 

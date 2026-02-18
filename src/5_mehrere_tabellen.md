@@ -52,18 +52,18 @@ kann. Ein bestimmtes Fahrrad gehört aber nur zu genau einer Fahrradart.
 Wir haben gerade gesehen, dass man Fremdschlüssel dazu nutzen kann, um
 Informationen aus mehreren Tabellen zu kombinieren. Diese Verbindungen
 können auch in einer einzigen SQL-Abfrage genutzt werden. Hierfür
-schreibt man die Tabellen in einem `SELECT`{.SQL}-*Statement* mit Kommas
-getrennt hinter `FROM`{.SQL}.
+schreibt man die Tabellen in einem `SELECT`-*Statement* mit Kommas
+getrennt hinter `FROM`.
 
 Wenn man z. B. die Bezeichnung jedes Fahrrads zusammen mit der
 Bezeichnung der Fahrradart anzeigen will, benötigt man die Tabellen
 *Fahrradarten* und *Fahrraeder*. Wenn in den Tabellen zwei Spalten mit
 den selben Namen vorkommen, muss man den Tabellen in der
-`FROM`{.SQL}-Klausel verschiedene Namen geben. Diese schreibt man hinter
+`FROM`-Klausel verschiedene Namen geben. Diese schreibt man hinter
 die Namen der Tabellen. Anschließend kann man auf die Werte in den
 Spalten zugreifen, indem man hinter den neuen Tabellennamen einen Punkt
 und den Namen der Spalte schreibt. Um die Spalten im Ergebnis
-auseinander halten zu können müssen diese mit `AS`{.SQL} umbenannt
+auseinander halten zu können müssen diese mit `AS` umbenannt
 werden.
 
 ```sql

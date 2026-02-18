@@ -3,10 +3,10 @@
 ## Datenbankschema erstellen und verwenden
 
 In SQL nutzt man Befehle zum Erstellen, Verändern oder Abfragen von
-Datenbanken. Hinter jedem Befehl muss ein Semikolon (`;`{.SQL}) stehen.
+Datenbanken. Hinter jedem Befehl muss ein Semikolon (`;`) stehen.
 
-Mit dem Befehl `CREATE SCHEMA`{.SQL} kann man eine Datenbank erstellen.
-Hinter `SCHEMA`{.SQL} folgt der Name der Datenbank.
+Mit dem Befehl `CREATE SCHEMA` kann man eine Datenbank erstellen.
+Hinter `SCHEMA` folgt der Name der Datenbank.
 
 ```sql
 CREATE SCHEMA Schule;
@@ -14,8 +14,8 @@ CREATE SCHEMA Schule;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Jetzt können wir die neu erstelle Datenbank mit dem Befehl `USE`{.SQL}
-nutzen. Hinter `USE`{.SQL} steht wieder der Name der Datenbank.
+Jetzt können wir die neu erstelle Datenbank mit dem Befehl `USE`
+nutzen. Hinter `USE` steht wieder der Name der Datenbank.
 
 ```sql
 USE Schule;
@@ -26,7 +26,7 @@ USE Schule;
 ## Erstellen von Tabellen
 
 Die neu erstellte Datenbank enthält noch keine Tabellen. Um neue
-Tabellen zu erstellen, nutzen wir den Befehl `CREATE TABLE`{.SQL}.
+Tabellen zu erstellen, nutzen wir den Befehl `CREATE TABLE`.
 
 ```sql
 CREATE TABLE klassen (
@@ -39,7 +39,7 @@ CREATE TABLE klassen (
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Hinter `CREATE TABLE`{.SQL} steht der Name der Tabelle. Anschließend
+Hinter `CREATE TABLE` steht der Name der Tabelle. Anschließend
 folgen in Klammern die Namen der Spalten mit dem entsprechenden
 Datentyp. Diese werden durch Kommas voneinander getrennt.
 
@@ -51,7 +51,9 @@ Primärschlüssel festlegen.
 ```sql
 CREATE TABLE klassen (
     klassen_id int,
-    |$\vdots$|
+    stufe varchar(255),
+    klasse varchar(255),
+    klassenzimmer varchar(255),
     PRIMARY KEY(klassen_id)
     );
 ```
@@ -59,21 +61,20 @@ CREATE TABLE klassen (
 </codapi-snippet>
 
 Hierfür schreibt man in einer neuen Zeile die Schlüsselwörter
-`PRIMARY KEY`{.SQL} und anschließend in Klammern die Spalte, die man als
+`PRIMARY KEY` und anschließend in Klammern die Spalte, die man als
 Primärschlüssel ausgewählt hat.
 
 ## Festlegen eines Sekundärschlüssels
 
 Um einen Fremdschlüssel zu definieren, schreibt man hinter die
-Schlüsselwörter `FOREIGN KEY`{.SQL} in Klammern die gewünschte Spalte.
-Anschließend folgt das Schlüsselwort `REFERENCES`{.SQL}, der Name der
+Schlüsselwörter `FOREIGN KEY` in Klammern die gewünschte Spalte.
+Anschließend folgt das Schlüsselwort `REFERENCES`, der Name der
 Tabelle aus der der Fremdschlüssel stammt und der Name dieser Spalte in
 dieser Tabelle.
 
 ```sql
 CREATE TABLE schueler (
     schuelernummer int,
-    |$\vdots$|
     klassen_id int,
     PRIMARY KEY(schuelernummer),
     FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)
@@ -84,10 +85,10 @@ CREATE TABLE schueler (
 
 ## Zeilen Einfügen
 
-Mit dem `INSERT`{.SQL}-Befehl kann eine neue Zeile zu einer Tabelle
-hinzugefügt werden. Hinter `INSERT INTO`{.SQL} steht der Tabellenname.
+Mit dem `INSERT`-Befehl kann eine neue Zeile zu einer Tabelle
+hinzugefügt werden. Hinter `INSERT INTO` steht der Tabellenname.
 Anschließend folgen in Klammern und durch Kommas getrennt die
-Spaltennamen der Tabelle. Nach dem Schlüsselwort `VALUES`{.SQL} folgen
+Spaltennamen der Tabelle. Nach dem Schlüsselwort `VALUES` folgen
 die konkreten Werte, die in diese Spalten eingefügt werden sollen.
 
 ```sql
