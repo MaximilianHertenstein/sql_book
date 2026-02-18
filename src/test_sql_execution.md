@@ -15,7 +15,7 @@ select 1 = 1 as message;
 select 1 = 1 as message;
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic">
 </codapi-snippet>
 
 
@@ -34,7 +34,7 @@ CREATE TABLE  users (
   email TEXT
 );
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table" >
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" >
 </codapi-snippet>
 
 ```sql
@@ -44,11 +44,11 @@ INSERT INTO users   VALUES
 (2,'Bob', 'bob@example.com');
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table" >
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" >
 </codapi-snippet>
 
 ```sql
 select * FROM users;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table" >
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" >
 </codapi-snippet>
