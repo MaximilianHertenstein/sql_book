@@ -77,10 +77,27 @@ SELECT * FROM fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
+In jeder Zeile steht aber die Nummer einer Fahhradart. Dies ist ein Fremschlüssel, der auf den Primärschlüssel der Tabelle *Fahrradarten* verweist.
 
-Manche Informationen sind über mehre Tabellen verteilt. Z. B. benötigt
-man die Tabelle *Fahrradarten* wenn man zu einem Fahrrad aus der Tabelle
-*Fahrraeder* die Bezeichnung der Fahrradart herausfinden will. 
+
+```sql
+SELECT * FROM fahrradarten;
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
+Um nun die Fahrradart eines Fahrrads herauszufinden, kann man den Eintrag eines Fahhrads in der Spalte `fahrradartnr` in der Tabelle *Fahrradarten* suchen.
+
+
+```sql
+SELECT * FROM fahrradarten
+where fahrradartnr = 5;
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+Z.B. hat das erste Fahrrad die Fahrradnummer 5. In der Tabelle *Fahrradarten*  steht bei dem Primärschlüssel 5 die Bezeichnung `Einrad`. Das erste Fahrrad ist also ein Einrad.
 
 
 
