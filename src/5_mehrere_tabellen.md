@@ -1,51 +1,94 @@
 # Abfragen über mehrere Tabellen
 
+```sql
+CREATE TABLE fahrradarten (
+    fahrradartNr     int NOT NULL,
+    bezeichnung      varchar(50),
+    kurzerlaeuterung varchar(60),
+    PRIMARY KEY (fahrradartNr)
+);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+INSERT INTO fahrradarten VALUES
+(1, 'Mountain-Bike', 'Geländefahrrad meist mit Federung'),
+(2, 'Cross-Bike', 'sportlicher Einsatz Straße & Gelände (Trekking-Touren)'),
+(3, 'BMX-Bike', 'Fahrräder ohne Zulassung StVZO für Bahnen'),
+(4, 'DirtBike', 'Extremkletterer zum Springen und für Tourniere ohne StVZO'),
+(5, 'Einrad', 'Funrad mit nur einem Rad'),
+(6, 'Tandem', 'Fahrrad für 2 Personen'),
+(7, 'Kinderfahrrad ab 20 Zoll', 'Fahrrad für Kinder ab 5 Jahren'),
+(8, 'Jugendfahrrad', 'Fahrrad für Jugendliche'),
+(9, 'Kinderrad Fahrrad 12-18 Zoll', 'Fahrrad ab 3 Jahre'),
+(10, 'Jugendfahrrad ab 26 Zoll', 'Fahrrad ab 7 Jahren'),
+(11, 'Rennrad', 'Straßenrennrad'),
+(12, 'Damen City-Bike', 'Damenräder für Straßen und Wege'),
+(13, 'Herren City-Bike', 'Herrenräder für Straßen und Wege'),
+(14, 'Kinderanhänger', 'Anhänger für den Transport von Kindern');
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+CREATE TABLE fahrraeder (
+    fahrradNr        int NOT NULL,
+    bezeichnung      varchar(50),
+    rahmenNummer     varchar(10),
+    tagesmietpreis   double precision,
+    anschaffungswert double precision,
+    kaufdatum        date,
+    fahrradartNr     int,
+    herstellerNr     int,
+    PRIMARY KEY (fahrradNr),
+    FOREIGN KEY (fahrradartNr) REFERENCES fahrradarten (fahrradartNr)
+);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+```sql
+INSERT INTO fahrraeder VALUES
+(1, 'Comus Einrad', '4590/H2', 8.40, 56.00, '2021-05-23', 5, 22),
+(2, 'Panther Thedy', '340/90089', 9.45, 145.00, '2022-01-17', 9, 5),
+(3, 'Scott Comtessa', '56/32', 10.50, 189.00, '2022-05-05', 9, 4),
+(4, 'Scott Voltage Jr 16', '76/67654e', 12.60, 246.00, '2021-09-05', 9, 4),
+(5, 'Yazoo FSV-3.6N', '198H45', 17.85, 310.00, '2021-09-21', 10, 5),
+(6, 'Scott Aspect 50', 'MTB/B88', 19.95, 398.00, '2021-07-23', 1, 4),
+(7, 'Yazoo FSV-3.6N', '198H47', 17.85, 310.00, '2021-09-21', 10, 5),
+(8, 'Comus Einrad XM', '4890/H2', 8.40, 56.00, '2022-01-02', 5, 22);
+```
+
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
 ## Primär- und Fremdschlüssel
+
+In der Tabelle *Fahrraeder* ist die Fahrradart der Fahrräder nicht aufgeführt. 
+
+```sql
+SELECT * FROM fahrraeder;
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
 
 Manche Informationen sind über mehre Tabellen verteilt. Z. B. benötigt
 man die Tabelle *Fahrradarten* wenn man zu einem Fahrrad aus der Tabelle
-*Fahrraeder* die Bezeichnung der Fahrradart herausfinden will. Um damit
-arbeiten zu können, muss man die Konzepte *Primär-* und *Fremdschlüssel*
-kennen. In jeder Tabelle einer Datenbank gibt es einen sogenannten
-*Primärschlüssel*. Dies ist ein Attribut[^1] anhand dessen die Objekte
-in der Tabelle eindeutig identifizierbar sind. In Diagrammen werden die
-Primärschlüssel oft mit einem Schlüsselsymbol gekennzeichnet. Z. B. ist
-jedes Fahrrad eindeutig durch das Attribut *FahrradNr* gekennzeichnet.
+*Fahrraeder* die Bezeichnung der Fahrradart herausfinden will. 
 
-<figure id="fig:DB_Fahrrad_2_Tabellen" data-latex-placement="h!">
-<img src="erm_fahrrad_2_tabellen" style="width:40.0%" />
-<figcaption>Ausschnitt der Datenbank eines Fahrradverleihs</figcaption>
-</figure>
 
-Wenn man zwei Tabellen miteinander verbinden möchte, kann man den
-Primärschlüssel der einen Tabelle in die andere Tabelle aufnehmen. Den
-aufgenommenen Schlüssel bezeichnet man dann als *Fremdschlüssel*. Z. B.
-ist in der Beispieldatenbank der Primärschlüssel der Tabelle
-*Fahrradarten* ein Fremdschlüssel in der Tabelle *Fahrraeder*.
 
-Jedes Fahrrad hat einen Eintrag in der Spalte *FahradartNr*[^2]. In der
-Tabelle *Fahrradarten* gibt es genau eine Zeile, die diesen Eintrag als
-Primärschlüssel besitzt. Durch diese Verbindung kann man zu einem
-Fahrrad die *Bezeichnung* und *Kurzerläuterung* der *Fahrradart*
-herausfinden. Diese Verbindungen sind in beiden folgenden Tabellen
-farbig markiert.
 
-::: minipage
-...
-:::
 
-::: minipage
-...
-:::
+![](join_farbig.svg)
 
-Umgekehrt kann man auch herausfinden, welche Fahrräder zu einer
-Fahrradart gehören. Hierfür schaut man welche *Fahrräder* den
-entsprechenden Wert in der Spalte *FahrradartNr* haben. Aus dem Diagramm
-kann man jedoch einen wichtigen Unterschied zwischen den beiden
-Richtungen herauslesen. Die Zahl $1$ und das Zeichen $\infty$(Unendlich)
-auf der Verbindung zwischen den Tabellen *Fahrradarten* und *Fahrraeder*
-sagen aus, dass es zu einer Fahrradart beliebig viele Fahrräder geben
-kann. Ein bestimmtes Fahrrad gehört aber nur zu genau einer Fahrradart.
+
 
 ## Abfragen über mehrere Tabellen
 
@@ -73,23 +116,7 @@ FROM Fahrradarten FA, Fahrraeder F;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-        *\#* *Fahrradartbezeichnung*        *Fahrradbezeichnung*
-  ---------- ------------------------------ ----------------------
-           1 Mountain-Bike                  Comus Einrad
-           2 Cross-Bike                     Comus Einrad
-    $\vdots$ $\vdots$                       $\vdots$
-           5 Einrad                         Comus Einrad
-           6 Tandem                         Comus Einrad
-    $\vdots$ $\vdots$                       $\vdots$
-           9 Kinderrad Fahrrad 12-18 Zoll   Comus Einrad
-          10 Jugendfahrrad ab 26 Zoll       Comus Einrad
-    $\vdots$ $\vdots$                       $\vdots$
-          15 Mountain-Bike                  Panther Thedy
-          16 Cross-Bike                     Panther Thedy
-    $\vdots$ $\vdots$                       $\vdots$
-          19 Einrad                         Panther Thedy
-          20 Tandem                         Panther Thedy
-    $\vdots$ $\vdots$                       $\vdots$
+
 
 Das Ergebnis macht schon auf den ersten Blick wenig Sinn. Das *Comus
 Einrad* ist sicher nicht gleichzeitig ein *Mountain-Bike* und ein
@@ -99,13 +126,7 @@ der Tabelle *Fahrraeder* kombiniert wurde. Um zu jedem Fahrrad nur die
 korrekte Fahrradart anzuzeigen, müssen wir ausnutzen, dass die Spalte
 *FahrradartNr* in beiden Tabellen vorkommt.
 
-::: minipage
-...
-:::
 
-::: minipage
-...\
-:::
 
 Im Ergebnis sollten die Zeilen aus der Tabelle *Fahrraeder* nur mit den
 Zeilen aus der Tabelle *Fahrradarten* kombiniert werden, bei denen der
@@ -119,21 +140,3 @@ WHERE FA.fahrradartNr = F.fahrradartNr;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-  *\#*       *Fahrradartbezeichnung*        *Fahrradbezeichnung*
-  ---------- ------------------------------ ----------------------
-  1          Einrad                         Comus Einrad
-  2          Kinderrad Fahrrad 12-18 Zoll   Panther Thedy
-  3          Kinderrad Fahrrad 12-18 Zoll   Scott Comtessa
-  4          Kinderrad Fahrrad 12-18 Zoll   Scott Voltage Jr 16
-  5          Jugendfahrrad ab 26 Zoll       Yazoo FSV-3.6N
-  6          Mountain-Bike                  Scott Aspect 50
-  7          Jugendfahrrad ab 26 Zoll       Yazoo FSV-3.6N
-  8          Einrad                         Comus Einrad XM
-  $\vdots$   $\vdots$                       $\vdots$
-
-\
-
-[^1]: oder eine Menge von Attributen
-
-[^2]: Zumindest wenn die Datenbank fehlerfrei ist. Mit Fehlern in
-    Datenbanken werden wir uns später beschäftigen.
