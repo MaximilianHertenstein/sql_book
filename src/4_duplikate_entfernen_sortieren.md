@@ -41,7 +41,7 @@ FROM Kunden;
 
 
 Bei der Abfrage werden alle Zeilen der Tabelle *Kunden* verarbeitet.
-Der Wert aus `geschlecht` wird jeweils ins Ergebnis übernommen.
+Der Wert aus der Spalte `geschlecht` wird jeweils in das Ergebnis übernommen.
 Doppelte Werte bleiben dabei zunächst erhalten.
 Mit `DISTINCT` entfernst du diese Duplikate.
 
