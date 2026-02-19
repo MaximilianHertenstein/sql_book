@@ -69,7 +69,7 @@ INSERT INTO fahrraeder VALUES
 
 ## Primär- und Fremdschlüssel
 
-In der Tabelle *Fahrraeder* ist die Fahrradart der Fahrräder nicht aufgeführt. 
+Wenn man zu einem Fahrrad die Farradart bestimmen will, reichen die Informationen in der Tabelle *Fahrraeder* nicht aus.
 
 ```sql
 SELECT * FROM fahrraeder;
@@ -77,6 +77,8 @@ SELECT * FROM fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
+
+In dieser Tabelle  ist die Fahrradart der Fahrräder nicht aufgeführt. 
 In jeder Zeile steht aber die Nummer einer Fahradart. Dies ist ein Fremschlüssel, der auf den Primärschlüssel der Tabelle *Fahrradarten* verweist.
 
 
@@ -150,3 +152,14 @@ fahrradarten FA JOIN fahrraeder  F ON FA.fahrradartnr = F.fahrradartnr;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
+
+## Abfragen über mehrere Tabellen
+
+Wenn mehr als zwei Tabellen abgefragt werden, muss die `FROM` Klausel um mehrere `JOIN` `...` `ON`s erweitert werden.
+
+```sql
+...
+FROM tabelle1 T1 JOIN tabelle2  T2 ON T1.spalte_1 = T2.spalte_2 
+                 JOIN tabelle3  T3 ON T2.spalte_2 = T3.spalte_3
+...
+```
