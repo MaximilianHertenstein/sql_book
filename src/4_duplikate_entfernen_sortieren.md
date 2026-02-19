@@ -4,10 +4,7 @@ CREATE TABLE kunden (
     kundenNr   int NOT NULL,
     name       varchar(30),
     vorname    varchar(20),
-    strasse    varchar(30),
-    ortNr      int,
     geschlecht varchar(1),
-    gebTag     date,
     PRIMARY KEY (kundenNr)
 );
 ```
@@ -17,13 +14,13 @@ CREATE TABLE kunden (
 
 ```sql
 INSERT INTO kunden VALUES 
-(232, 'Schneider', 'Heinrich', 'Goezstraße 25', 29740, 'm', '1985-06-16'),
-(233, 'Schlauch', 'Franz', 'Ulmer Weg 56', 30050, 'm', '1993-08-23'),
-(234, 'Schlauch', 'Franziska', 'Ulmer Weg 56', 30050, 'w', '2013-05-24'),
-(235, 'Böckle', 'Jennifer', 'Hermann-Hesse-Str. 3', 11553, 'w', '2013-04-21'),
-(236, 'Hauffe', 'Johann', 'Seestraße 21', 29003, 'm', '1997-07-31'),
-(237, 'Yilmaz', 'Ali', 'Wehrstraße 87', 29315, 'm', '2011-03-13'),
-(238, 'Berger', 'Johann', 'Vaihinger Str. 103', 29875, 'm', '2012-03-25');
+(232, 'Schneider', 'Heinrich', 'm'),
+(233, 'Schlauch', 'Franz', 'm'),
+(234, 'Schlauch', 'Franziska', 'w'),
+(235, 'Böckle', 'Jennifer', 'w'),
+(236, 'Hauffe', 'Johann', 'm'),
+(237, 'Yilmaz', 'Ali', 'm'),
+(238, 'Berger', 'Johann', 'm');
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>

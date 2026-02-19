@@ -2,12 +2,8 @@
 CREATE TABLE fahrraeder (
     fahrradNr        int NOT NULL,
     bezeichnung      varchar(50),
-    rahmenNummer     varchar(10),
     tagesmietpreis   double precision,
-    anschaffungswert double precision,
-    kaufdatum        date,
     fahrradartNr     int,
-    herstellerNr     int,
     PRIMARY KEY (fahrradNr)
 );
 ```
@@ -17,28 +13,28 @@ CREATE TABLE fahrraeder (
 
 ```sql
 INSERT INTO fahrraeder VALUES
-(1, 'Comus Einrad', '4590/H2', 8.40, 56.00, '2021-05-23', 5, 22),
-(2, 'Panther Thedy', '340/90089', 9.45, 145.00, '2022-01-17', 9, 5),
-(3, 'Scott Comtessa', '56/32', 10.50, 189.00, '2022-05-05', 9, 4),
-(4, 'Scott Voltage Jr 16', '76/67654e', 12.60, 246.00, '2021-09-05', 9, 4),
-(5, 'Yazoo FSV-3.6N', '198H45', 17.85, 310.00, '2021-09-21', 10, 5),
-(6, 'Scott Aspect 50', 'MTB/B88', 19.95, 398.00, '2021-07-23', 1, 4),
-(7, 'Yazoo FSV-3.6N', '198H47', 17.85, 310.00, '2021-09-21', 10, 5),
-(8, 'Comus Einrad XM', '4890/H2', 8.40, 56.00, '2022-01-02', 5, 22),
-(9, 'Fishbone FR 100', 'U/H2345', 19.95000, 285.00000, '2020-10-11', 3, 3),
-(10, 'Fishbone FR 100', 'U/H3445', 19.95000, 285.00000, '2020-10-11', 3, 3),
-(11, 'Fishbone FR 100', 'U/H6745', 19.95000, 285.00000, '2020-10-11', 3, 3),
-(12, 'Fishbone FR 100', 'U/H8907', 19.95000, 285.00000, '2020-10-11', 3, 3),
-(13, 'Fishbone FR 100', 'U/H341', 19.95000, 285.00000, '2020-10-11', 3, 3),
-(14, 'Scott Comtessa', '75/32', 10.50000, 189.00000, '2022-05-27', 9, 4),
-(15, 'Yazoo FSV-3.6N', '298H46', 17.85000, 310.00000, '2022-05-27', 10, 5),
-(16, 'Scott Aspect 50', 'MTB/B34', 19.95000, 398.00000, '2021-07-23', 1, 4),
-(17, 'Scott Aspect 50', 'MTB/C34', 19.95000, 398.00000, '2022-05-27', 1, 4),
-(18, 'Bulls Sharptail 2', 'MTB/R34', 21.00000, 412.00000, '2022-05-15', 1, 9),
-(19, 'Bulls Sharptail 2', 'MTB/R36', 21.00000, 412.00000, '2022-05-15', 1, 9),
-(20, 'Bulls Sharptail 2', 'MTB/R49', 21.00000, 412.00000, '2022-05-15', 1, 9),
-(21, 'Bulls Sharptail 2', 'MTB/H34', 21.00000, 412.00000, '2022-05-15', 1, 9),
-(22, 'Bulls Sharptail 2', 'MTB/G11', 21.00000, 412.00000, '2022-05-15', 1, 9);
+(1, 'Comus Einrad', 8.40, 5),
+(2, 'Panther Thedy', 9.45, 9),
+(3, 'Scott Comtessa', 10.50, 9),
+(4, 'Scott Voltage Jr 16', 12.60, 9),
+(5, 'Yazoo FSV-3.6N', 17.85, 10),
+(6, 'Scott Aspect 50', 19.95, 1),
+(7, 'Yazoo FSV-3.6N', 17.85, 10),
+(8, 'Comus Einrad XM', 8.40, 5),
+(9, 'Fishbone FR 100', 19.95000, 3),
+(10, 'Fishbone FR 100', 19.95000, 3),
+(11, 'Fishbone FR 100', 19.95000, 3),
+(12, 'Fishbone FR 100', 19.95000, 3),
+(13, 'Fishbone FR 100', 19.95000, 3),
+(14, 'Scott Comtessa', 10.50000, 9),
+(15, 'Yazoo FSV-3.6N', 17.85000, 10),
+(16, 'Scott Aspect 50', 19.95000, 1),
+(17, 'Scott Aspect 50', 19.95000, 1),
+(18, 'Bulls Sharptail 2', 21.00000, 1),
+(19, 'Bulls Sharptail 2', 21.00000, 1),
+(20, 'Bulls Sharptail 2', 21.00000, 1),
+(21, 'Bulls Sharptail 2', 21.00000, 1),
+(22, 'Bulls Sharptail 2', 21.00000, 1);
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>

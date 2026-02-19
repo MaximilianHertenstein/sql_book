@@ -4,7 +4,6 @@
 CREATE TABLE fahrradarten (
     fahrradartNr     int NOT NULL,
     bezeichnung      varchar(50),
-    kurzerlaeuterung varchar(60),
     PRIMARY KEY (fahrradartNr)
 );
 ```
@@ -14,20 +13,20 @@ CREATE TABLE fahrradarten (
 
 ```sql
 INSERT INTO fahrradarten VALUES
-(1, 'Mountain-Bike', 'Geländefahrrad meist mit Federung'),
-(2, 'Cross-Bike', 'sportlicher Einsatz Straße & Gelände (Trekking-Touren)'),
-(3, 'BMX-Bike', 'Fahrräder ohne Zulassung StVZO für Bahnen'),
-(4, 'DirtBike', 'Extremkletterer zum Springen und für Tourniere ohne StVZO'),
-(5, 'Einrad', 'Funrad mit nur einem Rad'),
-(6, 'Tandem', 'Fahrrad für 2 Personen'),
-(7, 'Kinderfahrrad ab 20 Zoll', 'Fahrrad für Kinder ab 5 Jahren'),
-(8, 'Jugendfahrrad', 'Fahrrad für Jugendliche'),
-(9, 'Kinderrad Fahrrad 12-18 Zoll', 'Fahrrad ab 3 Jahre'),
-(10, 'Jugendfahrrad ab 26 Zoll', 'Fahrrad ab 7 Jahren'),
-(11, 'Rennrad', 'Straßenrennrad'),
-(12, 'Damen City-Bike', 'Damenräder für Straßen und Wege'),
-(13, 'Herren City-Bike', 'Herrenräder für Straßen und Wege'),
-(14, 'Kinderanhänger', 'Anhänger für den Transport von Kindern');
+(1, 'Mountain-Bike'),
+(2, 'Cross-Bike'),
+(3, 'BMX-Bike'),
+(4, 'DirtBike'),
+(5, 'Einrad'),
+(6, 'Tandem'),
+(7, 'Kinderfahrrad ab 20 Zoll'),
+(8, 'Jugendfahrrad'),
+(9, 'Kinderrad Fahrrad 12-18 Zoll'),
+(10, 'Jugendfahrrad ab 26 Zoll'),
+(11, 'Rennrad'),
+(12, 'Damen City-Bike'),
+(13, 'Herren City-Bike'),
+(14, 'Kinderanhänger');
 ```
 
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
@@ -37,12 +36,8 @@ INSERT INTO fahrradarten VALUES
 CREATE TABLE fahrraeder (
     fahrradNr        int NOT NULL,
     bezeichnung      varchar(50),
-    rahmenNummer     varchar(10),
     tagesmietpreis   double precision,
-    anschaffungswert double precision,
-    kaufdatum        date,
     fahrradartNr     int,
-    herstellerNr     int,
     PRIMARY KEY (fahrradNr),
     FOREIGN KEY (fahrradartNr) REFERENCES fahrradarten (fahrradartNr)
 );
@@ -53,14 +48,14 @@ CREATE TABLE fahrraeder (
 
 ```sql
 INSERT INTO fahrraeder VALUES
-(1, 'Comus Einrad', '4590/H2', 8.40, 56.00, '2021-05-23', 5, 22),
-(2, 'Panther Thedy', '340/90089', 9.45, 145.00, '2022-01-17', 9, 5),
-(3, 'Scott Comtessa', '56/32', 10.50, 189.00, '2022-05-05', 9, 4),
-(4, 'Scott Voltage Jr 16', '76/67654e', 12.60, 246.00, '2021-09-05', 9, 4),
-(5, 'Yazoo FSV-3.6N', '198H45', 17.85, 310.00, '2021-09-21', 10, 5),
-(6, 'Scott Aspect 50', 'MTB/B88', 19.95, 398.00, '2021-07-23', 1, 4),
-(7, 'Yazoo FSV-3.6N', '198H47', 17.85, 310.00, '2021-09-21', 10, 5),
-(8, 'Comus Einrad XM', '4890/H2', 8.40, 56.00, '2022-01-02', 5, 22);
+(1, 'Comus Einrad', 8.40, 5),
+(2, 'Panther Thedy', 9.45, 9),
+(3, 'Scott Comtessa', 10.50, 9),
+(4, 'Scott Voltage Jr 16', 12.60, 9),
+(5, 'Yazoo FSV-3.6N', 17.85, 10),
+(6, 'Scott Aspect 50', 19.95, 1),
+(7, 'Yazoo FSV-3.6N', 17.85, 10),
+(8, 'Comus Einrad XM', 8.40, 5);
 ```
 
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
