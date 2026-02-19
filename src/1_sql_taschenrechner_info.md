@@ -3,8 +3,8 @@
 ## Addition, Multiplikation und Subtraktion
 
 Du kannst *SQL* wie einen Taschenrechner nutzen.
-Schreibe den Rechenausdruck hinter `SELECT` und beende die Abfrage mit einem Semikolon.
-Das Ergebnis erscheint als Ergebnismenge.
+Schreibe den Rechenausdruck hinter das Schlüsselwort `SELECT` und beende die Abfrage mit einem Semikolon.
+Das Ergebnis erscheint als Tabelle.
 
 ```sql
 SELECT 1 + 1;
