@@ -1,3 +1,6 @@
+# Gruppierungen
+
+
 ```sql
 CREATE TABLE fahrraeder (
     fahrradNr        int NOT NULL,
@@ -39,7 +42,8 @@ INSERT INTO fahrraeder VALUES
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-# Gruppierungen
+## Gruppierungen
+
 
 Mithilfe von Gruppierungen können Teile der Tabelle anhand des Werts
 einer Spalte oder eines Ausdrucks in Gruppen eingeteilt werden.

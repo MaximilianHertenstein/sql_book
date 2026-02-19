@@ -1,4 +1,4 @@
-# Datenbankabfragen
+# Selektion und Projektion
 
 SQL wird in der Regel nicht als Taschenrechner sondern als
 Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name

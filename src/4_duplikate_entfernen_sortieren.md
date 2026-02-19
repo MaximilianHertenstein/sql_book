@@ -1,4 +1,4 @@
-
+# Duplikate entfernen und sortieren
 ```sql
 CREATE TABLE kunden (
     kundenNr   int NOT NULL,
@@ -26,7 +26,7 @@ INSERT INTO kunden VALUES
 </codapi-snippet>
 
 
-# Doppelte Ergebnisse entfernen
+## Doppelte Ergebnisse entfernen
 
 
 Die Geschlechter der Kunden können mit der folgenden Abfrage angezeigt
@@ -55,7 +55,7 @@ FROM Kunden;
 
 
 
-# Abfrageergebnisse sortieren
+## Abfrageergebnisse sortieren
 
 Abfrageergebnisse können auch nach den Werten in einer ausgewählten
 Spalte sortiert werden. Hierfür schreibt man hinter die Schlüsselwörter

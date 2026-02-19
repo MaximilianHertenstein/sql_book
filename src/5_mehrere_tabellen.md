@@ -106,7 +106,7 @@ Genau so findet man zu jedem anderen Fahrrad die Bezeichnung der Fahrradart. In 
 
 
 
-## Abfragen über mehrere Tabellen
+## Abfragen über zwei Tabellen
 
 Wir haben gerade gesehen, dass man Fremdschlüssel dazu nutzen kann, um
 Informationen aus mehreren Tabellen zu kombinieren. Eine solceh Verbindung

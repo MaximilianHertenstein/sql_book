@@ -1,4 +1,5 @@
 
+# Aggregierungen
 
 ```sql
 CREATE TABLE fahrraeder (
@@ -28,8 +29,8 @@ INSERT INTO fahrraeder VALUES
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
+## Aggregierungsfunktionen
 
-# Aggregierungen
 
 Mithilfe von Aggregierungsfunktionen können wir aus allen Werten in
 einer Spalte einen einzelnen Wert berechnen. Ein Beispiel für eine
