@@ -4,7 +4,7 @@ SQL wird in der Regel nicht als Taschenrechner sondern als
 Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
 *Structured Query Language* aus. 
 
-Um Abfragen zu schreiben müssen wir zunächst eine Datenbank erstellen.
+Um Abfragen zu schreiben müssen wir zunächst eine Datenbank erstellen. Zu Beginn von jedem Kapitel wird eine Datenbank erstellt. 
 
 ```sql
 CREATE TABLE fahrradarten (
