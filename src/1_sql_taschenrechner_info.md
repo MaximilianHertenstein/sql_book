@@ -2,10 +2,10 @@
 
 ## Addition, Multiplikation und Subtraktion
 
-Wir können die Sprache *SQL* als Taschenrechner verwenden. Hierfür schreibt man den
-Rehenausrduck, den man auswerten möchte, hinter das Schlüsselwort
+Wir können die Sprache *SQL* als Taschenrechner verwenden. Dafür schreibt man den
+Rechenausdruck, den man auswerten möchte, hinter das Schlüsselwort
 `SELECT`. Hinter dem Ausdruck muss ein Semikolon stehen. 
-Das Ergebnis wird in einer Tabelle angezeigt.
+Das Ergebnis wird als Ergebnismenge ausgegeben.
 
 ```sql
 SELECT 1 + 1;
@@ -14,7 +14,7 @@ SELECT 1 + 1;
 </codapi-snippet>
 
 Es ist auch möglich, mehrere Rechnungen in einem Befehl auszuführen.
-Hierfür schreibt man ein Komma zwischen zwei Ausdrücke.
+Hierfür schreibt man ein Komma zwischen zwei Ausdrücken.
 
 ```sql
 SELECT 3 * 3, (1 - 2) * 3 + 5;
@@ -54,7 +54,7 @@ SELECT ROUND(3.1415927, 2), 5 * ROUND(10.0 / 4, 1);
 
 ## Aliase
 
-  In *SQL* kann man die Spaltenüberschriften auch selbst wählen. Dafür wird das Schlüsselwort `AS` genutzt.
+In *SQL* kann man die Spaltenüberschriften auch selbst wählen. Dafür wird das Schlüsselwort `AS` genutzt.
 
 ```sql
 SELECT 5 AS side_length, 5 * 5 AS area;
@@ -84,8 +84,8 @@ SELECT true, false;
 
 
 Beim Vergleich von zwei Werten erhält man immer einen Wahrheitswert.
-Z.B. wird ein Vergleich mit dem Gleichheitsoperator genau dann zu `true`
-ausgewertet wenn beide Seiten den gleichen Wert haben.
+Z. B. wird ein Vergleich mit dem Gleichheitsoperator genau dann zu `true`
+ausgewertet, wenn beide Seiten den gleichen Wert haben.
 
 ```sql
 SELECT 1 = 1, 2 * 2 = 2 + 2, 3 = 4;
@@ -109,7 +109,7 @@ sehen.
 
 ## Verneinung mit NOT
 
-Durch das Schlüsselwert `NOT` wird ein Wahrheitswert verneint.
+Durch das Schlüsselwort `NOT` wird ein Wahrheitswert verneint.
 
 ```sql
 SELECT NOT true, NOT false;
@@ -126,9 +126,9 @@ SELECT NOT 10 > 3;
 ## Verknüpfung von Bedingungen
 
 Mit den Schlüsselwörtern `AND` und `OR` können zwei
-boolesche Ausdrücke zu einem Ausdrück verknüpft werden.
+boolesche Ausdrücke zu einem Ausdruck verknüpft werden.
 
-Bei der Verwendungen von `AND` wird der gesamte Ausdruck genau
+Bei der Verwendung von `AND` wird der gesamte Ausdruck genau
 dann zu `true` ausgewertet, wenn beide Teilausdrücke zu
 `true` ausgewertet werden.
 
@@ -147,7 +147,7 @@ SELECT 2 > 1 and 4 != 4;
 
 Werden zwei boolesche Ausdrücke mit `OR` verknüpft, wird der
 gesamte Ausdruck genau dann zu `true` ausgewertet, wenn mindestens
-einer der Teilausdrücke zu zu `true` ausgewertet wird.
+einer der Teilausdrücke zu `true` ausgewertet wird.
 
 ```sql
 SELECT 1 = 1 OR 2 > 3;
@@ -162,14 +162,14 @@ SELECT 1 = 3 OR 2 > 3;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-In der Mathematik gilt die Punkt vor Strich-Regel. Diese besagt, dass Mal und Geteilt immer vor Plus oder Minus ausgewertet werden.
+In der Mathematik gilt die Punkt-vor-Strich-Regel. Diese besagt, dass Mal und Geteilt immer vor Plus oder Minus ausgewertet werden.
 
 
 \\[
 1 + 2 \cdot 3 = 1 + 6 = 7
 \\]
 
-Wenn die Addtion zuerst ausgewertet werden soll, ist eine Klammer notwendig.
+Wenn die Addition zuerst ausgewertet werden soll, ist eine Klammer notwendig.
 \\[
 (1 + 2) \cdot 3 = 3 \cdot 3= 9
 \\]
@@ -197,7 +197,7 @@ SELECT (true OR false) AND false;
 
 ## Strings
 
-Ein weiterer Zahlentyp insql sind Zeichenketten (`VARCHAR`). Vergleiche
+Ein weiterer Datentyp in SQL sind Zeichenketten (`VARCHAR`). Vergleiche
 mit Zeichenketten haben oft ein überraschendes Ergebnis.
 
 ```sql
@@ -273,9 +273,9 @@ Verfügung:
 
 ## Datumswerte
 
-Daten sind insql ein eigener Datentyp mit dem Namen `DATE`. Sie
+Datumswerte sind in SQL ein eigener Datentyp mit dem Namen `DATE`. Sie
 werden in Anführungszeichen im Format `yyyy-mm-dd` geschrieben. Die so
-geschriebenen Daten können miteinander verglichen werden. Das spätere
+geschriebenen Datumswerte können miteinander verglichen werden. Das spätere
 Datum ist größer.
 
 ```sql

@@ -64,7 +64,7 @@ INSERT INTO fahrraeder VALUES
 
 ## Primär- und Fremdschlüssel
 
-Wenn man zu einem Fahrrad die Farradart bestimmen will, reichen die Informationen in der Tabelle *Fahrraeder* nicht aus.
+Wenn man zu einem Fahrrad die Fahrradart bestimmen will, reichen die Informationen in der Tabelle *Fahrraeder* nicht aus.
 
 ```sql
 SELECT * FROM fahrraeder;
@@ -73,8 +73,8 @@ SELECT * FROM fahrraeder;
 </codapi-snippet>
 
 
-In dieser Tabelle  ist die Fahrradart der Fahrräder nicht aufgeführt. 
-In jeder Zeile steht aber die Nummer einer Fahradart. Dies ist ein Fremschlüssel, der auf den Primärschlüssel der Tabelle *Fahrradarten* verweist.
+In dieser Tabelle ist die Fahrradart der Fahrräder nicht aufgeführt.
+In jeder Zeile steht aber die Nummer einer Fahrradart. Dies ist ein Fremdschlüssel, der auf den Primärschlüssel der Tabelle *Fahrradarten* verweist.
 
 
 ```sql
@@ -84,11 +84,11 @@ SELECT * FROM fahrradarten;
 </codapi-snippet>
 
 
-Um nun die Fahrradart eines Fahrrads herauszufinden, kann man den Eintrag eines Fahhrads in der Spalte `fahrradartnr` in der Tabelle *Fahrradarten* suchen.
+Um nun die Fahrradart eines Fahrrads herauszufinden, kann man den Eintrag eines Fahrrads in der Spalte `fahrradartnr` in der Tabelle *Fahrradarten* suchen.
 
 
 
-Z.B. hat das erste Fahrrad die Fahrradnummer 5. In der Tabelle *Fahrradarten*  steht bei dem Primärschlüssel 5 die Bezeichnung `Einrad`. Das erste Fahrrad ist also ein Einrad.
+Z. B. hat das erste Fahrrad die Fahrradnummer 5. In der Tabelle *Fahrradarten* steht bei dem Primärschlüssel 5 die Bezeichnung `Einrad`. Das erste Fahrrad ist also ein Einrad.
 
 
 ```sql
@@ -99,7 +99,9 @@ where fahrradartnr = 5;
 </codapi-snippet>
 
 
-Genau so findet man zu jedem anderen Fahrrad die Bezeichnung der Fahrradart. In den folgenen Tabellen ist markiert, welcher Fremdschlüssel auf welchen Primärschlüssel verweist.
+Genauso findet man zu jedem anderen Fahrrad die passende Fahrradart.
+In den folgenden Tabellen ist markiert, welcher Fremdschlüssel auf
+welchen Primärschlüssel verweist.
 
 
 <img src="join_farbig.svg" alt="Join-Diagramm" style="display: block; margin: 0 auto; width: 100%; height: auto; background-color: #fff;" />
@@ -108,9 +110,9 @@ Genau so findet man zu jedem anderen Fahrrad die Bezeichnung der Fahrradart. In 
 
 ## Abfragen über zwei Tabellen
 
-Wir haben gerade gesehen, dass man Fremdschlüssel dazu nutzen kann, um
-Informationen aus mehreren Tabellen zu kombinieren. Eine solceh Verbindung
-kann auch in einem einzigen  `SELECT`-*Statement* genutzt werden.
+Wir haben gerade gesehen, dass man Fremdschlüssel nutzen kann, um
+Informationen aus mehreren Tabellen zu kombinieren. Diese Verbindung
+kann auch in einem einzigen `SELECT`-*Statement* genutzt werden.
 
 Dabei schreibt man beide Tabellen hinter `FROM`. Zwischen den Tabellen steht `JOIN` (verbinden).
 
@@ -121,11 +123,16 @@ FROM fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartnr = fahrraeder.fahr
 ...
 ```
 
-Hinter `ON` wird fesgelegt, dass die Zeilen zueinander kombiniert werden, deren Einträge in den Spalten mit dem Namen `fahrradartnr` gleich sind.
-Weil die Spalte `fahrradartnr` in beiden Tabellen vorkommt, schreibt man `fahrradarten.fahrradartnr` und `fahrraeder.fahrradartnr` um diese zu unterscheiden.
+Hinter `ON` wird festgelegt, welche Zeilen zusammengehören.
+Hier werden Zeilen kombiniert, deren Einträge in `fahrradartnr` gleich
+sind. Diese Bedingung heißt Join-Bedingung. Weil die Spalte in beiden Tabellen vorkommt, schreibt man
+`fahrradarten.fahrradartnr` und `fahrraeder.fahrradartnr`, um sie klar
+zu unterscheiden. Solche Angaben nennt man qualifizierte Spaltennamen.
+Ein qualifizierter Spaltenname hat die Form `tabellenname.spaltenname`.
 
-Auch bei der Auswahl der Spalten hinter `SELECT` muss diese Schreibweise genutzt werden um Uneindeutigkeiten zu vermeiden. Hierbei muss man Spalten mit einem uneindeutigen Namen
-mit `AS` umbennen.
+Auch hinter `SELECT` ist diese Schreibweise wichtig, um
+Uneindeutigkeiten zu vermeiden. Spalten mit gleichem Namen kann man mit
+`AS` umbenennen.
 
 ```sql
 SELECT fahrraeder.bezeichnung AS fahrrad,
@@ -137,7 +144,8 @@ fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartnr = fahrraeder.fahrradar
 </codapi-snippet>
 
 
-Um nicht immer den ganzen Tabellennamen schreiben zu müssen, kann man den Tabellen hinter `FROM` einen Abkürzung geben.
+Um nicht immer den ganzen Tabellennamen schreiben zu müssen, kann man
+Tabellen hinter `FROM` mit Aliasnamen abkürzen.
 
 ```sql
 SELECT F.bezeichnung AS fahrrad,
@@ -150,7 +158,7 @@ fahrradarten FA JOIN fahrraeder  F ON FA.fahrradartnr = F.fahrradartnr;
 
 ## Abfragen über mehrere Tabellen
 
-Wenn mehr als zwei Tabellen abgefragt werden, muss die `FROM` Klausel um mehrere `JOIN` `...` `ON`s erweitert werden.
+Wenn mehr als zwei Tabellen abgefragt werden, muss die `FROM`-Klausel um mehrere `JOIN` `...` `ON`s erweitert werden.
 
 ```sql
 ...

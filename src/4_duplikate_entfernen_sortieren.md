@@ -72,7 +72,7 @@ ORDER BY Name DESC;
 
 Es ist auch möglich, mehrere Spalten, nach denen sortiert werden soll,
 mit der Reihenfolge anzugeben. Diese werden durch Kommas voneinander
-getrennt. Wenn die Werte in der ersten angegeben Spalte gleich sind,
+getrennt. Wenn die Werte in der ersten angegebenen Spalte gleich sind,
 wird nach den Werten in der zweiten angegebenen Spalte sortiert.
 
 ```sql

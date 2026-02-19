@@ -1,10 +1,12 @@
 # Selektion und Projektion
 
-SQL wird in der Regel nicht als Taschenrechner sondern als
+SQL wird in der Regel nicht als Taschenrechner, sondern als
 Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
 *Structured Query Language* aus. 
 
-Um Abfragen zu schreiben müssen wir zunächst eine Datenbank erstellen. Zu Beginn von jedem Kapitel wird eine Datenbank erstellt. 
+Um Abfragen zu schreiben, müssen wir zunächst eine Datenbank erstellen.
+Deshalb wird zu Beginn jedes Kapitels eine Datenbank neu aufgebaut,
+damit alle Abfragen auf einer definierten Ausgangslage basieren.
 
 ```sql
 CREATE TABLE fahrradarten (
@@ -96,10 +98,10 @@ INSERT INTO kunden VALUES
 
 
 Um schnell einen Überblick über eine Datenbank zu bekommen, nutzt man
-Diagramme, in denen alle Tabellen der Datenbank und deren Spalten, aber
-keine Einträge aufgeführt sind. Jedes Rechteck steht für eine Tabelle
-der Datenbank. Ganz oben steht jeweils der Tabellenname. Darunter stehen
-die Spaltennamen und der Datentyp der Einträge in dieser Spalte. Beziehungen zwischen den Tabellen sind als Linien eingezeichnet.
+Diagramme. Darin sind alle Tabellen und ihre Spalten zu sehen, aber
+keine Datensätze. Jedes Rechteck steht für eine Tabelle: oben der
+Tabellenname, darunter die Spalten mit Datentypen. Beziehungen zwischen
+Tabellen sind als Linien eingezeichnet.
 
 ![](eer_diagram_fahrradverleih.svg)
 
@@ -108,7 +110,7 @@ die Spaltennamen und der Datentyp der Einträge in dieser Spalte. Beziehungen zw
 
 Um eine ganze Tabelle anzuzeigen, schreibt man hinter `SELECT` ein
 `*` und in die nächste Zeile das Schlüsselwort `FROM` und
-den Namen der gewünschte Tabelle. Die oben aufgeführte Tabelle erhält
+den Namen der gewünschten Tabelle. Die oben aufgeführte Tabelle erhält
 man mit dem folgenden Befehl.
 
 ```sql
@@ -137,11 +139,12 @@ FROM Kunden;
 
 
 Eine solche Auswahl von Spalten einer Tabelle nennt man Projektion.
+Der Begriff stammt aus der Relationenalgebra.
 
 ## Berechnete Spalten
 
 Wir haben bereits gesehen, dass man mit `SELECT`-*Statements* die
-Werte von Ausdrücken berechen kann. Dies können wir auch mit der Abfrage
+Werte von Ausdrücken berechnen kann. Dies können wir auch mit der Abfrage
 von Spalten verbinden.
 
 Ein Kunde könnte sich zum Beispiel für Fahrräder interessieren, deren
@@ -160,7 +163,7 @@ FROM Fahrraeder;
 
 
 Für jede Zeile in der Tabelle *Fahrraeder* wird dann aus dem Wert in der
-Spalte *tagesmietpreis* der Wert des angegeben Ausdrucks berechnet und
+Spalte *tagesmietpreis* der Wert des angegebenen Ausdrucks berechnet und
 in der Ergebnistabelle angezeigt.
 
 Um nicht immer den Ausdruck selbst im Kopf der Spalte anzuzeigen, ist es
@@ -198,18 +201,16 @@ WHERE tagesmietpreis < 10;
 
 
 Eine solche Auswahl von Zeilen nennt man Selektion.
+Auch dieser Begriff stammt aus der Relationenalgebra.
 
 ## Veranschaulichung
 
-Bei den Anfragen, die wir bis jetzt geschrieben haben, wird in einer
-`FROM`-Klausel eine Tabelle angegeben. In der
-`WHERE`-Klausel wird eine Bedingung für die Zeilen der Tabelle
-angegeben. Nur die Zeilen, die diese Bedingung erfüllen, werden im
-Ergebnis berücksichtigt. Hinter `SELECT` verwendet man
-Spaltennamen oder allgemeiner Ausdrücke. Diese Ausdrücke werden für jede
-Zeile, die nicht durch die `WHERE`-Klausel herausgefiltert wird,
-berechnet. Alle Ergebnisse zusammen sind dann in einer Ergebnistabelle
-zu sehen.
+Bei den Abfragen, die wir bisher geschrieben haben, steht in der
+`FROM`-Klausel genau eine Tabelle. Die `WHERE`-Klausel filtert Zeilen
+über eine Bedingung. Nur passende Zeilen kommen in das Ergebnis.
+Hinter `SELECT` stehen Spaltennamen oder Ausdrücke. Diese werden für
+jede verbleibende Zeile berechnet. Alle berechneten Werte bilden dann
+die Ergebnismenge der Abfrage.
 
 ![](SQL-SELECT.jpg)
 

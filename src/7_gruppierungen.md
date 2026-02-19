@@ -45,12 +45,12 @@ INSERT INTO fahrraeder VALUES
 ## Gruppierungen
 
 
-Mithilfe von Gruppierungen können Teile der Tabelle anhand des Werts
+Mithilfe von Gruppierungen können Zeilen der Tabelle anhand des Werts
 einer Spalte oder eines Ausdrucks in Gruppen eingeteilt werden.
 Anschließend kann mit einer Aggregierungsfunktion für jede Gruppe ein
 Wert berechnet werden. Im folgenden Beispiel wurden alle Zeilen der
 Tabelle *Fahrräder* nach der *Bezeichnung* gruppiert. Für jede dieser
-Gruppen wurde dann die Anzahl der Fahrräder in der Gruppe berechnet.
+Gruppen wurde dann die Anzahl der Fahrräder berechnet.
 
 <img src="gruppierung_farbig.svg" alt="Gruppierung-Diagramm" style="display: block; margin: 0 auto; width: 100%; height: auto; background-color: #fff;" />
 
@@ -75,7 +75,7 @@ Beispiel gibt es genau so viele Gruppen, wie es verschiedene
 
 Wenn `GROUP BY` genutzt wird, dürfen hinter `SELECT` nur
 Ausdrücke mit Aggregierungsfunktionen und der Ausdruck nach dem
-gruppiert wurde, genutzt werden. Für alle anderen Ausdrücke ist nicht
+gruppiert wird, genutzt werden. Für alle anderen Ausdrücke ist nicht
 klar, ob diese pro Gruppe nur einen Wert haben.
 
 
@@ -85,17 +85,19 @@ klar, ob diese pro Gruppe nur einen Wert haben.
 
 # Having
 
-In der `WHERE`-Klausel kann man eine Bedingung angegeben. Damit
-werden nur die Zeilen der Tabelle, die in der `FROM`-Klausel
-angegeben wird, betrachtet, die diese Bedingung erfüllen.
+In der `WHERE`-Klausel gibt man eine Bedingung für Zeilen an.
+Damit werden nur die Zeilen der Tabelle betrachtet, die diese Bedingung
+erfüllen.
 
-Durch Gruppierung entsteht eine neue Tabelle. Auch diese kann nochmal
-gefiltert werden. Dafür nutzt man die `HAVING`-Klausel. In dieser
-gibt man eine Bedingung für die Gruppen an, die im Ergebnis
-berücksichtigt werden sollen. In dieser Bedingung können nur Ausdrücke
-mit Aggregierungsfunktionen oder der Gruppierungsausdruck verwendet
-werden. Für alle anderen Ausdrücke ist wieder nicht klar, ob diese pro
-Gruppe nur einen Wert haben.
+Wichtig: `WHERE` filtert Zeilen vor der Gruppierung, `HAVING` filtert
+Gruppen nach der Gruppierung.
+
+Durch Gruppierung entsteht eine neue Tabelle. Auch diese kann man noch
+einmal filtern. Dafür nutzt man die `HAVING`-Klausel. Hier gibt man
+eine Bedingung für Gruppen an, die im Ergebnis bleiben sollen. In
+dieser Bedingung sind nur Ausdrücke mit Aggregierungsfunktionen oder
+der Gruppierungsausdruck erlaubt. Für alle anderen Ausdrücke ist wieder
+nicht klar, ob sie pro Gruppe nur einen Wert haben.
 
 ```sql
 SELECT COUNT(fahrradNr), bezeichnung 
@@ -109,7 +111,7 @@ HAVING COUNT(fahrradNr) > 4;
 
 
 Der Datenfluss bei einem `SELECT`-Statement mit Gruppierung und
-`HAVING`-Klausel ist in
+`HAVING`-Klausel ist in der folgenden Grafik dargestellt.
 
 ![](SQL-SELECT-AGGR-GROUP-HAVING.jpg)
 

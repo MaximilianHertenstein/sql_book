@@ -23,7 +23,7 @@ CREATE SCHEMA Schule;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Jetzt können wir die neu erstelle Datenbank mit dem Befehl `USE`
+Jetzt können wir die neu erstellte Datenbank mit dem Befehl `USE`
 nutzen. Hinter `USE` steht wieder der Name der Datenbank.
 
 ```sql
@@ -76,7 +76,7 @@ Primärschlüssel ausgewählt hat.
 Um einen Fremdschlüssel zu definieren, schreibt man hinter die
 Schlüsselwörter `FOREIGN KEY` in Klammern die gewünschte Spalte.
 Anschließend folgt das Schlüsselwort `REFERENCES`, der Name der
-Tabelle aus der der Fremdschlüssel stammt und der Name dieser Spalte in
+Tabelle, aus der der Fremdschlüssel stammt, und der Name dieser Spalte in
 dieser Tabelle.
 
 ```sql
@@ -100,7 +100,7 @@ die konkreten Werte, die in diese Spalten eingefügt werden sollen.
 
 ```sql
 INSERT INTO klassen
-Values 
+VALUES 
 (1, '12', 'D', 'H207');
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
@@ -116,12 +116,12 @@ SELECT * FROM klassen;
 </codapi-snippet>
 
 
-Wir können auch mehre Zeilen auf einmal in eine Tabelle einfügen, wenn
+Wir können auch mehrere Zeilen auf einmal in eine Tabelle einfügen, wenn
 wir diese durch Kommas trennen.
 
 ```sql
 INSERT INTO klassen
-Values 
+VALUES 
 (2, 'BF1', 'P', 'H205'),
 (3, '12', 'TGI', 'G252');
 ```

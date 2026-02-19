@@ -32,10 +32,10 @@ INSERT INTO fahrraeder VALUES
 ## Aggregierungsfunktionen
 
 
-Mithilfe von Aggregierungsfunktionen können wir aus allen Werten in
-einer Spalte einen einzelnen Wert berechnen. Ein Beispiel für eine
-Aggregierungsfunktionen ist die Funktion `AVG`. Diese berechnet
-den Durchschnitt der Werte in einer Spalte. Damit kann z.B. der
+Mithilfe von Aggregierungsfunktionen können wir aus vielen Werten in
+einer Spalte einen einzelnen Wert berechnen. Ein Beispiel ist die
+Funktion `AVG`. Diese berechnet
+den Durchschnitt der Werte in einer Spalte. Damit kann z. B. der
 durchschnittliche *Tagesmietpreis* aller Fahrräder berechnet werden.
 
 ```sql
@@ -72,9 +72,9 @@ FROM Fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Wenn man die Anzahl der verschiedenen *verschiedenen* Werte
-in einer Spalte berechnen, muss in der Klammer hinter `COUNT` vor
-dem Spaltenname `DISTINCT` stehen.
+Wenn man die Anzahl verschiedener Werte in einer Spalte berechnen
+möchte, schreibt man in der Klammer hinter `COUNT` vor den
+Spaltennamen `DISTINCT`.
 
 
 
@@ -97,9 +97,9 @@ FROM Fahrraeder;
 
 
 
-Es ist aber nicht möglich gleichzeitig Spalten und aggregierte Werte
+Es ist aber nicht möglich, gleichzeitig Spalten und aggregierte Werte
 abzufragen, da eine Spalte mehrere Werte enthalten kann und das Ergebnis
-einer Aggregierungsfunktion nur ein einzelner Wert ist. pt In der
+einer Aggregierungsfunktion nur ein einzelner Wert ist. In der
 folgenden Grafik ist der Datenfluss bei der Aggregierung zu sehen.
 
 
