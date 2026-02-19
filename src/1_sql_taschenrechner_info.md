@@ -22,8 +22,7 @@ SELECT 3 * 3, (1 - 2) * 3 + 5;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-`SELECT` kann wie alle Schlüsselwörter in *SQL* klein oder groß
-geschrieben werden. Es ist jedoch üblich, Schlüsselwörter und
+`SELECT` kann wie alle Schlüsselwörter in *SQL* klein oder großgeschrieben werden. Es ist jedoch üblich, Schlüsselwörter und
 Funktionsnamen groß zu schreiben.
 
 ## Division

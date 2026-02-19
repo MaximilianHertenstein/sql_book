@@ -62,7 +62,7 @@ aufgeführt.
 
 Mit der Funktion `COUNT` kann auch die Anzahl der zurückgegebenen
 Zeilen gezählt werden. Hierfür schreibt man in die Klammer hinter dem
-Funktionsnamen nicht den Namen einer Spalte sondern das Zeichen
+Funktionsnamen nicht den Namen einer Spalte, sondern das Zeichen
 `*`. 
 
 ```sql
