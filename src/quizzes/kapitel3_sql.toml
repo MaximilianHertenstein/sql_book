@@ -1,0 +1,20 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort filtert Zeilen in einer SELECT-Abfrage?"
+answer.answer = "WHERE"
+context = "Kapitel 3: Selektion"
+id = "3360f3db-4216-4691-89f0-e5c6d91f8b2f"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie nennt man die Auswahl bestimmter Spalten in einer Tabelle?"
+answer.answer = "Projektion"
+context = "Kapitel 3: Projektion"
+id = "cad38d16-1a5a-4a57-aa93-278f78455a8c"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie nennt man die Auswahl bestimmter Zeilen in einer Tabelle?"
+answer.answer = "Selektion"
+context = "Kapitel 3: Selektion"
+id = "7ef96b86-438a-430d-b43a-fdca31f1d0c7"

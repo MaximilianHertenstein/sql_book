@@ -1,0 +1,20 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche SQL-Funktion zählt Zeilen?"
+answer.answer = "COUNT"
+context = "Kapitel 6: Aggregierung"
+id = "dc6bcfdf-b8c5-493c-bfd6-1ee13cfd3f56"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche SQL-Funktion berechnet den Durchschnitt?"
+answer.answer = "AVG"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "72f4ec1e-63ac-4f98-be64-cf4ee6f6f8d9"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Funktion liefert den größten Wert einer Spalte?"
+answer.answer = "MAX"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "f3ea78df-4f8d-4485-b13f-e34ed3d47328"

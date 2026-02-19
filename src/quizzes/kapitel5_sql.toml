@@ -1,0 +1,20 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort verbindet Zeilen aus mehreren Tabellen?"
+answer.answer = "JOIN"
+context = "Kapitel 5: Mehrere Tabellen"
+id = "c53e611e-16fc-4ee1-9ec6-edc7e4f5f992"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem Schlüsselwort formulierst du die Verknüpfungsbedingung bei einem JOIN?"
+answer.answer = "ON"
+context = "Kapitel 5: Join-Bedingung"
+id = "9e9ed76f-4edb-4d65-b18a-aee4fc0f1466"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt der Join-Typ, der nur passende Datensätze aus beiden Tabellen liefert?"
+answer.answer = "INNER JOIN"
+context = "Kapitel 5: Join-Typen"
+id = "7080c177-b78a-4232-89ff-9952a1254f31"

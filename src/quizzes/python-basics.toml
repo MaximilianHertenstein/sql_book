@@ -1,6 +1,20 @@
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "What is the output of 1 + 1 in Python?"
-answer.answer = "2"
-context = "Basic arithmetic in Python"
+prompt.prompt = "Welches SQL-Schlüsselwort nutzt du, um Daten aus einer Tabelle auszulesen?"
+answer.answer = "SELECT"
+context = "Grundlagen SQL"
 id = "857d5207-3960-4df0-a4a7-af053bfc59f3"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem Schlüsselwort filterst du Zeilen?"
+answer.answer = "WHERE"
+context = "Grundlagen SQL"
+id = "f4c65ae3-bbff-4e5f-9bd2-85f8c35794d0"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welcher Klausel sortierst du Ergebnismengen?"
+answer.answer = "ORDER BY"
+context = "Grundlagen SQL"
+id = "6589c8f0-f69a-4cb6-bc0b-0335a978e008"

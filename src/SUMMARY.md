@@ -1,9 +1,16 @@
 # Summary
 
 - [1. SQL als Taschenrechner](./1_sql_taschenrechner_info.md)
+- [1. Quiz](./1_quiz.md)
 - [2. Datenbank erstellen](./2_db_erstellen_info.md)
+- [2. Quiz](./2_quiz.md)
 - [3. Selektion und Projektion](./3_selektion_projektion.md)
+- [3. Quiz](./3_quiz.md)
 - [4. Duplikate entfernen und sortieren](./4_duplikate_entfernen_sortieren.md)
+- [4. Quiz](./4_quiz.md)
 - [5. Mehrere Tabellen](./5_mehrere_tabellen.md)
+- [5. Quiz](./5_quiz.md)
 - [6. Aggregierung](./6_aggregierung.md)
+- [6. Quiz](./6_quiz.md)
 - [7. Gruppierung, HAVING](./7_gruppierungen.md)
+- [7. Quiz](./7_quiz.md)

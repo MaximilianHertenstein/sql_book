@@ -1,0 +1,20 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort entfernt doppelte Zeilen aus einer Ergebnismenge?"
+answer.answer = "DISTINCT"
+context = "Kapitel 4: Duplikate entfernen"
+id = "45d9eb2c-f22c-4b2f-813d-9883f8dc0218"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem SQL-Schlüsselwort sortierst du Ergebnisse?"
+answer.answer = "ORDER BY"
+context = "Kapitel 4: Sortieren"
+id = "359e54e6-b9e4-44a5-bc72-0d9732689396"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort nutzt du häufig zusammen mit ORDER BY für absteigende Sortierung?"
+answer.answer = "DESC"
+context = "Kapitel 4: Sortierrichtung"
+id = "43830bf9-7140-422c-a670-58abda2a4b85"

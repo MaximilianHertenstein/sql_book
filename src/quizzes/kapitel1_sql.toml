@@ -1,0 +1,20 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem SQL-Schlüsselwort liest du Daten aus einer Tabelle aus?"
+answer.answer = "SELECT"
+context = "Kapitel 1: SQL als Taschenrechner"
+id = "8dc04293-cf9d-4bf6-b289-df4c9cd4dd14"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie nennt man in SQL einen berechneten Ausdruck wie SELECT 2 + 3?"
+answer.answer = "Ausdruck"
+context = "Kapitel 1: Rechnen mit SQL"
+id = "a89c57f4-f8a7-4f3b-97ee-b8f0ef1ef4af"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort verwendet man in SQL oft, um einer berechneten Spalte einen Namen zu geben?"
+answer.answer = "AS"
+context = "Kapitel 1: Benennung von Ergebnisspalten"
+id = "a00346df-3e13-4f2a-89b7-00b2a714db9b"
