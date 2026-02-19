@@ -32,14 +32,14 @@ INSERT INTO fahrraeder VALUES
 ## Aggregierungsfunktionen
 
 
-Mithilfe von Aggregierungsfunktionen können wir aus vielen Werten in
-einer Spalte einen einzelnen Wert berechnen. Ein Beispiel ist die
-Funktion `AVG`. Diese berechnet
-den Durchschnitt der Werte in einer Spalte. Damit kann z. B. der
-durchschnittliche *Tagesmietpreis* aller Fahrräder berechnet werden.
+Mit Aggregierungsfunktionen berechnest du aus vielen Werten einen
+einzigen Wert.
+Ein Beispiel ist `AVG`.
+Damit bestimmst du den Durchschnitt einer Spalte,
+z. B. den durchschnittlichen *Tagesmietpreis* aller Fahrräder.
 
 ```sql
-SELECT AVG(tagesmietpreis) 
+SELECT AVG(tagesmietpreis)
 FROM Fahrraeder;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
@@ -56,14 +56,12 @@ aufgeführt.
 | `MIN`  | kleinster Wert in der Spalte         |
 | `SUM`  | Summe der Werte in der Spalte        |
 | `AVG`  | Durchschnitt der Werte in der Spalte |
-| `COUNT`| Anzahl der Werte in der Spalte       |
+| `COUNT` | Anzahl der Werte in der Spalte      |
 
 
 
-Mit der Funktion `COUNT` kann auch die Anzahl der zurückgegebenen
-Zeilen gezählt werden. Hierfür schreibt man in die Klammer hinter dem
-Funktionsnamen nicht den Namen einer Spalte, sondern das Zeichen
-`*`. 
+Mit `COUNT(*)` zählst du die Anzahl der zurückgegebenen Zeilen.
+In die Klammer schreibst du dafür `*` statt eines Spaltennamens.
 
 ```sql
 SELECT COUNT(*)
@@ -72,9 +70,8 @@ FROM Fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Wenn man die Anzahl verschiedener Werte in einer Spalte berechnen
-möchte, schreibt man in der Klammer hinter `COUNT` vor den
-Spaltennamen `DISTINCT`.
+Wenn du nur unterschiedliche Werte zählen willst,
+schreibst du `DISTINCT` in die Klammer von `COUNT`.
 
 
 
@@ -86,10 +83,10 @@ FROM Fahrraeder;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Es können auch mehrere aggregierte Werte auf einmal abgefragt werden.
+Du kannst mehrere Aggregatwerte in einer Abfrage kombinieren.
 
 ```sql
-SELECT COUNT(fahrradNr), AVG(tagesmietpreis) 
+SELECT COUNT(fahrradNr), AVG(tagesmietpreis)
 FROM Fahrraeder;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
@@ -97,10 +94,11 @@ FROM Fahrraeder;
 
 
 
-Es ist aber nicht möglich, gleichzeitig Spalten und aggregierte Werte
-abzufragen, da eine Spalte mehrere Werte enthalten kann und das Ergebnis
-einer Aggregierungsfunktion nur ein einzelner Wert ist. In der
-folgenden Grafik ist der Datenfluss bei der Aggregierung zu sehen.
+Ohne Gruppierung kannst du nicht beliebige Detailspalten und
+Aggregatwerte mischen.
+Eine Detailspalte enthält mehrere Werte,
+ein Aggregat liefert genau einen Wert.
+Die folgende Grafik zeigt den Datenfluss bei der Aggregierung.
 
 
 ![](SQL-SELECT-AGGR.jpg)

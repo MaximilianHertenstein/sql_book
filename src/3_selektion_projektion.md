@@ -2,7 +2,7 @@
 
 SQL wird in der Regel nicht als Taschenrechner, sondern als
 Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
-*Structured Query Language* aus. 
+*Structured Query Language* aus.
 
 Um Abfragen zu schreiben, müssen wir zunächst eine Datenbank erstellen.
 Deshalb wird zu Beginn jedes Kapitels eine Datenbank neu aufgebaut,
@@ -83,7 +83,7 @@ CREATE TABLE kunden (
 </codapi-snippet>
 
 ```sql
-INSERT INTO kunden VALUES 
+INSERT INTO kunden VALUES
 (232, 'Schneider', 'Heinrich', 'm'),
 (233, 'Schlauch', 'Franz', 'm'),
 (234, 'Schlauch', 'Franziska', 'w'),
@@ -129,7 +129,7 @@ stehen. Anschließend folgt das Schlüsselwort `FROM` und der Name
 der Tabelle, aus der die Spalten stammen.
 
 ```sql
-SELECT vorname, name 
+SELECT vorname, name
 FROM Kunden;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
@@ -142,7 +142,7 @@ Eine solche Auswahl von Spalten einer Tabelle nennt man Projektion.
 
 ## Berechnete Spalten
 
-Wir haben bereits gesehen, dass man mit `SELECT`-*Statements* die
+Wir haben bereits gesehen, dass man mit `SELECT`-Statements die
 Werte von Ausdrücken berechnen kann. Dies können wir auch mit der Abfrage
 von Spalten verbinden.
 
@@ -179,15 +179,13 @@ tagesmietpreis_unter_10_euro FROM Fahrraeder;
 
 ## Selektion
 
-Wenn man sich nur für die Fahrräder interessiert, deren Tagesmietpreis
-unter 10 € liegt, kann man auch nur die Fahrräder anzeigen, die diese
-Bedingung erfüllen.
+Wenn du nur Fahrräder mit einem Tagesmietpreis unter 10 € sehen willst,
+filterst du die Tabelle über eine Bedingung.
 
 
-Dafür erweitert man das `SELECT`-*Statement* um eine weitere
-Zeile, die mit `WHERE` beginnt. Hinter `WHERE` steht eine
-Bedingung, die eine Zeile erfüllen muss, um im Ergebnis angezeigt zu
-werden.
+Dafür ergänzt du das `SELECT`-Statement um eine `WHERE`-Klausel.
+Hinter `WHERE` steht die Bedingung.
+Nur Zeilen, die diese Bedingung erfüllen, erscheinen im Ergebnis.
 
 ```sql
 SELECT fahrradNr, bezeichnung
@@ -203,12 +201,12 @@ Eine solche Auswahl von Zeilen nennt man Selektion.
 
 ## Veranschaulichung
 
-Bei den Abfragen, die wir bisher geschrieben haben, steht in der
-`FROM`-Klausel genau eine Tabelle. Die `WHERE`-Klausel filtert Zeilen
-über eine Bedingung. Nur passende Zeilen kommen in das Ergebnis.
-Hinter `SELECT` stehen Spaltennamen oder Ausdrücke. Diese werden für
-jede verbleibende Zeile berechnet. Alle berechneten Werte bilden dann
-die Ergebnismenge der Abfrage.
+In den bisherigen Abfragen steht in `FROM` genau eine Tabelle.
+Mit `WHERE` filterst du die Zeilen.
+Nur passende Zeilen bleiben übrig.
+Hinter `SELECT` stehen Spaltennamen oder Ausdrücke.
+Diese werden für jede verbleibende Zeile berechnet.
+Die berechneten Werte bilden die Ergebnismenge.
 
 ![](SQL-SELECT.jpg)
 

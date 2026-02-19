@@ -32,12 +32,107 @@ context = "Die WHERE-Klausel schränkt die Zeilen der Ergebnismenge ein."
 id = "36f3f65e-45ad-4f9e-8fb8-97d230ce73cf"
 
 [[questions]]
-type = "Tracing"
-prompt.program = """
-SELECT name
-FROM kunden
-WHERE ;
-"""
-answer.doesCompile = false
-context = "A condition must follow WHERE. Without a condition, the query is syntactically invalid."
-id = "e2fe01f6-b670-424d-81df-45cf21e893d7"
+type = "ShortAnswer"
+prompt.prompt = "Welches Zeichen steht hinter SELECT, wenn alle Spalten ausgegeben werden sollen?"
+answer.answer = "*"
+context = "Kapitel 3: Ganze Tabelle ausgeben"
+id = "020259fd-7df3-4ebf-8193-af18456b064a"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort gibt an, aus welcher Tabelle gelesen wird?"
+answer.answer = "FROM"
+context = "Kapitel 3: SELECT-FROM"
+id = "4b0879a9-c4a8-4dd8-bf02-f7c28265dba5"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage ist eine Projektion auf zwei Spalten?"
+prompt.distractors = [
+	"SELECT * FROM kunden WHERE vorname, name;",
+	"SELECT vorname name FROM kunden;",
+	"FROM kunden SELECT vorname, name;"
+]
+answer.answer = "SELECT vorname, name FROM kunden;"
+context = "Bei einer Projektion stehen die gewünschten Spalten hinter SELECT."
+id = "cc74b9d5-f52d-4fac-b46d-8a7fed25a4c0"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem Schlüsselwort benennst du eine berechnete Spalte um?"
+answer.answer = "AS"
+context = "Kapitel 3: Berechnete Spalten"
+id = "c9ec7f84-f5d8-461a-91d5-e5578464a848"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage ist eine Selektion mit Bedingung auf tagesmietpreis?"
+prompt.distractors = [
+	"SELECT fahrradNr, bezeichnung FROM fahrraeder tagesmietpreis < 10;",
+	"SELECT fahrradNr, bezeichnung FROM fahrraeder WHEN tagesmietpreis < 10;",
+	"SELECT fahrradNr, bezeichnung WHERE tagesmietpreis < 10 FROM fahrraeder;"
+]
+answer.answer = "SELECT fahrradNr, bezeichnung FROM fahrraeder WHERE tagesmietpreis < 10;"
+context = "Selektion erfolgt über WHERE hinter FROM."
+id = "f7f9b75c-5108-4a4d-ac99-394f6c12b897"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage trifft zu?"
+prompt.distractors = [
+	"Selektion wählt Spalten, Projektion wählt Zeilen.",
+	"Selektion und Projektion bedeuten in SQL dasselbe.",
+	"Projektion benötigt immer eine WHERE-Klausel."
+]
+answer.answer = "Projektion wählt Spalten, Selektion wählt Zeilen."
+context = "Kapitel 3: Begriffe Selektion und Projektion"
+id = "94957807-a0ba-45f7-9698-8a89ebf3f2e8"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du brauchst nur `vorname` und `name` von Kundinnen (`geschlecht = 'w'`). Welche Abfrage passt?"
+prompt.distractors = [
+	"SELECT * FROM kunden WHERE vorname, name AND geschlecht = 'w';",
+	"SELECT vorname, name FROM kunden HAVING geschlecht = 'w';",
+	"SELECT vorname name FROM kunden WHERE geschlecht = 'w';"
+]
+answer.answer = "SELECT vorname, name FROM kunden WHERE geschlecht = 'w';"
+context = "Anwendung von Projektion (Spaltenwahl) plus Selektion (Zeilenfilter)."
+id = "f8f0f972-a83c-458c-a3a0-f606d6c13f9b"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klauselreihenfolge ist in einer einfachen Filterabfrage korrekt?"
+prompt.distractors = [
+	"WHERE ... FROM ... SELECT ...",
+	"SELECT ... WHERE ... FROM ...",
+	"FROM ... SELECT ... WHERE ..."
+]
+answer.answer = "SELECT ... FROM ... WHERE ..."
+context = "Die Standardreihenfolge bei Selektion/Projektion."
+id = "2b8e3eab-1278-4ae4-ab5c-f479286ebf2a"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage kombiniert eine berechnete Spalte und Selektion korrekt?"
+prompt.distractors = [
+	"SELECT fahrradNr, tagesmietpreis < 10 AS billig FROM fahrraeder WHEN tagesmietpreis < 20;",
+	"SELECT fahrradNr, tagesmietpreis < 10 AS billig WHERE tagesmietpreis < 20 FROM fahrraeder;",
+	"SELECT fahrradNr, tagesmietpreis < 10 billig FROM fahrraeder HAVING tagesmietpreis < 20;"
+]
+answer.answer = "SELECT fahrradNr, tagesmietpreis < 10 AS billig FROM fahrraeder WHERE tagesmietpreis < 20;"
+context = "Berechnete Spalten mit AS und Filterung mit WHERE hinter FROM."
+id = "261df2c7-c8be-4dd4-bcc4-c6efbb146ee2"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage trifft auf Projektion zu?"
+prompt.distractors = [
+	"Projektion entfernt immer Duplikate automatisch.",
+	"Projektion filtert nur Zeilen.",
+	"Projektion benötigt zwingend ein * hinter SELECT."
+]
+answer.answer = "Projektion wählt aus, welche Spalten ausgegeben werden."
+context = "Kapitel 3: Projektion"
+id = "1795bb84-6d73-42e5-bf66-962eab278a83"
+

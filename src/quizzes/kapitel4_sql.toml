@@ -32,12 +32,123 @@ context = "ORDER BY sortiert die ausgegebenen Zeilen nach einer oder mehreren Sp
 id = "83f6f1ca-b9f9-4a8e-8d15-5d3225ef95ae"
 
 [[questions]]
-type = "Tracing"
-prompt.program = """
-SELECT name
-FROM kunden
-ORDER name;
-"""
-answer.doesCompile = false
-context = "ORDER BY is required for sorting. ORDER on its own is not a valid SQL clause."
-id = "e4f3fa0e-198e-487b-b05c-ec663f6a6567"
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage entfernt doppelte Werte in einer Spalte korrekt?"
+prompt.distractors = [
+	"SELECT UNIQUE geschlecht FROM kunden;",
+	"SELECT geschlecht DISTINCT FROM kunden;",
+	"SELECT ALL geschlecht FROM kunden;"
+]
+answer.answer = "SELECT DISTINCT geschlecht FROM kunden;"
+context = "DISTINCT entfernt doppelte Zeilen in der Ergebnismenge."
+id = "019f3502-0567-4562-8ff7-d20f4697c061"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort steht in ORDER BY für aufsteigende Sortierung?"
+answer.answer = "ASC"
+context = "Kapitel 4: Sortierrichtung"
+id = "4f34ed11-da8d-4e19-a9e5-660b8e197f14"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Was bedeutet ORDER BY name DESC?"
+prompt.distractors = [
+	"Sortiere nach name aufsteigend.",
+	"Filtere nur Zeilen mit name = 'DESC'.",
+	"Entferne Duplikate aus name."
+]
+answer.answer = "Sortiere nach name absteigend."
+context = "DESC bedeutet absteigende Reihenfolge."
+id = "57bd87dd-cf53-4f59-8af3-b5a56fed3636"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel folgt in einer Sortierabfrage auf FROM kunden?"
+prompt.distractors = [
+	"SORT BY",
+	"HAVING",
+	"GROUP"
+]
+answer.answer = "ORDER BY"
+context = "Für Sortierung wird ORDER BY genutzt."
+id = "e34961be-3978-4089-8de9-0d92492b992d"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage sortiert zuerst nach name absteigend und bei Gleichstand nach vorname aufsteigend?"
+prompt.distractors = [
+	"SELECT vorname, name FROM kunden ORDER BY name, vorname DESC ASC;",
+	"SELECT vorname, name FROM kunden ORDER BY name DESC AND vorname ASC;",
+	"SELECT vorname, name FROM kunden ORDER name DESC, vorname ASC;"
+]
+answer.answer = "SELECT vorname, name FROM kunden ORDER BY name DESC, vorname ASC;"
+context = "Mehrere Sortierspalten werden in ORDER BY durch Kommas getrennt."
+id = "cf853cd7-ff16-4c78-84ce-cfb6d649f118"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Klausel ist für das Entfernen von Duplikaten zuständig: DISTINCT oder ORDER BY?"
+answer.answer = "DISTINCT"
+context = "Kapitel 4: DISTINCT vs. ORDER BY"
+id = "5f5f6b50-8f3f-4b40-9448-421c75d7d9fd"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du willst eine Namensliste ohne Doppelnennungen und alphabetisch sortiert. Welche SQL-Idee ist richtig?"
+prompt.distractors = [
+	"Nur ORDER BY reicht aus.",
+	"Nur DISTINCT reicht aus.",
+	"Erst ORDER BY, dann DISTINCT als eigene Klausel am Ende."
+]
+answer.answer = "DISTINCT für Duplikate und ORDER BY für die Reihenfolge kombinieren."
+context = "DISTINCT und ORDER BY haben unterschiedliche Aufgaben und können zusammen genutzt werden."
+id = "ad8f7e0a-d40f-4be4-89b8-54d9f1b79ab2"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage liefert eindeutige Geschlechterwerte in aufsteigender Reihenfolge?"
+prompt.distractors = [
+	"SELECT geschlecht FROM kunden ORDER BY ASC DISTINCT;",
+	"SELECT DISTINCT geschlecht ORDER kunden ASC;",
+	"SELECT geschlecht DISTINCT FROM kunden ORDER BY geschlecht ASC;"
+]
+answer.answer = "SELECT DISTINCT geschlecht FROM kunden ORDER BY geschlecht ASC;"
+context = "Korrekte Kombination aus DISTINCT und ORDER BY mit Sortierspalte."
+id = "eaf859d4-c180-4f79-8176-8fbf59c0fd6f"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu DISTINCT ist korrekt?"
+prompt.distractors = [
+	"DISTINCT sortiert immer automatisch alphabetisch.",
+	"DISTINCT wirkt nur zusammen mit ORDER BY.",
+	"DISTINCT darf nur mit Zahlen verwendet werden."
+]
+answer.answer = "DISTINCT entfernt doppelte Zeilen aus der Ergebnismenge."
+context = "Kapitel 4: Funktion von DISTINCT"
+id = "e53ec29d-c98a-4893-a8d3-48e30061e8d4"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage sortiert nach name aufsteigend und bei Gleichstand nach vorname absteigend?"
+prompt.distractors = [
+	"SELECT vorname, name FROM kunden ORDER BY name, vorname DESC ASC;",
+	"SELECT vorname, name FROM kunden ORDER BY name ASC AND vorname DESC;",
+	"SELECT vorname, name FROM kunden ORDER name ASC, vorname DESC;"
+]
+answer.answer = "SELECT vorname, name FROM kunden ORDER BY name ASC, vorname DESC;"
+context = "Mehrstufige Sortierung mit unterschiedlichen Richtungen."
+id = "8fb6c2d4-e8f8-4b58-a4be-486a5ff3f489"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Kombination ist korrekt, wenn du zuerst Duplikate entfernen und dann sortieren willst?"
+prompt.distractors = [
+	"SELECT geschlecht FROM kunden ORDER BY geschlecht DISTINCT;",
+	"SELECT DISTINCT geschlecht ORDER geschlecht;",
+	"SELECT geschlecht DISTINCT FROM kunden ORDER BY geschlecht;"
+]
+answer.answer = "SELECT DISTINCT geschlecht FROM kunden ORDER BY geschlecht;"
+context = "DISTINCT in SELECT-Liste, ORDER BY als eigene Klausel."
+id = "74ac486f-0fa9-44af-b958-2f833705e6af"

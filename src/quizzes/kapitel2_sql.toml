@@ -32,13 +32,125 @@ context = "Zum Anlegen einer Tabelle wird CREATE TABLE verwendet."
 id = "dc65f747-fd4b-4b6e-a164-fe6da6ce4ecf"
 
 [[questions]]
-type = "Tracing"
-prompt.program = """
-CREATE TABLE kunden (
-	kundenNr INT PRIMARY KEY
-	name TEXT
-);
-"""
-answer.doesCompile = false
-context = "A comma is missing between the columns. This makes the CREATE TABLE statement syntactically invalid."
-id = "e9d8cc87-7732-43f0-bc7e-62026f4f589a"
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem SQL-Befehl erstellt man ein Datenbankschema?"
+answer.answer = "CREATE SCHEMA"
+context = "Kapitel 2: Datenbankschema erstellen"
+id = "ba5faaf0-87d5-4c7e-8fa9-58ceda94a2cf"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort nutzt man im Kapitel, um ein Schema auszuwählen?"
+answer.answer = "USE"
+context = "Kapitel 2: Datenbankschema verwenden"
+id = "33d58f27-0a87-4ac6-a3a4-7f087f754af5"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Definition setzt korrekt einen Primärschlüssel in CREATE TABLE?"
+prompt.distractors = [
+	"PRIMARY (klassen_id)",
+	"KEY PRIMARY klassen_id",
+	"PRIMARY KEY klassen_id"
+]
+answer.answer = "PRIMARY KEY(klassen_id)"
+context = "Der Primärschlüssel wird mit PRIMARY KEY(Spalte) angegeben."
+id = "3217ef8e-30da-4f76-9735-a8f4d4d9ac2b"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter leiten einen Fremdschlüssel ein?"
+answer.answer = "FOREIGN KEY"
+context = "Kapitel 2: Fremdschlüssel"
+id = "b8a1882f-c8c5-423e-83f3-948f4fd54b01"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort verbindet beim Fremdschlüssel auf die Zieltabelle?"
+answer.answer = "REFERENCES"
+context = "Kapitel 2: Fremdschlüsselreferenz"
+id = "d0d772f0-d8c6-45e8-8a4b-14cdb2cb37bf"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu INSERT INTO ... VALUES ist korrekt?"
+prompt.distractors = [
+	"Mehrere Zeilen müssen mit AND getrennt werden.",
+	"VALUES darf nur genau eine Zeile enthalten.",
+	"INSERT benötigt kein Tabellenname."
+]
+answer.answer = "Mehrere Zeilen können in VALUES durch Kommas getrennt werden."
+context = "Kapitel 2: Mehrere Datensätze einfügen"
+id = "f79f4f07-4fd7-4e44-8df9-81a8db93adcf"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche CREATE TABLE-Variante ist korrekt aufgebaut?"
+prompt.distractors = [
+	"CREATE TABLE klassen klassen_id int, stufe varchar(255);",
+	"CREATE TABLE klassen (klassen_id int stufe varchar(255));",
+	"CREATE klassen TABLE (klassen_id int, stufe varchar(255));"
+]
+answer.answer = "CREATE TABLE klassen (klassen_id int, stufe varchar(255));"
+context = "Spaltendefinitionen stehen in Klammern und werden mit Kommas getrennt."
+id = "c11f2f90-aa19-4e89-af4d-ad4b4dc27708"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du willst sicherstellen, dass jeder Datensatz in `schueler` einer vorhandenen Klasse zugeordnet ist. Welche Ergänzung in CREATE TABLE ist dafür entscheidend?"
+prompt.distractors = [
+	"PRIMARY KEY(klassen_id)",
+	"UNIQUE(klassen_id)",
+	"CHECK(klassen_id > 0)"
+]
+answer.answer = "FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)"
+context = "Fremdschlüssel sichern die Beziehung zwischen Tabellen."
+id = "3e8cbe5e-c0d8-4bc6-9842-3926ba1dbdb1"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche INSERT-Abfrage fügt zwei Klassenzeilen in einem Statement korrekt ein?"
+prompt.distractors = [
+	"INSERT INTO klassen VALUES (1, '12', 'D', 'H207'); VALUES (2, 'BF1', 'P', 'H205');",
+	"INSERT INTO klassen VALUES (1, '12', 'D', 'H207') (2, 'BF1', 'P', 'H205');",
+	"INSERT klassen INTO VALUES (1, '12', 'D', 'H207'), (2, 'BF1', 'P', 'H205');"
+]
+answer.answer = "INSERT INTO klassen VALUES (1, '12', 'D', 'H207'), (2, 'BF1', 'P', 'H205');"
+context = "Mehrere Tupel werden in VALUES kommasepariert in einem Statement eingefügt."
+id = "aca5b1d6-55a8-4f73-9844-b9af139816f9"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Reihenfolge ist fachlich sinnvoll, um mit einer neuen Datenbank zu arbeiten?"
+prompt.distractors = [
+	"USE Schule; dann CREATE SCHEMA Schule; dann CREATE TABLE ...",
+	"CREATE TABLE ...; dann CREATE SCHEMA Schule; dann USE Schule;",
+	"CREATE SCHEMA Schule; dann CREATE TABLE ...; USE Schule;"
+]
+answer.answer = "CREATE SCHEMA Schule; dann USE Schule; dann CREATE TABLE ..."
+context = "Zuerst Schema anlegen, dann auswählen, danach Tabellen erstellen."
+id = "e96881aa-4b85-4102-9fc8-c7ab09a0cd4d"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Tabellendefinition sichert am klarsten ab, dass schueler.klassen_id nur vorhandene Klassen referenziert?"
+prompt.distractors = [
+	"PRIMARY KEY(klassen_id)",
+	"UNIQUE(klassen_id)",
+	"DEFAULT 1"
+]
+answer.answer = "FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)"
+context = "Referentielle Integrität wird über FOREIGN KEY plus REFERENCES hergestellt."
+id = "95c8a193-5f5b-43a8-bb80-18fb6fa2ef79"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu PRIMARY KEY ist korrekt?"
+prompt.distractors = [
+	"PRIMARY KEY ist nur eine Sortierhilfe.",
+	"PRIMARY KEY ersetzt CREATE TABLE.",
+	"PRIMARY KEY wird nur in INSERT genutzt."
+]
+answer.answer = "PRIMARY KEY identifiziert jede Zeile eindeutig."
+context = "Kapitel 2: Bedeutung des Primärschlüssels"
+id = "ee6225eb-19a3-42f9-8016-cc71887553c2"

@@ -62,7 +62,7 @@ Dafür schreibt man hinter die Schlüsselwörter `GROUP` und
 
 ```sql
 SELECT bezeichnung, COUNT(fahrradNr)
-FROM fahrraeder 
+FROM fahrraeder
 GROUP BY bezeichnung;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
@@ -83,25 +83,22 @@ klar, ob diese pro Gruppe nur einen Wert haben.
 
 
 
-# Having
+## HAVING
 
-In der `WHERE`-Klausel gibt man eine Bedingung für Zeilen an.
-Damit werden nur die Zeilen der Tabelle betrachtet, die diese Bedingung
-erfüllen.
+Mit `WHERE` formulierst du eine Bedingung für Zeilen.
+Es werden nur Zeilen betrachtet, die diese Bedingung erfüllen.
 
 Wichtig: `WHERE` filtert Zeilen vor der Gruppierung, `HAVING` filtert
 Gruppen nach der Gruppierung.
 
-Durch Gruppierung entsteht eine neue Tabelle. Auch diese kann man noch
-einmal filtern. Dafür nutzt man die `HAVING`-Klausel. Hier gibt man
-eine Bedingung für Gruppen an, die im Ergebnis bleiben sollen. In
-dieser Bedingung sind nur Ausdrücke mit Aggregierungsfunktionen oder
-der Gruppierungsausdruck erlaubt. Für alle anderen Ausdrücke ist wieder
-nicht klar, ob sie pro Gruppe nur einen Wert haben.
+Durch `GROUP BY` entsteht eine gruppierte Ergebnismenge.
+Auch diese Ergebnismenge kannst du filtern: mit `HAVING`.
+In `HAVING` sind nur Aggregatausdrücke oder der Gruppierungsausdruck erlaubt.
+Für andere Ausdrücke ist pro Gruppe kein eindeutiger Einzelwert definiert.
 
 ```sql
-SELECT COUNT(fahrradNr), bezeichnung 
-FROM Fahrraeder 
+SELECT COUNT(fahrradNr), bezeichnung
+FROM Fahrraeder
 GROUP BY bezeichnung
 HAVING COUNT(fahrradNr) > 4;
 ```
@@ -110,8 +107,8 @@ HAVING COUNT(fahrradNr) > 4;
 
 
 
-Der Datenfluss bei einem `SELECT`-Statement mit Gruppierung und
-`HAVING`-Klausel ist in der folgenden Grafik dargestellt.
+Die folgende Grafik zeigt den Datenfluss für ein
+`SELECT`-Statement mit `GROUP BY` und `HAVING`.
 
 ![](SQL-SELECT-AGGR-GROUP-HAVING.jpg)
 

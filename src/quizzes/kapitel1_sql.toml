@@ -32,10 +32,130 @@ context = "Rechenabfragen beginnen mit SELECT und enthalten einen vollständigen
 id = "4f5c236f-3022-4f26-a8f5-8a5c15e2de34"
 
 [[questions]]
-type = "Tracing"
-prompt.program = """
-SELECT 2 + ;
-"""
-answer.doesCompile = false
-context = "A value is missing after the plus sign. Therefore, the SQL statement is syntactically invalid."
-id = "69fdc748-35ec-4d8f-9dca-c3b072e3f3e1"
+type = "MultipleChoice"
+prompt.prompt = "Welchen Wahrheitswert liefert der Ausdruck SELECT true OR false AND false; ?"
+prompt.distractors = [
+	"false",
+	"NULL",
+	"Der Ausdruck ist ungültig"
+]
+answer.answer = "true"
+context = "In SQL wird AND vor OR ausgewertet."
+id = "22c11198-7d3c-43dc-b1ee-5fbfba890101"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welchen Wahrheitswert liefert SELECT (true OR false) AND false; ?"
+prompt.distractors = [
+	"true",
+	"NULL",
+	"Der Ausdruck ist ungültig"
+]
+answer.answer = "false"
+context = "Die Klammer ändert die Auswertungsreihenfolge."
+id = "8de90f31-c605-4db8-8e03-dd7f1b2f7e12"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welcher logische Operator hat ohne Klammern Vorrang vor OR?"
+answer.answer = "AND"
+context = "Kapitel 1: Boolesche Vorrangregeln"
+id = "afc7e8dc-1a95-4abe-a845-a2f8853f3279"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zeigt ganzzahlige Division (Integer-Division)?"
+prompt.distractors = [
+	"SELECT 10 / 4.0;",
+	"SELECT 10.0 / 4;",
+	"SELECT ROUND(10 / 4, 1);"
+]
+answer.answer = "SELECT 10 / 4;"
+context = "Sind beide Operanden Integer, wird ganzzahlig dividiert."
+id = "a4d21257-17f8-41d2-928b-a5d8fcc2e51f"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Funktion nutzt man zum Runden auf eine feste Anzahl von Nachkommastellen?"
+answer.answer = "ROUND"
+context = "Kapitel 1: Funktionen"
+id = "bbf58af6-f53a-4b37-8d11-1b7af0a8f3b9"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welcher Operator vergleicht Strings mit Platzhaltern wie % und _?"
+answer.answer = "LIKE"
+context = "Kapitel 1: Textmustererkennung"
+id = "8ccf2ed8-b2b6-49de-8dff-ae2d49262766"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welcher Platzhalter bei LIKE steht für genau ein Zeichen?"
+prompt.distractors = [
+	"%",
+	"*",
+	"?"
+]
+answer.answer = "_"
+context = "Bei LIKE steht _ für genau ein Zeichen, % für beliebig viele Zeichen."
+id = "f6ddd3d2-e930-4b64-8d4b-63846e4b7c91"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu String-Vergleichen in SQL ist richtig?"
+prompt.distractors = [
+	"Strings werden immer numerisch verglichen.",
+	"'10' < '2' ist immer false, weil 10 größer als 2 ist.",
+	"Bei String-Vergleichen sind alle Zeichenpositionen irrelevant."
+]
+answer.answer = "Strings werden lexikalisch verglichen."
+context = "Kapitel 1: Lexikalischer String-Vergleich"
+id = "26098377-b4d9-4c11-a69f-4b9cdd7928d2"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Zeile berechnet zwei Ergebnisse?"
+prompt.distractors = [
+	"SELECT 3 * 3 (1 - 2) * 3 + 5;",
+	"SELECT 3 * 3; (1 - 2) * 3 + 5;",
+	"SELECT 3 * 3 AND (1 - 2) * 3 + 5;"
+]
+answer.answer = "SELECT 3 * 3, (1 - 2) * 3 + 5;"
+context = "Mehrere Ausdrücke werden in SELECT durch Komma getrennt."
+id = "42f0e6ed-9dd4-4bbf-b1f4-5f6b30f8fd5d"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welchen Wahrheitswert liefert SELECT NOT true OR true AND false; ?"
+prompt.distractors = [
+	"true",
+	"NULL",
+	"Der Ausdruck ist ungültig"
+]
+answer.answer = "false"
+context = "NOT wird zuerst, dann AND, dann OR ausgewertet."
+id = "4cfa89f0-c1f4-4e8b-8c3d-06cbe4da6551"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage ist ein korrektes Beispiel für LIKE mit genau einem Zeichen zwischen Hu und er?"
+prompt.distractors = [
+	"SELECT 'Huber' LIKE 'Hu%er_';",
+	"SELECT 'Huber' LIKE 'Hu__ber';",
+	"SELECT 'Huber' LIKE 'Hu%';"
+]
+answer.answer = "SELECT 'Huber' LIKE 'Hu_er';"
+context = "Der Platzhalter _ steht für genau ein Zeichen."
+id = "e698c65e-f043-4826-98b0-0ef32cb50033"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage beschreibt das Ergebnis von SELECT 10/4, 10/4.0; am besten?"
+prompt.distractors = [
+	"Beide Ergebnisse sind gleich und ganzzahlig.",
+	"Beide Ergebnisse sind gleich und mit Nachkommastellen.",
+	"Der Ausdruck ist ungültig, weil Datentypen gemischt werden."
+]
+answer.answer = "Die erste Division ist ganzzahlig, die zweite liefert eine Kommazahl."
+context = "Integer-Division vs. Division mit mindestens einem nicht-ganzzahligen Operanden."
+id = "d8622e4b-e0a3-4f70-ae81-95f7b9658edf"

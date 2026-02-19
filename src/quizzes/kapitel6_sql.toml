@@ -32,11 +32,124 @@ context = "AVG berechnet den Mittelwert der Werte einer Spalte."
 id = "0bdf7f6f-6ec1-44ca-93ef-ec1efe62257d"
 
 [[questions]]
-type = "Tracing"
-prompt.program = """
-SELECT AVG()
-FROM fahrraeder;
-"""
-answer.doesCompile = false
-context = "AVG requires an expression or a column name inside the parentheses."
-id = "774862db-0898-44ec-88f3-54f8fcafbc57"
+type = "ShortAnswer"
+prompt.prompt = "Welche Aggregatfunktion liefert den kleinsten Wert?"
+answer.answer = "MIN"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "8a9ce182-87df-4ebb-881f-c47581e7cde4"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Aggregatfunktion liefert die Summe aller Werte?"
+answer.answer = "SUM"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "46f51276-b474-4e81-989e-341d885ef982"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zählt alle zurückgegebenen Zeilen?"
+prompt.distractors = [
+	"SELECT COUNT(); FROM fahrraeder;",
+	"SELECT SUM(*) FROM fahrraeder;",
+	"SELECT COUNT(ALL) FROM fahrraeder;"
+]
+answer.answer = "SELECT COUNT(*) FROM fahrraeder;"
+context = "COUNT(*) zählt Zeilen unabhängig von einer einzelnen Spalte."
+id = "ff6f9b6a-91fd-4084-b7ce-c8659d9b3554"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zählt nur verschiedene Bezeichnungen?"
+prompt.distractors = [
+	"SELECT DISTINCT COUNT(bezeichnung) FROM fahrraeder;",
+	"SELECT COUNT(*) DISTINCT bezeichnung FROM fahrraeder;",
+	"SELECT COUNT(UNIQUE bezeichnung) FROM fahrraeder;"
+]
+answer.answer = "SELECT COUNT(DISTINCT bezeichnung) FROM fahrraeder;"
+context = "DISTINCT innerhalb von COUNT betrachtet nur verschiedene Werte."
+id = "eaaeb8f7-9fa5-470f-a94e-c79cadf3b058"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu Aggregierungen stimmt?"
+prompt.distractors = [
+	"Mit Aggregatfunktionen darf nie mehr als ein Ausdruck hinter SELECT stehen.",
+	"COUNT und AVG dürfen nicht in derselben Abfrage stehen.",
+	"Aggregatfunktionen funktionieren nur mit WHERE."
+]
+answer.answer = "Mehrere Aggregatfunktionen können gemeinsam in einer SELECT-Liste stehen."
+context = "Kapitel 6: Mehrere aggregierte Werte in einer Abfrage"
+id = "f8d62269-bf1f-4743-9dee-1213ea273b81"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Funktion gibt den größten Tagesmietpreis zurück?"
+prompt.distractors = [
+	"MIN(tagesmietpreis)",
+	"SUM(tagesmietpreis)",
+	"AVG(tagesmietpreis)"
+]
+answer.answer = "MAX(tagesmietpreis)"
+context = "MAX liefert den größten Wert in einer Spalte."
+id = "f2f0f4ec-c2fa-4f8e-bfe2-2e7d7eadef3f"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Wenn du wissen willst, wie viele Fahrräder insgesamt vorhanden sind, welche Funktion ist fachlich passend?"
+prompt.distractors = [
+	"AVG(fahrradNr)",
+	"SUM(fahrradNr)",
+	"MAX(fahrradNr)"
+]
+answer.answer = "COUNT(*)"
+context = "Gesamtanzahlen von Zeilen werden mit COUNT(*) bestimmt."
+id = "e77f0568-0f11-4fee-ba30-a73ce4e555a8"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Kombination ist ohne GROUP BY syntaktisch zulässig?"
+prompt.distractors = [
+	"SELECT bezeichnung, COUNT(*) FROM fahrraeder;",
+	"SELECT bezeichnung, AVG(tagesmietpreis) FROM fahrraeder;",
+	"SELECT bezeichnung, MAX(tagesmietpreis), MIN(tagesmietpreis) FROM fahrraeder;"
+]
+answer.answer = "SELECT COUNT(*), AVG(tagesmietpreis) FROM fahrraeder;"
+context = "Ohne GROUP BY sind reine Aggregat-Ausdrücke zusammen zulässig."
+id = "6de9a9f8-3340-4ed6-8837-40d24f7ec698"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage liefert gleichzeitig kleinsten und größten Tagesmietpreis?"
+prompt.distractors = [
+	"SELECT SUM(tagesmietpreis), AVG(tagesmietpreis) FROM fahrraeder;",
+	"SELECT COUNT(tagesmietpreis), AVG(tagesmietpreis) FROM fahrraeder;",
+	"SELECT MIN(tagesmietpreis) OR MAX(tagesmietpreis) FROM fahrraeder;"
+]
+answer.answer = "SELECT MIN(tagesmietpreis), MAX(tagesmietpreis) FROM fahrraeder;"
+context = "Mehrere Aggregatfunktionen können gemeinsam abgefragt werden."
+id = "0fb83487-fcf5-43f6-ab74-7e54f21e42a5"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu COUNT(DISTINCT bezeichnung) ist korrekt?"
+prompt.distractors = [
+	"Es zählt alle Zeilen inklusive Dopplungen.",
+	"Es berechnet den Durchschnitt verschiedener Bezeichnungen.",
+	"Es liefert den größten String-Wert."
+]
+answer.answer = "Es zählt, wie viele unterschiedliche Bezeichnungen vorhanden sind."
+context = "Kapitel 6: DISTINCT innerhalb von COUNT"
+id = "defcc92b-0f0d-45ed-9764-91d2ebe03689"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche SQL-Idee ist korrekt, wenn keine Gruppierung benutzt wird?"
+prompt.distractors = [
+	"Detailspalten und Aggregatspalten lassen sich ohne Einschränkung mischen.",
+	"GROUP BY ist bei COUNT(*) immer Pflicht.",
+	"Aggregatfunktionen dürfen nur einzeln verwendet werden."
+]
+answer.answer = "Ohne GROUP BY sind reine Aggregatabfragen möglich, aber keine Mischung mit beliebigen Detailspalten."
+context = "Kapitel 6: Regel zu Aggregaten ohne Gruppierung"
+id = "84a2d807-ea1f-4b5e-bcde-d25541936da4"
+

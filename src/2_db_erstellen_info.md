@@ -6,16 +6,16 @@ Eine Datenbank ist eine strukturierte Sammlung von Informationen. In
 einer relationalen Datenbank liegen die Informationen als Tabellen vor.
 In jeder Tabelle sind ähnliche Objekte aus der echten Welt gespeichert.
 Jede Zeile einer Tabelle steht für ein solches Objekt. Jede Spalte steht
-für eine Eigenschaft, die alle Objekte in dieser Tabelle haben. 
+für eine Eigenschaft, die alle Objekte in dieser Tabelle haben.
 
 
 ## Datenbankschema erstellen und verwenden
 
-In SQL nutzt man Befehle zum Erstellen, Verändern oder Abfragen von
-Datenbanken. Hinter jedem Befehl muss ein Semikolon (`;`) stehen.
+In SQL nutzt du Befehle zum Erstellen, Verändern und Abfragen von Datenbanken.
+Jeder Befehl endet mit einem Semikolon (`;`).
 
-Mit dem Befehl `CREATE SCHEMA` kann man eine Datenbank erstellen.
-Hinter `SCHEMA` folgt der Name der Datenbank.
+Mit `CREATE SCHEMA` legst du eine Datenbank an.
+Hinter `SCHEMA` steht der Name der Datenbank.
 
 ```sql
 CREATE SCHEMA Schule;
@@ -23,8 +23,8 @@ CREATE SCHEMA Schule;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Jetzt können wir die neu erstellte Datenbank mit dem Befehl `USE`
-nutzen. Hinter `USE` steht wieder der Name der Datenbank.
+Mit `USE` wählst du die neu erstellte Datenbank aus.
+Auch hier folgt der Datenbankname.
 
 ```sql
 USE Schule;
@@ -33,8 +33,8 @@ USE Schule;
 
 ## Erstellen von Tabellen
 
-Die neu erstellte Datenbank enthält noch keine Tabellen. Um neue
-Tabellen zu erstellen, nutzen wir den Befehl `CREATE TABLE`.
+Die neue Datenbank enthält zunächst keine Tabellen.
+Mit `CREATE TABLE` legst du neue Tabellen an.
 
 ```sql
 CREATE TABLE klassen (
@@ -46,14 +46,13 @@ CREATE TABLE klassen (
 ```
 
 
-Hinter `CREATE TABLE` steht der Name der Tabelle. Anschließend
-folgen in Klammern die Namen der Spalten mit dem entsprechenden
-Datentyp. Diese werden durch Kommas voneinander getrennt.
+Hinter `CREATE TABLE` steht der Tabellenname.
+Danach folgen in Klammern die Spaltennamen mit Datentypen.
+Die Spaltendefinitionen trennst du durch Kommas.
 
 ## Festlegen eines Primärschlüssels
 
-Nach der Angabe der Spalten und deren Datentypen können wir einen
-Primärschlüssel festlegen.
+Nach den Spaltendefinitionen legst du den Primärschlüssel fest.
 
 ```sql
 CREATE TABLE klassen (
@@ -67,17 +66,12 @@ CREATE TABLE klassen (
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Hierfür schreibt man in einer neuen Zeile die Schlüsselwörter
-`PRIMARY KEY` und anschließend in Klammern die Spalte, die man als
-Primärschlüssel ausgewählt hat.
+Dafür schreibst du `PRIMARY KEY` und in Klammern die gewählte Spalte.
 
-## Festlegen eines Sekundärschlüssels
+## Festlegen eines Fremdschlüssels
 
-Um einen Fremdschlüssel zu definieren, schreibt man hinter die
-Schlüsselwörter `FOREIGN KEY` in Klammern die gewünschte Spalte.
-Anschließend folgt das Schlüsselwort `REFERENCES`, der Name der
-Tabelle, aus der der Fremdschlüssel stammt, und der Name dieser Spalte in
-dieser Tabelle.
+Für einen Fremdschlüssel schreibst du hinter `FOREIGN KEY` die lokale Spalte in Klammern.
+Danach folgen `REFERENCES`, die referenzierte Tabelle und deren Spalte.
 
 ```sql
 CREATE TABLE schueler (
@@ -90,24 +84,22 @@ CREATE TABLE schueler (
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-## Zeilen Einfügen
+## Zeilen einfügen
 
-Mit dem `INSERT`-Befehl kann eine neue Zeile zu einer Tabelle
-hinzugefügt werden. Hinter `INSERT INTO` steht der Tabellenname.
-Anschließend folgen in Klammern und durch Kommas getrennt die
-Spaltennamen der Tabelle. Nach dem Schlüsselwort `VALUES` folgen
-die konkreten Werte, die in diese Spalten eingefügt werden sollen.
+Mit `INSERT` fügst du neue Zeilen in eine Tabelle ein.
+Hinter `INSERT INTO` steht der Tabellenname.
+Nach `VALUES` folgen die konkreten Werte in der Reihenfolge der Spalten.
 
 ```sql
 INSERT INTO klassen
-VALUES 
+VALUES
 (1, '12', 'D', 'H207');
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
 
-Die geänderte Tabelle können wir mit dem folgenden Befehl anzeigen.
+Mit dem folgenden Befehl zeigst du die geänderte Tabelle an.
 
 ```sql
 SELECT * FROM klassen;
@@ -116,12 +108,12 @@ SELECT * FROM klassen;
 </codapi-snippet>
 
 
-Wir können auch mehrere Zeilen auf einmal in eine Tabelle einfügen, wenn
-wir diese durch Kommas trennen.
+Du kannst auch mehrere Zeilen in einem Statement einfügen.
+Trenne die Tupel dafür mit Kommas.
 
 ```sql
 INSERT INTO klassen
-VALUES 
+VALUES
 (2, 'BF1', 'P', 'H205'),
 (3, '12', 'TGI', 'G252');
 ```

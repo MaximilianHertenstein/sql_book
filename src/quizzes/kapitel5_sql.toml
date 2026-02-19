@@ -32,12 +32,112 @@ context = "Mit ON wird festgelegt, wie die Tabellen beim Join verbunden werden."
 id = "c6e877e3-4b56-4c86-b629-604ce58c8e30"
 
 [[questions]]
-type = "Tracing"
-prompt.program = """
-SELECT *
-FROM kunden
-JOIN ausleihe kunden.kundenNr = ausleihe.kundenNr;
-"""
-answer.doesCompile = false
-context = "The ON keyword is missing before the join condition."
-id = "44fd94af-3fd7-48a9-a7ad-8baf4f5e84fa"
+type = "ShortAnswer"
+prompt.prompt = "Wie nennt man die Schreibweise tabellenname.spaltenname (2 Wörter)?"
+answer.answer = "qualifizierter Spaltenname"
+context = "Kapitel 5: Eindeutige Spaltenangaben bei JOINs"
+id = "566ba55f-79f8-4a62-bd5f-38ad6c96b651"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche JOIN-Bedingung verknüpft Fahrräder mit Fahrradarten korrekt?"
+prompt.distractors = [
+	"ON fahrradarten.bezeichnung = fahrraeder.bezeichnung",
+	"ON fahrradarten.fahrradartnr > fahrraeder.fahrradartnr",
+	"ON fahrraeder.fahrradnr = fahrradarten.fahrradartnr"
+]
+answer.answer = "ON fahrradarten.fahrradartnr = fahrraeder.fahrradartnr"
+context = "Verknüpft werden Primär- und Fremdschlüssel derselben Bedeutung."
+id = "6e04e7a0-e8ce-4cd3-83c1-41fe1ee7ca28"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Wozu dienen Tabellenaliase in JOIN-Abfragen?"
+prompt.distractors = [
+	"Sie ändern den Tabellennamen dauerhaft in der Datenbank.",
+	"Sie ersetzen die ON-Bedingung.",
+	"Sie sind nur bei OUTER JOIN erlaubt."
+]
+answer.answer = "Sie verkürzen Schreibweise und verbessern Lesbarkeit in der Abfrage."
+context = "Kapitel 5: Tabellen mit Aliasnamen abkürzen"
+id = "231b0a8f-3ca6-4ca7-b571-d3700730ddff"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt die Bedingung hinter ON fachlich (2 Wörter)?"
+answer.answer = "Join-Bedingung"
+context = "Kapitel 5: Fachbegriff für die Verknüpfungsbedingung"
+id = "7f44b6cf-af81-47d8-a4db-ddab970ce515"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu mehreren JOINs ist korrekt?"
+prompt.distractors = [
+	"Bei drei Tabellen reicht genau eine ON-Bedingung.",
+	"Mehrere JOINs dürfen nicht in einer FROM-Klausel stehen.",
+	"Qualifizierte Spaltennamen sind bei gleichen Spaltennamen verboten."
+]
+answer.answer = "Bei mehreren JOINs braucht jede Verknüpfung eine passende ON-Bedingung."
+context = "Kapitel 5: Abfragen über mehrere Tabellen"
+id = "d8be59f5-7eb9-4f3c-bb0e-c36be7e487f7"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage nutzt Aliasnamen korrekt?"
+prompt.distractors = [
+	"SELECT FA.bezeichnung FROM fahrradarten AS JOIN fahrraeder F ON ...",
+	"SELECT FA.bezeichnung FROM fahrradarten FA fahrraeder F ON FA.fahrradartnr = F.fahrradartnr;",
+	"SELECT FA.bezeichnung FROM fahrradarten FA JOIN fahrraeder F FA.fahrradartnr = F.fahrradartnr;"
+]
+answer.answer = "SELECT FA.bezeichnung FROM fahrradarten FA JOIN fahrraeder F ON FA.fahrradartnr = F.fahrradartnr;"
+context = "Aliasnamen stehen direkt hinter den Tabellennamen; die Join-Bedingung folgt mit ON."
+id = "6e5fbe40-9f24-4168-adf4-8c8a54515984"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du willst je Fahrrad die Fahrradart anzeigen. Welche Spaltenauswahl passt fachlich am besten?"
+prompt.distractors = [
+	"Nur fahrraeder.fahrradNr",
+	"Nur fahrradarten.fahrradartNr",
+	"Nur fahrraeder.fahrradartNr"
+]
+answer.answer = "fahrraeder.bezeichnung AS fahrrad und fahrradarten.bezeichnung AS fahrradart"
+context = "Für verständliche Ausgabe werden sprechende Bezeichnungen statt nur Schlüsselnummern gewählt."
+id = "d57722f5-d986-4e06-aeb8-ecb6f7614cc5"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage über ON in JOIN-Abfragen ist korrekt?"
+prompt.distractors = [
+	"ON ist optional, wenn Spaltennamen gleich heißen.",
+	"ON ersetzt die FROM-Klausel.",
+	"ON darf nur bei INNER JOIN mit Aliasen verwendet werden."
+]
+answer.answer = "ON enthält die Bedingung, welche Zeilen aus beiden Tabellen zusammengehören."
+context = "Kapitel 5: Join-Bedingung"
+id = "b7c614a0-5e83-42fd-9008-a923f3b7f370"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche FROM-Klausel mit Aliasen ist korrekt?"
+prompt.distractors = [
+	"FROM fahrradarten AS FA JOIN fahrraeder AS F FA.fahrradartnr = F.fahrradartnr",
+	"FROM fahrradarten, fahrraeder ON FA.fahrradartnr = F.fahrradartnr",
+	"FROM fahrradarten FA JOIN fahrraeder F USING ON FA.fahrradartnr = F.fahrradartnr"
+]
+answer.answer = "FROM fahrradarten FA JOIN fahrraeder F ON FA.fahrradartnr = F.fahrradartnr"
+context = "Korrekte Join-Struktur mit Aliasen und ON-Bedingung."
+id = "c59a4893-8923-4b8c-be69-d25824751403"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Warum sind qualifizierte Spaltennamen bei JOINs mit gleichnamigen Spalten wichtig?"
+prompt.distractors = [
+	"Damit SQL schneller ausführt.",
+	"Damit automatisch nach Primärschlüsseln sortiert wird.",
+	"Damit WHERE-Klauseln entfallen."
+]
+answer.answer = "Damit eindeutig ist, aus welcher Tabelle eine Spalte stammt."
+context = "Kapitel 5: Eindeutigkeit bei Spaltennamen"
+id = "f4d56699-a45d-40d2-8347-cd8b5ace5411"
+

@@ -2,10 +2,9 @@
 
 ## Addition, Multiplikation und Subtraktion
 
-Wir können die Sprache *SQL* als Taschenrechner verwenden. Dafür schreibt man den
-Rechenausdruck, den man auswerten möchte, hinter das Schlüsselwort
-`SELECT`. Hinter dem Ausdruck muss ein Semikolon stehen. 
-Das Ergebnis wird als Ergebnismenge ausgegeben.
+Du kannst *SQL* wie einen Taschenrechner nutzen.
+Schreibe den Rechenausdruck hinter `SELECT` und beende die Abfrage mit einem Semikolon.
+Das Ergebnis erscheint als Ergebnismenge.
 
 ```sql
 SELECT 1 + 1;
@@ -13,8 +12,8 @@ SELECT 1 + 1;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Es ist auch möglich, mehrere Rechnungen in einem Befehl auszuführen.
-Hierfür schreibt man ein Komma zwischen zwei Ausdrücken.
+Du kannst auch mehrere Ausdrücke in einer Abfrage berechnen.
+Trenne die Ausdrücke dabei mit einem Komma.
 
 ```sql
 SELECT 3 * 3, (1 - 2) * 3 + 5;
@@ -22,15 +21,14 @@ SELECT 3 * 3, (1 - 2) * 3 + 5;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-`SELECT` kann wie alle Schlüsselwörter in *SQL* klein oder großgeschrieben werden. Es ist jedoch üblich, Schlüsselwörter und
-Funktionsnamen groß zu schreiben.
+`SELECT` kann wie alle SQL-Schlüsselwörter klein oder groß geschrieben werden.
+Üblich ist die Großschreibung von Schlüsselwörtern und Funktionsnamen.
 
 ## Division
 
-In *SQL* können Zahlen mit dem Operator `/` dividiert werden. Wenn
-beide Operanden Integer sind, wird die ganzzahlige Division
-durchgeführt. Ansonsten wird das Ergebnis der normalen Division
-berechnet.
+In *SQL* dividierst du Zahlen mit `/`.
+Sind beide Operanden Integer, erhältst du eine ganzzahlige Division.
+Sobald ein Operand eine Kommazahl ist, bekommst du das reguläre Divisionsergebnis.
 
 ```sql
 SELECT 10/4, 10/4.0, 10.0/4;
@@ -40,9 +38,9 @@ SELECT 10/4, 10/4.0, 10.0/4;
 
 ## Funktionen
 
-In Ausdrücken können auch Funktionen verwendet werden. Ein wichtiges
-Beispiel ist die Funktion `ROUND`. Diese kann dazu genutzt werden,
-eine Kommazahl auf eine gewünschte Zahl von Nachkommastellen zu runden.
+In Ausdrücken kannst du auch Funktionen verwenden.
+Ein wichtiges Beispiel ist `ROUND`.
+Damit rundest du Kommazahlen auf eine gewünschte Anzahl von Nachkommastellen.
 
 ```sql
 SELECT ROUND(3.1415927, 2), 5 * ROUND(10.0 / 4, 1);
@@ -53,7 +51,7 @@ SELECT ROUND(3.1415927, 2), 5 * ROUND(10.0 / 4, 1);
 
 ## Aliase
 
-In *SQL* kann man die Spaltenüberschriften auch selbst wählen. Dafür wird das Schlüsselwort `AS` genutzt.
+Mit `AS` vergibst du eigene Spaltenüberschriften.
 
 ```sql
 SELECT 5 AS side_length, 5 * 5 AS area;
@@ -61,8 +59,7 @@ SELECT 5 AS side_length, 5 * 5 AS area;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Wenn man Leerzeichen in einem Spaltentitel verwenden möchte, muss man
-diesen zwischen zwei Backticks einschließen.
+Wenn ein Spaltentitel Leerzeichen enthält, setzt du ihn in Backticks.
 
 ```sql
 SELECT 5 AS `side length`, 5 * 5 AS area;
@@ -73,7 +70,7 @@ SELECT 5 AS `side length`, 5 * 5 AS area;
 
 ## Vergleiche, Wahrheitswerte und logische Operatoren
 
-In *SQL* kann man auch mit Wahrheitswerten arbeiten.
+In *SQL* kannst du auch mit Wahrheitswerten arbeiten.
 
 ```sql
 SELECT true, false;
@@ -82,9 +79,8 @@ SELECT true, false;
 </codapi-snippet>
 
 
-Beim Vergleich von zwei Werten erhält man immer einen Wahrheitswert.
-Z. B. wird ein Vergleich mit dem Gleichheitsoperator genau dann zu `true`
-ausgewertet, wenn beide Seiten den gleichen Wert haben.
+Beim Vergleich zweier Werte erhältst du immer einen Wahrheitswert.
+Ein Vergleich mit `=` ist genau dann `true`, wenn beide Seiten gleich sind.
 
 ```sql
 SELECT 1 = 1, 2 * 2 = 2 + 2, 3 = 4;
@@ -108,7 +104,7 @@ sehen.
 
 ## Verneinung mit NOT
 
-Durch das Schlüsselwort `NOT` wird ein Wahrheitswert verneint.
+Mit `NOT` verneinst du einen Wahrheitswert.
 
 ```sql
 SELECT NOT true, NOT false;
@@ -124,29 +120,24 @@ SELECT NOT 10 > 3;
 
 ## Verknüpfung von Bedingungen
 
-Mit den Schlüsselwörtern `AND` und `OR` können zwei
-boolesche Ausdrücke zu einem Ausdruck verknüpft werden.
+Mit `AND` und `OR` verknüpfst du zwei boolesche Ausdrücke.
 
-Bei der Verwendung von `AND` wird der gesamte Ausdruck genau
-dann zu `true` ausgewertet, wenn beide Teilausdrücke zu
-`true` ausgewertet werden.
+Bei `AND` ist der Gesamtausdruck nur dann `true`, wenn beide Teilausdrücke `true` sind.
 
 ```sql
-SELECT 10 > 3 and 2 = 2;
+SELECT 10 > 3 AND 2 = 2;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
 
 ```sql
-SELECT 2 > 1 and 4 != 4;
+SELECT 2 > 1 AND 4 != 4;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-Werden zwei boolesche Ausdrücke mit `OR` verknüpft, wird der
-gesamte Ausdruck genau dann zu `true` ausgewertet, wenn mindestens
-einer der Teilausdrücke zu `true` ausgewertet wird.
+Bei `OR` ist der Gesamtausdruck `true`, sobald mindestens ein Teilausdruck `true` ist.
 
 ```sql
 SELECT 1 = 1 OR 2 > 3;
@@ -170,7 +161,7 @@ In der Mathematik gilt die Punkt-vor-Strich-Regel. Diese besagt, dass Mal und Ge
 
 Wenn die Addition zuerst ausgewertet werden soll, ist eine Klammer notwendig.
 \\[
-(1 + 2) \cdot 3 = 3 \cdot 3= 9
+(1 + 2) \cdot 3 = 3 \cdot 3 = 9
 \\]
 
 
@@ -185,7 +176,7 @@ SELECT true OR false AND false;
 </codapi-snippet>
 
 
-Auch hier kann mithilfe von Klammern die Reihenfolge vorgegeben werden.
+Auch hier legst du mit Klammern die Auswertungsreihenfolge fest.
 
 ```sql
 SELECT (true OR false) AND false;
@@ -206,14 +197,11 @@ SELECT '10' < '2';
 </codapi-snippet>
 
 
-Der Grund dafür ist, dass Zeichenketten anders verglichen werden, als
-wir das von Zahlen kennen. Die Art des Vergleichs nennt sich
-lexikalisch. Hierfür vergleicht man zunächst einzelne Buchstaben. Ein
-Buchstabe ist größer als ein anderer Buchstabe, wenn dieser im Alphabet
-später auftaucht. Zwei Ziffern werden wie Zahlen verglichen. Beim
-Vergleich zweier Zeichenketten werden zuerst die Zeichen am Anfang
-verglichen. Größer ist der String mit dem größeren ersten Zeichen. Wenn
-diese gleich sind, fährt man mit dem nächsten Zeichen fort.
+Zeichenketten werden anders verglichen als Zahlen.
+Dieser Vergleich heißt lexikalisch.
+Dabei werden die Zeichen von links nach rechts verglichen.
+Unterscheiden sich die ersten Zeichen, entscheidet deren Reihenfolge im Alphabet.
+Sind sie gleich, wird mit dem nächsten Zeichen weiterverglichen.
 
 
 
@@ -224,8 +212,8 @@ SELECT 'abc' > 'abd';
 </codapi-snippet>
 
 
-Wenn man am Ende eines Strings angelangt ist, und im zweiten String noch
-weitere Zeichen sind, ist der zweite String größer.
+Wenn du am Ende eines Strings angekommen bist und der zweite String noch
+weitere Zeichen hat, ist der zweite String größer.
 
 ```sql
 SELECT 'ab' < 'abd';
@@ -233,7 +221,7 @@ SELECT 'ab' < 'abd';
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
-##  Textmustererkennung
+## Textmustererkennung
 
 Um Strings mit Textmustern zu vergleichen, kann der Operator
 `LIKE` verwendet werden. Dieser stellt zwei Platzhalter zur
@@ -261,8 +249,8 @@ Verfügung:
     ```
     <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
     </codapi-snippet>
-    
-     ```sql
+
+    ```sql
     SELECT 'Huber' LIKE 'Hu___';
     ```
     <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">

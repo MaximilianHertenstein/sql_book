@@ -32,12 +32,116 @@ context = "GROUP BY fasst Zeilen mit gleichem Wert zusammen."
 id = "0db0f6ac-00f4-47a8-bc48-2e576738e7fc"
 
 [[questions]]
-type = "Tracing"
-prompt.program = """
-SELECT geschlecht, COUNT(*)
-FROM kunden
-GROUP geschlecht;
-"""
-answer.doesCompile = false
-context = "GROUP BY must be used for grouping. GROUP on its own is not valid."
-id = "0480d66f-f349-4c82-b460-a2fd3ca5323c"
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel filtert Zeilen vor der Gruppierung?"
+prompt.distractors = [
+	"HAVING",
+	"ORDER BY",
+	"COUNT"
+]
+answer.answer = "WHERE"
+context = "WHERE wird vor GROUP BY ausgewertet."
+id = "4339c6dc-52ab-4a36-8388-78dfffc73112"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel filtert Gruppen nach der Aggregation?"
+prompt.distractors = [
+	"WHERE",
+	"ORDER BY",
+	"FROM"
+]
+answer.answer = "HAVING"
+context = "HAVING filtert auf Gruppenebene nach GROUP BY."
+id = "4d944964-9dd1-4c03-9118-dcb9528036bc"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zählt Fahrräder pro Bezeichnung korrekt?"
+prompt.distractors = [
+	"SELECT bezeichnung, COUNT(fahrradNr) FROM fahrraeder;",
+	"SELECT COUNT(fahrradNr) FROM fahrraeder GROUP bezeichnung;",
+	"SELECT bezeichnung, COUNT(fahrradNr) FROM fahrraeder HAVING bezeichnung;"
+]
+answer.answer = "SELECT bezeichnung, COUNT(fahrradNr) FROM fahrraeder GROUP BY bezeichnung;"
+context = "Gruppierung nach bezeichnung und Aggregation mit COUNT pro Gruppe."
+id = "d835c932-c396-4701-ae72-464964722a53"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Bedingung ist in HAVING bei einer Gruppierung nach bezeichnung zulässig?"
+prompt.distractors = [
+	"HAVING fahrradNr > 4",
+	"HAVING tagesmietpreis > 15",
+	"HAVING bezeichnung = COUNT(*)"
+]
+answer.answer = "HAVING COUNT(fahrradNr) > 4"
+context = "In HAVING sind Aggregat-Ausdrücke oder der Gruppierungsausdruck erlaubt."
+id = "dd3ea8c5-ad65-4507-a3c7-a11122f34265"
+
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Aggregatfunktion wird im Kapitel verwendet, um die Größe einer Gruppe zu bestimmen?"
+answer.answer = "COUNT"
+context = "Kapitel 7: Gruppengröße pro Gruppe"
+id = "d08ee61b-774b-4de9-9ee7-c10a38cb2af8"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage ist korrekt?"
+prompt.distractors = [
+	"HAVING ersetzt immer GROUP BY.",
+	"WHERE kann nur nach GROUP BY stehen.",
+	"Bei GROUP BY dürfen in SELECT beliebige Detailspalten ohne Aggregation stehen."
+]
+answer.answer = "Bei GROUP BY dürfen in SELECT nur Aggregatausdrücke und Gruppierungsausdrücke stehen."
+context = "Kapitel 7: Zulässige Ausdrücke bei Gruppierung"
+id = "82ee93fa-e223-4734-a16c-bde4f474f7d0"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrageidee passt, wenn nur Gruppen mit mehr als 3 Zeilen angezeigt werden sollen?"
+prompt.distractors = [
+	"WHERE COUNT(*) > 3",
+	"ORDER BY COUNT(*) > 3",
+	"GROUP BY COUNT(*) > 3"
+]
+answer.answer = "HAVING COUNT(*) > 3"
+context = "Bedingungen auf Gruppenergebnisse gehören in HAVING."
+id = "118bece2-01bb-4a7c-ab98-31b26c7e7090"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Reihenfolge ist bei Gruppierungsabfragen korrekt?"
+prompt.distractors = [
+	"SELECT ... FROM ... HAVING ... GROUP BY ...",
+	"SELECT ... GROUP BY ... FROM ... HAVING ...",
+	"FROM ... WHERE ... GROUP BY ... SELECT ..."
+]
+answer.answer = "SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ..."
+context = "Klauselreihenfolge bei Gruppierung mit Gruppenfilter."
+id = "9a6668dd-f328-4eb7-b5ca-486008ad0ea0"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche SELECT-Liste ist bei GROUP BY bezeichnung zulässig?"
+prompt.distractors = [
+	"SELECT fahrradNr, COUNT(*)",
+	"SELECT tagesmietpreis, COUNT(*)",
+	"SELECT fahrradNr, bezeichnung"
+]
+answer.answer = "SELECT bezeichnung, COUNT(*)"
+context = "Erlaubt sind Gruppierungsausdruck und Aggregatausdrücke."
+id = "9912f42e-cec1-4f11-8139-84c00f2632ee"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu WHERE und HAVING stimmt?"
+prompt.distractors = [
+	"HAVING filtert immer vor GROUP BY.",
+	"WHERE kann Aggregatbedingungen wie COUNT(*) > 3 direkt prüfen.",
+	"WHERE und HAVING sind in Gruppierungsabfragen austauschbar."
+]
+answer.answer = "WHERE filtert Zeilen vor der Gruppierung, HAVING filtert Gruppen nach der Gruppierung."
+context = "Kapitel 7: Unterschied WHERE vs. HAVING"
+id = "af417a3d-9d1c-4f57-b8db-6d93e0a0db38"
