@@ -1,6 +1,5 @@
 # SQL Book
 
-[![GHCR Image](https://img.shields.io/badge/ghcr.io%2FMaximilianHertenstein%2Fsql_book-latest-blue?logo=github)](https://ghcr.io/MaximilianHertenstein/sql_book)
 
 An interactive SQL book built with [mdBook](https://rust-lang.github.io/mdBook/), featuring live, browser-based SQL execution powered by [PGlite](https://github.com/electric-sql/pglite) and [codapi](https://github.com/nalgeon/codapi).
 
