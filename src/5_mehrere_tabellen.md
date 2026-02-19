@@ -127,8 +127,12 @@ Hinter `ON` wird festgelegt, welche Zeilen zusammengehören.
 Hier werden Zeilen kombiniert, deren Einträge in `fahrradartnr` gleich
 sind. Diese Bedingung heißt Join-Bedingung. Weil die Spalte in beiden Tabellen vorkommt, schreibt man
 `fahrradarten.fahrradartnr` und `fahrraeder.fahrradartnr`, um sie klar
-zu unterscheiden. Solche Angaben nennt man qualifizierte Spaltennamen.
+zu unterscheiden. 
+
+```admonish info
+Solche Angaben nennt man qualifizierte Spaltennamen.
 Ein qualifizierter Spaltenname hat die Form `tabellenname.spaltenname`.
+```
 
 Auch hinter `SELECT` ist diese Schreibweise wichtig, um
 Uneindeutigkeiten zu vermeiden. Spalten mit gleichem Namen kann man mit

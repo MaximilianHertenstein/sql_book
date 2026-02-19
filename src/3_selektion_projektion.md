@@ -139,7 +139,6 @@ FROM Kunden;
 
 
 Eine solche Auswahl von Spalten einer Tabelle nennt man Projektion.
-Der Begriff stammt aus der Relationenalgebra.
 
 ## Berechnete Spalten
 
@@ -201,7 +200,6 @@ WHERE tagesmietpreis < 10;
 
 
 Eine solche Auswahl von Zeilen nennt man Selektion.
-Auch dieser Begriff stammt aus der Relationenalgebra.
 
 ## Veranschaulichung
 

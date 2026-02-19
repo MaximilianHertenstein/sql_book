@@ -41,6 +41,12 @@ mdbook-admonish install .
 - **Multiple engines** — Supports PGlite (Postgres), SQLite (via WASI), and MySQL sandbox environments.
 - **Quiz support** — Uses `mdbook-quiz` for interactive learning exercises.
 
+## Writing Style (Klasse 12/13)
+
+- Fachbegriffe aus der Datenbanktheorie werden als bekannt vorausgesetzt.
+- Neue Spezialbegriffe werden nur kurz und direkt beim ersten Auftreten erklärt.
+- Pro Kapitel maximal **eine** kurze `admonish info`-Box für Begriffsklärung.
+
 ## Key Files
 
 - `src/` — Markdown source files for book chapters.
