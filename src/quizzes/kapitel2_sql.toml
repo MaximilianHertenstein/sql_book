@@ -40,5 +40,5 @@ CREATE TABLE kunden (
 );
 """
 answer.doesCompile = false
-context = "Zwischen den Spalten fehlt ein Komma. Dadurch ist das CREATE TABLE-Statement syntaktisch ungültig."
+context = "A comma is missing between the columns. This makes the CREATE TABLE statement syntactically invalid."
 id = "e9d8cc87-7732-43f0-bc7e-62026f4f589a"

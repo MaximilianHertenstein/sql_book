@@ -39,5 +39,5 @@ FROM kunden
 WHERE ;
 """
 answer.doesCompile = false
-context = "Nach WHERE muss eine Bedingung stehen. Ohne Bedingung ist die Abfrage syntaktisch falsch."
+context = "A condition must follow WHERE. Without a condition, the query is syntactically invalid."
 id = "e2fe01f6-b670-424d-81df-45cf21e893d7"

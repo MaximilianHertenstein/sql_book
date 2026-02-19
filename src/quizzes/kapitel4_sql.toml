@@ -39,5 +39,5 @@ FROM kunden
 ORDER name;
 """
 answer.doesCompile = false
-context = "Zum Sortieren wird ORDER BY benötigt. ORDER allein ist kein gültiger SQL-Befehl."
+context = "ORDER BY is required for sorting. ORDER on its own is not a valid SQL clause."
 id = "e4f3fa0e-198e-487b-b05c-ec663f6a6567"

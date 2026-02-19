@@ -39,5 +39,5 @@ FROM kunden
 GROUP geschlecht;
 """
 answer.doesCompile = false
-context = "Für Gruppierungen muss GROUP BY verwendet werden. GROUP allein ist nicht gültig."
+context = "GROUP BY must be used for grouping. GROUP on its own is not valid."
 id = "0480d66f-f349-4c82-b460-a2fd3ca5323c"

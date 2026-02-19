@@ -39,5 +39,5 @@ FROM kunden
 JOIN ausleihe kunden.kundenNr = ausleihe.kundenNr;
 """
 answer.doesCompile = false
-context = "Bei JOIN fehlt das Schlüsselwort ON vor der Verknüpfungsbedingung."
+context = "The ON keyword is missing before the join condition."
 id = "44fd94af-3fd7-48a9-a7ad-8baf4f5e84fa"

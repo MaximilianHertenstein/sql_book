@@ -38,5 +38,5 @@ SELECT AVG()
 FROM fahrraeder;
 """
 answer.doesCompile = false
-context = "AVG benötigt einen Ausdruck oder Spaltennamen in den Klammern."
+context = "AVG requires an expression or a column name inside the parentheses."
 id = "774862db-0898-44ec-88f3-54f8fcafbc57"

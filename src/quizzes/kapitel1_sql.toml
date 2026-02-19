@@ -34,9 +34,8 @@ id = "4f5c236f-3022-4f26-a8f5-8a5c15e2de34"
 [[questions]]
 type = "Tracing"
 prompt.program = """
--- Läuft diese SQL-Abfrage ohne Syntaxfehler?
 SELECT 2 + ;
 """
 answer.doesCompile = false
-context = "Nach dem Pluszeichen fehlt ein Wert. Die SQL-Anweisung ist daher syntaktisch ungültig."
+context = "A value is missing after the plus sign. Therefore, the SQL statement is syntactically invalid."
 id = "69fdc748-35ec-4d8f-9dca-c3b072e3f3e1"
