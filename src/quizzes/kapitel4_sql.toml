@@ -1,20 +1,43 @@
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Welches Schlüsselwort entfernt doppelte Zeilen aus einer Ergebnismenge?"
+prompt.prompt = "Welches SQL-Schlüsselwort entfernt doppelte Zeilen aus einer Ergebnismenge?"
 answer.answer = "DISTINCT"
 context = "Kapitel 4: Duplikate entfernen"
 id = "45d9eb2c-f22c-4b2f-813d-9883f8dc0218"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Mit welchem SQL-Schlüsselwort sortierst du Ergebnisse?"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter brauchst du, um Ergebnisse zu sortieren?"
 answer.answer = "ORDER BY"
 context = "Kapitel 4: Sortieren"
 id = "359e54e6-b9e4-44a5-bc72-0d9732689396"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Welches Schlüsselwort nutzt du häufig zusammen mit ORDER BY für absteigende Sortierung?"
+prompt.prompt = "Welches SQL-Schlüsselwort steht bei ORDER BY für absteigende Sortierung?"
 answer.answer = "DESC"
 context = "Kapitel 4: Sortierrichtung"
 id = "43830bf9-7140-422c-a670-58abda2a4b85"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel sortiert eine Ergebnismenge?"
+prompt.distractors = [
+	"WHERE",
+	"HAVING",
+	"DISTINCT"
+]
+answer.answer = "ORDER BY"
+context = "ORDER BY sortiert die ausgegebenen Zeilen nach einer oder mehreren Spalten."
+id = "83f6f1ca-b9f9-4a8e-8d15-5d3225ef95ae"
+
+[[questions]]
+type = "Tracing"
+prompt.program = """
+SELECT name
+FROM kunden
+ORDER name;
+"""
+answer.doesCompile = false
+context = "Zum Sortieren wird ORDER BY benötigt. ORDER allein ist kein gültiger SQL-Befehl."
+id = "e4f3fa0e-198e-487b-b05c-ec663f6a6567"

@@ -1,20 +1,43 @@
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Welches Schlüsselwort filtert Zeilen in einer SELECT-Abfrage?"
+prompt.prompt = "Welches SQL-Schlüsselwort filtert Zeilen in einer Abfrage?"
 answer.answer = "WHERE"
 context = "Kapitel 3: Selektion"
 id = "3360f3db-4216-4691-89f0-e5c6d91f8b2f"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Wie nennt man die Auswahl bestimmter Spalten in einer Tabelle?"
+prompt.prompt = "Wie heißt der Fachbegriff für die Auswahl bestimmter Spalten (1 Wort)?"
 answer.answer = "Projektion"
 context = "Kapitel 3: Projektion"
 id = "cad38d16-1a5a-4a57-aa93-278f78455a8c"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Wie nennt man die Auswahl bestimmter Zeilen in einer Tabelle?"
+prompt.prompt = "Wie heißt der Fachbegriff für die Auswahl bestimmter Zeilen (1 Wort)?"
 answer.answer = "Selektion"
 context = "Kapitel 3: Selektion"
 id = "7ef96b86-438a-430d-b43a-fdca31f1d0c7"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel filtert Zeilen in einer Abfrage?"
+prompt.distractors = [
+	"ORDER BY",
+	"GROUP BY",
+	"FROM"
+]
+answer.answer = "WHERE"
+context = "Die WHERE-Klausel schränkt die Zeilen der Ergebnismenge ein."
+id = "36f3f65e-45ad-4f9e-8fb8-97d230ce73cf"
+
+[[questions]]
+type = "Tracing"
+prompt.program = """
+SELECT name
+FROM kunden
+WHERE ;
+"""
+answer.doesCompile = false
+context = "Nach WHERE muss eine Bedingung stehen. Ohne Bedingung ist die Abfrage syntaktisch falsch."
+id = "e2fe01f6-b670-424d-81df-45cf21e893d7"

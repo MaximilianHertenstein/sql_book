@@ -1,20 +1,43 @@
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Welches Schlüsselwort verbindet Zeilen aus mehreren Tabellen?"
+prompt.prompt = "Welches allgemeine SQL-Schlüsselwort verbindet Zeilen aus mehreren Tabellen (1 Wort)?"
 answer.answer = "JOIN"
 context = "Kapitel 5: Mehrere Tabellen"
 id = "c53e611e-16fc-4ee1-9ec6-edc7e4f5f992"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Mit welchem Schlüsselwort formulierst du die Verknüpfungsbedingung bei einem JOIN?"
+prompt.prompt = "Mit welchem SQL-Schlüsselwort formulierst du die Verknüpfungsbedingung zwischen zwei Tabellen (1 Wort)?"
 answer.answer = "ON"
 context = "Kapitel 5: Join-Bedingung"
 id = "9e9ed76f-4edb-4d65-b18a-aee4fc0f1466"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Wie heißt der Join-Typ, der nur passende Datensätze aus beiden Tabellen liefert?"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter bezeichnen den Join-Typ mit nur passenden Datensätzen aus beiden Tabellen?"
 answer.answer = "INNER JOIN"
 context = "Kapitel 5: Join-Typen"
 id = "7080c177-b78a-4232-89ff-9952a1254f31"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welches Schlüsselwort leitet bei einem Join die Verknüpfungsbedingung ein?"
+prompt.distractors = [
+	"BY",
+	"USING",
+	"WITH"
+]
+answer.answer = "ON"
+context = "Mit ON wird festgelegt, wie die Tabellen beim Join verbunden werden."
+id = "c6e877e3-4b56-4c86-b629-604ce58c8e30"
+
+[[questions]]
+type = "Tracing"
+prompt.program = """
+SELECT *
+FROM kunden
+JOIN ausleihe kunden.kundenNr = ausleihe.kundenNr;
+"""
+answer.doesCompile = false
+context = "Bei JOIN fehlt das Schlüsselwort ON vor der Verknüpfungsbedingung."
+id = "44fd94af-3fd7-48a9-a7ad-8baf4f5e84fa"

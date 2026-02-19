@@ -1,20 +1,44 @@
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Mit welchem SQL-Befehl legst du eine neue Tabelle an?"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter brauchst du, um eine neue Tabelle anzulegen?"
 answer.answer = "CREATE TABLE"
 context = "Kapitel 2: Datenbank erstellen"
 id = "4a74f3f8-fd6a-4f3b-8a70-2fc13f9afc88"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Welches Schlüsselwort markiert den Primärschlüssel einer Tabelle?"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter markieren den Primärschlüssel?"
 answer.answer = "PRIMARY KEY"
 context = "Kapitel 2: Schlüssel"
 id = "5f6ca9e7-e0ef-4609-8268-d4f8fe2b5a8a"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Mit welchem SQL-Befehl fügst du neue Datensätze in eine Tabelle ein?"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter brauchst du, um neue Datensätze in eine Tabelle einzufügen?"
 answer.answer = "INSERT INTO"
 context = "Kapitel 2: Daten einfügen"
 id = "5ab1e708-cf0d-472c-8fd0-2046dadf6b0a"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Schlüsselwort-Kombination legt eine Tabelle an?"
+prompt.distractors = [
+	"CREATE INTO",
+	"INSERT TABLE",
+	"TABLE CREATE"
+]
+answer.answer = "CREATE TABLE"
+context = "Zum Anlegen einer Tabelle wird CREATE TABLE verwendet."
+id = "dc65f747-fd4b-4b6e-a164-fe6da6ce4ecf"
+
+[[questions]]
+type = "Tracing"
+prompt.program = """
+CREATE TABLE kunden (
+	kundenNr INT PRIMARY KEY
+	name TEXT
+);
+"""
+answer.doesCompile = false
+context = "Zwischen den Spalten fehlt ein Komma. Dadurch ist das CREATE TABLE-Statement syntaktisch ungültig."
+id = "e9d8cc87-7732-43f0-bc7e-62026f4f589a"

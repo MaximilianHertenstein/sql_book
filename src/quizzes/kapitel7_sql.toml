@@ -1,20 +1,43 @@
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Mit welchem Schlüsselwort gruppierst du Zeilen nach einer Spalte?"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter brauchst du, um Zeilen nach einer Spalte zu gruppieren?"
 answer.answer = "GROUP BY"
 context = "Kapitel 7: Gruppierung"
 id = "c1079abf-a94d-4f67-b426-04dd5ee4d56f"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Mit welchem Schlüsselwort filterst du Gruppen nach der Aggregation?"
+prompt.prompt = "Mit welchem SQL-Schlüsselwort filterst du Gruppen nach der Aggregation (1 Wort)?"
 answer.answer = "HAVING"
 context = "Kapitel 7: HAVING"
 id = "db57f047-24cc-4de6-ab08-42e0e318cd13"
 
 [[questions]]
 type = "ShortAnswer"
-prompt.prompt = "Welche Klausel wird typischerweise vor HAVING ausgewertet: WHERE oder HAVING?"
+prompt.prompt = "Welche SQL-Klausel wird vor HAVING ausgewertet, um Zeilen vor der Gruppierung zu filtern?"
 answer.answer = "WHERE"
 context = "Kapitel 7: Reihenfolge"
 id = "75983633-d149-492f-93aa-f95f8042fd44"
+
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel gruppiert Zeilen nach einem gemeinsamen Wert?"
+prompt.distractors = [
+	"ORDER BY",
+	"HAVING",
+	"WHERE"
+]
+answer.answer = "GROUP BY"
+context = "GROUP BY fasst Zeilen mit gleichem Wert zusammen."
+id = "0db0f6ac-00f4-47a8-bc48-2e576738e7fc"
+
+[[questions]]
+type = "Tracing"
+prompt.program = """
+SELECT geschlecht, COUNT(*)
+FROM kunden
+GROUP geschlecht;
+"""
+answer.doesCompile = false
+context = "Für Gruppierungen muss GROUP BY verwendet werden. GROUP allein ist nicht gültig."
+id = "0480d66f-f349-4c82-b460-a2fd3ca5323c"
