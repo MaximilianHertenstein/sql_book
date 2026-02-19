@@ -102,7 +102,7 @@ where fahrradartnr = 5;
 </codapi-snippet>
 
 
-Gneau so findet man zu jedem Fahrrad die Bezeichnung der Fahrradrt.
+Genau so findet man zu jedem anderen Fahrrad die Bezeichnung der Fahrradart. In den folgenen Tabellen ist markiert, welcher Fremdschlüssel auf welchen Primärschlüssel verweist.
 
 
 <img src="join_farbig.svg" alt="Join-Diagramm" style="display: block; margin: 0 auto; width: 100%; height: auto; background-color: #fff;" />
@@ -112,50 +112,41 @@ Gneau so findet man zu jedem Fahrrad die Bezeichnung der Fahrradrt.
 ## Abfragen über mehrere Tabellen
 
 Wir haben gerade gesehen, dass man Fremdschlüssel dazu nutzen kann, um
-Informationen aus mehreren Tabellen zu kombinieren. Diese Verbindungen
-können auch in einer einzigen SQL-Abfrage genutzt werden. Hierfür
-schreibt man die Tabellen in einem `SELECT`-*Statement* mit Kommas
-getrennt hinter `FROM`.
+Informationen aus mehreren Tabellen zu kombinieren. Eine solceh Verbindung
+kann auch in einem einzigen  `SELECT`-*Statement* genutzt werden.
 
-Wenn man z. B. die Bezeichnung jedes Fahrrads zusammen mit der
-Bezeichnung der Fahrradart anzeigen will, benötigt man die Tabellen
-*Fahrradarten* und *Fahrraeder*. Wenn in den Tabellen zwei Spalten mit
-den selben Namen vorkommen, muss man den Tabellen in der
-`FROM`-Klausel verschiedene Namen geben. Diese schreibt man hinter
-die Namen der Tabellen. Anschließend kann man auf die Werte in den
-Spalten zugreifen, indem man hinter den neuen Tabellennamen einen Punkt
-und den Namen der Spalte schreibt. Um die Spalten im Ergebnis
-auseinander halten zu können müssen diese mit `AS` umbenannt
-werden.
+Dabei schreibt man beide Tabellen hinter `FROM`. Zwischen den Tabellen steht `JOIN` (verbinden).
+
 
 ```sql
-SELECT FA.bezeichnung AS Fahrradartbezeichnung, F.bezeichnung AS Fahrradbezeichnung
-FROM Fahrradarten FA, Fahrraeder F;
+...
+FROM fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartnr = fahrraeder.fahrradartnr;
+...
+```
+
+Hinter `ON` wird fesgelegt, dass die Zeilen zueinander kombiniert werden, deren Einträge in den Spalten mit dem Namen `fahrradartnr` gleich sind.
+Weil die Spalte `fahrradartnr` in beiden Tabellen vorkommt, schreibt man `fahrradarten.fahrradartnr` und `fahrraeder.fahrradartnr` um diese zu unterscheiden.
+
+Auch bei der Auswahl der Spalten hinter `SELECT` muss diese Schreibweise genutzt werden um Uneindeutigkeiten zu vermeiden. Hierbei muss man Spalten mit einem uneindeutigen Namen
+mit `AS` umbennen.
+
+```sql
+SELECT fahrraeder.bezeichnung AS fahrrad,
+       fahrradarten.bezeichnung AS fahrradart 
+FROM 
+fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartnr = fahrraeder.fahrradartnr;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
 
 
-
-Das Ergebnis macht schon auf den ersten Blick wenig Sinn. Das *Comus
-Einrad* ist sicher nicht gleichzeitig ein *Mountain-Bike* und ein
-*Cross-Bike*. Der Grund für dieses überraschende Ergebnis ist, dass jede
-*Bezeichnung* aus der Tabelle *Fahrradarten* mit jeder *Bezeichnung* aus
-der Tabelle *Fahrraeder* kombiniert wurde. Um zu jedem Fahrrad nur die
-korrekte Fahrradart anzuzeigen, müssen wir ausnutzen, dass die Spalte
-*FahrradartNr* in beiden Tabellen vorkommt.
-
-
-
-Im Ergebnis sollten die Zeilen aus der Tabelle *Fahrraeder* nur mit den
-Zeilen aus der Tabelle *Fahrradarten* kombiniert werden, bei denen der
-Wert in den Spalten mit dem Namen *fahrradartNr* übereinstimmt. Dies
-wird mit der folgenden Abfrage realisiert.
+Um nicht immer den ganzen Tabellennamen schreiben zu müssen, kann man den Tabellen hinter `FROM` einen Abkürzung geben.
 
 ```sql
-SELECT FA.bezeichnung AS Fahrradartbezeichnung, F.bezeichnung AS Fahrradbezeichnung
-WHERE FA.fahrradartNr = F.fahrradartNr;
+SELECT F.bezeichnung AS fahrrad,
+       FA.bezeichnung AS fahrradart 
+FROM 
+fahrradarten FA JOIN fahrraeder  F ON FA.fahrradartnr = F.fahrradartnr;
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
-
