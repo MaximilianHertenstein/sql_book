@@ -9,7 +9,7 @@ CREATE TABLE kunden (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -22,7 +22,7 @@ INSERT INTO kunden VALUES
 (237, 'Yilmaz', 'Ali', 'm'),
 (238, 'Berger', 'Johann', 'm');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -36,7 +36,7 @@ werden.
 SELECT geschlecht
 FROM Kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -49,7 +49,7 @@ Mit `DISTINCT` entfernst du diese Duplikate.
 SELECT DISTINCT geschlecht
 FROM Kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -64,7 +64,7 @@ SELECT Vorname, Name
 FROM Kunden
 ORDER BY Name DESC;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 Du kannst auch nach mehreren Spalten sortieren.
@@ -77,7 +77,7 @@ SELECT vorname, name
 FROM Kunden
 ORDER BY name DESC, vorname ASC;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 

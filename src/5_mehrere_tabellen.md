@@ -8,7 +8,7 @@ CREATE TABLE fahrradarten (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -29,7 +29,7 @@ INSERT INTO fahrradarten VALUES
 (14, 'Kinderanhänger');
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -43,7 +43,7 @@ CREATE TABLE fahrraeder (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -58,7 +58,7 @@ INSERT INTO fahrraeder VALUES
 (8, 'Comus Einrad XM', 8.40, 5);
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -69,7 +69,7 @@ Wenn du zu einem Fahrrad die Fahrradart bestimmen willst, reichen die Informatio
 ```sql
 SELECT * FROM fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -81,7 +81,7 @@ Diese Nummer ist ein Fremdschlüssel auf den Primärschlüssel der Tabelle *Fahr
 ```sql
 SELECT * FROM fahrradarten;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -96,7 +96,7 @@ Zum Beispiel hat das erste Fahrrad die Fahrradnummer 5. In der Tabelle *Fahrrada
 SELECT * FROM fahrradarten
 WHERE fahrradartnr = 5;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -144,7 +144,7 @@ SELECT fahrraeder.bezeichnung AS fahrrad,
 FROM
 fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartnr = fahrraeder.fahrradartnr;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -157,7 +157,7 @@ SELECT F.bezeichnung AS fahrrad,
 FROM
 fahrradarten FA JOIN fahrraeder  F ON FA.fahrradartnr = F.fahrradartnr;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ## Abfragen über mehrere Tabellen

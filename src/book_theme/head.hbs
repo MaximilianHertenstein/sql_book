@@ -1,30 +1,29 @@
+<link rel="stylesheet" href="https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.css" />
+<script src="https://unpkg.com/@antonz/runno@0.6.1/dist/runno.js"></script>
+<script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/engine/wasi.js"></script>
+<script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js"></script>
+<script src="https://unpkg.com/sql-workbench-embedded@0.1.2"></script>
+<script>
+  document.addEventListener('keydown', function (e) {
+    if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+      return;
+    }
 
+    if (e.key !== 's' && e.key !== '/') {
+      return;
+    }
 
-  <script src="https://unpkg.com/@antonz/runno@0.6.1/dist/runno.js"></script>
-  <script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/engine/wasi.js"></script>
-  <script src="https://unpkg.com/@antonz/codapi@0.20.0/dist/snippet.js"></script>
-  <script src="https://unpkg.com/sql-workbench-embedded@0.1.2"></script>
-  <script>
-    document.addEventListener('keydown', function(e) {
-      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
-        return;
-      }
+    const target = e.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
 
-      if (e.key !== 's' && e.key !== '/') {
-        return;
-      }
+    const isEditable = target.isContentEditable ||
+      target.matches('input, textarea, [contenteditable=""], [contenteditable="true"]');
+    const isCodeContext = !!target.closest('codapi-snippet, .codapi, .cm-editor, .cm-content, pre, code');
 
-      const target = e.target;
-      if (!(target instanceof Element)) {
-        return;
-      }
-
-      const isEditable = target.isContentEditable ||
-        target.matches('input, textarea, [contenteditable=""], [contenteditable="true"]');
-      const isCodeContext = !!target.closest('codapi-snippet, .codapi, .cm-editor, .cm-content, pre, code');
-
-      if (isEditable || isCodeContext) {
-        e.stopImmediatePropagation();
-      }
-    }, true);
-  </script>
+    if (isEditable || isCodeContext) {
+      e.stopImmediatePropagation();
+    }
+  }, true);
+</script>

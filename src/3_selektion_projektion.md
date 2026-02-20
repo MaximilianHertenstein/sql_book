@@ -16,7 +16,7 @@ CREATE TABLE fahrradarten (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -37,7 +37,7 @@ INSERT INTO fahrradarten VALUES
 (14, 'Kinderanhänger');
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -51,7 +51,7 @@ CREATE TABLE fahrraeder (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -66,7 +66,7 @@ INSERT INTO fahrraeder VALUES
 (8, 'Comus Einrad XM', 8.40, 5);
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -79,7 +79,7 @@ CREATE TABLE kunden (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -92,7 +92,7 @@ INSERT INTO kunden VALUES
 (237, 'Yilmaz', 'Ali', 'm'),
 (238, 'Berger', 'Johann', 'm');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -117,7 +117,7 @@ man mit dem folgenden Befehl.
 SELECT *
 FROM Kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ## Projektionen
@@ -132,7 +132,7 @@ der Tabelle, aus der die Spalten stammen.
 SELECT vorname, name
 FROM Kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -157,7 +157,7 @@ stellen:
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10
 FROM Fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -172,7 +172,7 @@ sinnvoll, mit dem Schlüsselwort `AS` zu arbeiten.
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10 AS
 tagesmietpreis_unter_10_euro FROM Fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -192,7 +192,7 @@ SELECT fahrradNr, bezeichnung
 FROM Fahrraeder
 WHERE tagesmietpreis < 10;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 

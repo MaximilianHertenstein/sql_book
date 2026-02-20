@@ -11,7 +11,7 @@ CREATE TABLE fahrraeder (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -26,7 +26,7 @@ INSERT INTO fahrraeder VALUES
 (8, 'Comus Einrad XM', 8.40, 5);
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 ## Aggregierungsfunktionen
@@ -42,7 +42,7 @@ z. B. den durchschnittlichen *Tagesmietpreis* aller Fahrräder.
 SELECT AVG(tagesmietpreis)
 FROM Fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
@@ -67,7 +67,7 @@ In die Klammer schreibst du dafür `*` statt eines Spaltennamens.
 SELECT COUNT(*)
 FROM Fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 Wenn du nur unterschiedliche Werte zählen willst,
@@ -80,7 +80,7 @@ schreibst du `DISTINCT` in die Klammer von `COUNT`.
 SELECT COUNT(DISTINCT bezeichnung)
 FROM Fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 Du kannst mehrere Aggregatwerte in einer Abfrage kombinieren.
@@ -89,7 +89,7 @@ Du kannst mehrere Aggregatwerte in einer Abfrage kombinieren.
 SELECT COUNT(fahrradNr), AVG(tagesmietpreis)
 FROM Fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
 </codapi-snippet>
 
 
