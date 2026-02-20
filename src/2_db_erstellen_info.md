@@ -1,6 +1,6 @@
 # Datenbanken erstellen
 
-## Was sind Datenbanken
+## Was sind Datenbanken?
 
 Eine Datenbank ist eine strukturierte Sammlung von Informationen. In
 einer relationalen Datenbank liegen die Informationen als Tabellen vor.
@@ -44,45 +44,14 @@ CREATE TABLE klassen (
     klassenzimmer varchar(255)
     );
 ```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
 
 
 Hinter `CREATE TABLE` steht der Tabellenname.
 Danach folgen in Klammern die Spaltennamen mit Datentypen.
 Die Spaltendefinitionen trennst du durch Kommas.
 
-## Festlegen eines Primärschlüssels
-
-Nach den Spaltendefinitionen legst du den Primärschlüssel fest.
-
-```sql
-CREATE TABLE klassen (
-    klassen_id int,
-    stufe varchar(255),
-    klasse varchar(255),
-    klassenzimmer varchar(255),
-    PRIMARY KEY(klassen_id)
-    );
-```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
-</codapi-snippet>
-
-Dafür schreibst du `PRIMARY KEY` und in Klammern die gewählte Spalte.
-
-## Festlegen eines Fremdschlüssels
-
-Für einen Fremdschlüssel schreibst du hinter `FOREIGN KEY` die lokale Spalte in Klammern.
-Danach folgen `REFERENCES`, die referenzierte Tabelle und deren Spalte.
-
-```sql
-CREATE TABLE schueler (
-    schuelernummer int,
-    klassen_id int,
-    PRIMARY KEY(schuelernummer),
-    FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)
-    );
-```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
-</codapi-snippet>
 
 ## Zeilen einfügen
 
@@ -108,7 +77,7 @@ SELECT * FROM klassen;
 </codapi-snippet>
 
 
-Du kannst auch mehrere Zeilen in einem Statement einfügen.
+Du kannst auch mehrere Zeilen in einer Anweisung einfügen.
 Trenne die Tupel dafür mit Kommas.
 
 ```sql
@@ -123,6 +92,65 @@ VALUES
 
 ```sql
 SELECT * FROM klassen;
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
+## Festlegen eines Primärschlüssels
+
+Nach den Spaltendefinitionen legst du den Primärschlüssel fest.
+Dafür schreibst du `PRIMARY KEY` und in Klammern die gewählte Spalte.
+
+```sql
+CREATE TABLE klassen_mit_pk (
+    klassen_id int,
+    stufe varchar(255),
+    klasse varchar(255),
+    klassenzimmer varchar(255),
+    PRIMARY KEY(klassen_id)
+    );
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
+Dadurch überprüft die Datenbanksoftware automatisch, ob die Werte von `klassen_id` eindeutig sind.
+
+```sql
+INSERT INTO klassen_mit_pk
+VALUES
+(1, 'BF1', 'P', 'H205'),
+(1, '12', 'TGI', 'G252');
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+## Festlegen eines Fremdschlüssels
+
+Für einen Fremdschlüssel schreibst du hinter `FOREIGN KEY` die lokale Spalte in Klammern.
+Danach folgen `REFERENCES`, die referenzierte Tabelle und deren Spalte.
+
+```sql
+CREATE TABLE schueler (
+    schuelernummer int,
+    vorname varchar(10),
+    klassen_id int,
+    PRIMARY KEY(schuelernummer),
+    FOREIGN KEY(klassen_id) REFERENCES klassen_mit_pk(klassen_id)
+    );
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
+</codapi-snippet>
+
+
+
+Dadurch überprüft die Datenbanksoftware automatisch, ob es zu jeder `klassen_id` einen Eintrag in der Tabelle `klassen_mit_pk` gibt.
+
+```sql
+INSERT INTO schueler
+VALUES
+(1, 'River', '10');
 ```
 <codapi-snippet engine="pglite" sandbox="postgres" editor="basic" output-mode="table">
 </codapi-snippet>
