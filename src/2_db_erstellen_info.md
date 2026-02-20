@@ -20,7 +20,7 @@ Hinter `SCHEMA` steht der Name der Datenbank.
 ```sql
 CREATE SCHEMA Schule;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 Mit `USE` wählst du die neu erstellte Datenbank aus.
@@ -44,7 +44,7 @@ CREATE TABLE klassen (
     klassenzimmer varchar(255)
     );
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -64,7 +64,7 @@ INSERT INTO klassen
 VALUES
 (1, '12', 'D', 'H207');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -73,7 +73,7 @@ Mit dem folgenden Befehl zeigst du die geänderte Tabelle an.
 ```sql
 SELECT * FROM klassen;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -86,14 +86,14 @@ VALUES
 (2, 'BF1', 'P', 'H205'),
 (3, '12', 'TGI', 'G252');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
 ```sql
 SELECT * FROM klassen;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -111,7 +111,7 @@ CREATE TABLE klassen_mit_pk (
     PRIMARY KEY(klassen_id)
     );
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -123,7 +123,7 @@ VALUES
 (1, 'BF1', 'P', 'H205'),
 (1, '12', 'TGI', 'G252');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ## Festlegen eines Fremdschlüssels
@@ -140,7 +140,7 @@ CREATE TABLE schueler (
     FOREIGN KEY(klassen_id) REFERENCES klassen_mit_pk(klassen_id)
     );
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -152,5 +152,5 @@ INSERT INTO schueler
 VALUES
 (1, 'River', '10');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>

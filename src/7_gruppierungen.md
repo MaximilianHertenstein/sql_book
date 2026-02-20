@@ -11,7 +11,7 @@ CREATE TABLE fahrraeder (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
@@ -39,7 +39,7 @@ INSERT INTO fahrraeder VALUES
 (21, 'Bulls Sharptail 2', 21.00000, 1),
 (22, 'Bulls Sharptail 2', 21.00000, 1);
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ## Gruppierungen
@@ -49,7 +49,7 @@ Mithilfe von Gruppierungen können Zeilen der Tabelle anhand des Werts
 einer Spalte oder eines Ausdrucks in Gruppen eingeteilt werden.
 Anschließend kann mit einer Aggregierungsfunktion für jede Gruppe ein
 Wert berechnet werden. Im folgenden Beispiel wurden alle Zeilen der
-Tabelle *Fahrräder* nach der *Bezeichnung* gruppiert. Für jede dieser
+Tabelle *Fahrraeder* nach der *Bezeichnung* gruppiert. Für jede dieser
 Gruppen wurde dann die Anzahl der Fahrräder berechnet.
 
 <img src="gruppierung_farbig.svg" alt="Gruppierung-Diagramm" style="display: block; margin: 0 auto; width: 100%; height: auto; background-color: #fff;" />
@@ -65,16 +65,16 @@ SELECT bezeichnung, COUNT(fahrradNr)
 FROM fahrraeder
 GROUP BY bezeichnung;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 Die Anzahl der Gruppen entspricht dann der Anzahl der verschiedenen
 Werte, die der Ausdruck in den Zeilen der Tabelle annimmt. In diesem
 Beispiel gibt es genau so viele Gruppen, wie es verschiedene
-*Bezeichnungen* in der Tabelle *Fahrräder* gibt.
+*Bezeichnungen* in der Tabelle *Fahrraeder* gibt.
 
 Wenn `GROUP BY` genutzt wird, dürfen hinter `SELECT` nur
-Ausdrücke mit Aggregierungsfunktionen und der Ausdruck nach dem
+Ausdrücke mit Aggregierungsfunktionen und der Ausdruck, nach dem
 gruppiert wird, genutzt werden. Für alle anderen Ausdrücke ist nicht
 klar, ob diese pro Gruppe nur einen Wert haben.
 
@@ -98,17 +98,17 @@ Für andere Ausdrücke ist pro Gruppe kein eindeutiger Einzelwert definiert.
 
 ```sql
 SELECT COUNT(fahrradNr), bezeichnung
-FROM Fahrraeder
+FROM fahrraeder
 GROUP BY bezeichnung
 HAVING COUNT(fahrradNr) > 4;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
 
-Die folgende Grafik zeigt den Datenfluss für ein
-`SELECT`-Statement mit `GROUP BY` und `HAVING`.
+Die folgende Grafik zeigt den Datenfluss für eine
+`SELECT`-Anweisung mit `GROUP BY` und `HAVING`.
 
 ![](SQL-SELECT-AGGR-GROUP-HAVING.jpg)
 

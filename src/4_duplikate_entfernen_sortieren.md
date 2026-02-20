@@ -9,7 +9,7 @@ CREATE TABLE kunden (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
@@ -22,34 +22,33 @@ INSERT INTO kunden VALUES
 (237, 'Yilmaz', 'Ali', 'm'),
 (238, 'Berger', 'Johann', 'm');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
 ## Doppelte Ergebnisse entfernen
 
 
-Die Geschlechter der Kunden können mit der folgenden Abfrage angezeigt
-werden.
+Mit der folgenden Abfrage kannst du die Geschlechter der Kunden anzeigen.
 
 ```sql
 SELECT geschlecht
-FROM Kunden;
+FROM kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
-Bei der Abfrage werden alle Zeilen der Tabelle *Kunden* verarbeitet.
+Bei der Abfrage werden alle Zeilen der Tabelle `kunden` verarbeitet.
 Der Wert aus der Spalte `geschlecht` wird jeweils in das Ergebnis übernommen.
 Doppelte Werte bleiben dabei zunächst erhalten.
 Mit `DISTINCT` entfernst du diese Duplikate.
 
 ```sql
 SELECT DISTINCT geschlecht
-FROM Kunden;
+FROM kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -61,10 +60,10 @@ Mit `ORDER BY` sortierst du das Ergebnis nach einer Spalte.
 
 ```sql
 SELECT Vorname, Name
-FROM Kunden
+FROM kunden
 ORDER BY Name DESC;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 Du kannst auch nach mehreren Spalten sortieren.
@@ -74,10 +73,10 @@ Sind die Werte in der ersten Spalte gleich, entscheidet die zweite Spalte.
 
 ```sql
 SELECT vorname, name
-FROM Kunden
+FROM kunden
 ORDER BY name DESC, vorname ASC;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 

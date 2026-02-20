@@ -9,7 +9,7 @@ Das Ergebnis erscheint als Tabelle.
 ```sql
 SELECT 1 + 1;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 Du kannst auch mehrere Ausdrücke in einer Abfrage berechnen.
@@ -18,7 +18,7 @@ Trenne die Ausdrücke dabei mit einem Komma.
 ```sql
 SELECT 3 * 3, (1 - 2) * 3 + 5;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 `SELECT` kann wie alle SQL-Schlüsselwörter klein oder groß geschrieben werden.
@@ -28,12 +28,12 @@ SELECT 3 * 3, (1 - 2) * 3 + 5;
 
 In *SQL* dividierst du Zahlen mit `/`.
 Sind beide Operanden Integer, erhältst du eine ganzzahlige Division.
-Sobald ein Operand eine Kommazahl ist, bekommst du das reguläre Divisionsergebnis.
+Sobald ein Operand eine Kommazahl ist, bekommst du das reguläre Ergebnis der Division.
 
 ```sql
 SELECT 10/4, 10/4.0, 10.0/4;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ## Funktionen
@@ -45,7 +45,7 @@ Damit rundest du Kommazahlen auf eine gewünschte Anzahl von Nachkommastellen.
 ```sql
 SELECT ROUND(3.1415927, 2), 5 * ROUND(10.0 / 4, 1);
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -56,7 +56,7 @@ Mit `AS` vergibst du eigene Spaltenüberschriften.
 ```sql
 SELECT 5 AS side_length, 5 * 5 AS area;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 Wenn ein Spaltentitel Leerzeichen enthält, setzt du ihn in Backticks.
@@ -64,7 +64,7 @@ Wenn ein Spaltentitel Leerzeichen enthält, setzt du ihn in Backticks.
 ```sql
 SELECT 5 AS `side length`, 5 * 5 AS area;
 ```
-<codapi-snippet engine="wasi" sandbox="sqlite" editor="null">
+<codapi-snippet engine="wasi" sandbox="sqlite">
 </codapi-snippet>
 
 
@@ -75,7 +75,7 @@ In *SQL* kannst du auch mit Wahrheitswerten arbeiten.
 ```sql
 SELECT true, false;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -85,7 +85,7 @@ Ein Vergleich mit `=` ist genau dann `true`, wenn beide Seiten gleich sind.
 ```sql
 SELECT 1 = 1, 2 * 2 = 2 + 2, 3 = 4;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -109,13 +109,13 @@ Mit `NOT` verneinst du einen Wahrheitswert.
 ```sql
 SELECT NOT true, NOT false;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
 SELECT NOT 10 > 3;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ## Verknüpfung von Bedingungen
@@ -127,14 +127,14 @@ Bei `AND` ist der Gesamtausdruck nur dann `true`, wenn beide Teilausdrücke `tru
 ```sql
 SELECT 10 > 3 AND 2 = 2;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
 ```sql
 SELECT 2 > 1 AND 4 != 4;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 Bei `OR` ist der Gesamtausdruck `true`, sobald mindestens ein Teilausdruck `true` ist.
@@ -142,14 +142,14 @@ Bei `OR` ist der Gesamtausdruck `true`, sobald mindestens ein Teilausdruck `true
 ```sql
 SELECT 1 = 1 OR 2 > 3;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
 ```sql
 SELECT 1 = 3 OR 2 > 3;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 In der Mathematik gilt die Punkt-vor-Strich-Regel. Diese besagt, dass Mal und Geteilt immer vor Plus oder Minus ausgewertet werden.
@@ -172,7 +172,7 @@ In *SQL* gibt es eine ähnliche Regel. Diese besagt, dass `AND` vor `OR` ausgewe
 ```sql
 SELECT true OR false AND false;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -181,7 +181,7 @@ Auch hier legst du mit Klammern die Auswertungsreihenfolge fest.
 ```sql
 SELECT (true OR false) AND false;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -193,7 +193,7 @@ mit Zeichenketten haben oft ein überraschendes Ergebnis.
 ```sql
 SELECT '10' < '2';
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -208,7 +208,7 @@ Sind sie gleich, wird mit dem nächsten Zeichen weiterverglichen.
 ```sql
 SELECT 'abc' > 'abd';
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -218,7 +218,7 @@ weitere Zeichen hat, ist der zweite String größer.
 ```sql
 SELECT 'ab' < 'abd';
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ## Textmustererkennung
@@ -232,13 +232,13 @@ Verfügung:
     ```sql
     SELECT 'Huber' LIKE 'Hu%';
     ```
-    <codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+    <codapi-snippet>
     </codapi-snippet>
 
     ```sql
     SELECT 'Huber' LIKE 'Hun%';
     ```
-    <codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+    <codapi-snippet>
     </codapi-snippet>
 
 
@@ -247,13 +247,13 @@ Verfügung:
     ```sql
     SELECT 'Huber' LIKE 'Hu_';
     ```
-    <codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+    <codapi-snippet>
     </codapi-snippet>
 
     ```sql
     SELECT 'Huber' LIKE 'Hu___';
     ```
-    <codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+    <codapi-snippet>
     </codapi-snippet>
 
 
@@ -268,7 +268,7 @@ Datum ist größer.
 ```sql
 SELECT '1949-09-23' > '1941-05-24';
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 Es ist auch möglich, das Jahr, den Monat oder den Tag als Zahl
@@ -277,7 +277,7 @@ auszuwählen.
 ```sql
 SELECT year('1949-09-23'), month('1949-09-23'), day('1949-09-23');
 ```
-<codapi-snippet  sandbox="mysql" editor="null">
+<codapi-snippet  sandbox="mysql">
 </codapi-snippet>
 
 Mit der Funktion `CURDATE` kann das aktuelle Datum in dem gerade
@@ -286,5 +286,5 @@ erklärten Format bestimmt werden.
 ```sql
 SELECT CURDATE();
 ```
-<codapi-snippet  sandbox="mysql" editor="null">
+<codapi-snippet  sandbox="mysql">
 </codapi-snippet>

@@ -16,7 +16,7 @@ CREATE TABLE fahrradarten (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
@@ -37,7 +37,7 @@ INSERT INTO fahrradarten VALUES
 (14, 'Kinderanhänger');
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
@@ -51,7 +51,7 @@ CREATE TABLE fahrraeder (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
@@ -66,7 +66,7 @@ INSERT INTO fahrraeder VALUES
 (8, 'Comus Einrad XM', 8.40, 5);
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
@@ -79,7 +79,7 @@ CREATE TABLE kunden (
 );
 ```
 
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ```sql
@@ -92,7 +92,7 @@ INSERT INTO kunden VALUES
 (237, 'Yilmaz', 'Ali', 'm'),
 (238, 'Berger', 'Johann', 'm');
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -115,9 +115,9 @@ man mit dem folgenden Befehl.
 
 ```sql
 SELECT *
-FROM Kunden;
+FROM kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 ## Projektionen
@@ -130,9 +130,9 @@ der Tabelle, aus der die Spalten stammen.
 
 ```sql
 SELECT vorname, name
-FROM Kunden;
+FROM kunden;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -142,22 +142,22 @@ Eine solche Auswahl von Spalten einer Tabelle nennt man Projektion.
 
 ## Berechnete Spalten
 
-Wir haben bereits gesehen, dass man mit `SELECT`-Statements die
-Werte von Ausdrücken berechnen kann. Dies können wir auch mit der Abfrage
+Wir haben bereits gesehen, dass man mit `SELECT`-Anweisungen die
+Werte von Ausdrücken berechnen kann. Das können wir auch mit der Abfrage
 von Spalten verbinden.
 
-Ein Kunde könnte sich zum Beispiel für Fahrräder interessieren, deren
+Du könntest dich zum Beispiel für Fahrräder interessieren, deren
 Tagesmietpreis unter 10 € liegt.
 
 
-Um auch diese Information anzuzeigen, könnte er die folgende Abfrage
-stellen:
+Um auch diese Information anzuzeigen, kannst du die folgende Abfrage
+verwenden:
 
 ```sql
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10
-FROM Fahrraeder;
+FROM fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -170,9 +170,9 @@ sinnvoll, mit dem Schlüsselwort `AS` zu arbeiten.
 
 ```sql
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10 AS
-tagesmietpreis_unter_10_euro FROM Fahrraeder;
+tagesmietpreis_unter_10_euro FROM fahrraeder;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
@@ -183,16 +183,16 @@ Wenn du nur Fahrräder mit einem Tagesmietpreis unter 10 € sehen willst,
 filterst du die Tabelle über eine Bedingung.
 
 
-Dafür ergänzt du das `SELECT`-Statement um eine `WHERE`-Klausel.
+Dafür ergänzt du die `SELECT`-Anweisung um eine `WHERE`-Klausel.
 Hinter `WHERE` steht die Bedingung.
 Nur Zeilen, die diese Bedingung erfüllen, erscheinen im Ergebnis.
 
 ```sql
 SELECT fahrradNr, bezeichnung
-FROM Fahrraeder
+FROM fahrraeder
 WHERE tagesmietpreis < 10;
 ```
-<codapi-snippet engine="pglite" sandbox="postgres" editor="null" output-mode="table">
+<codapi-snippet>
 </codapi-snippet>
 
 
