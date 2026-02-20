@@ -11,7 +11,7 @@ CREATE TABLE fahrraeder (
 );
 ```
 
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -39,7 +39,7 @@ INSERT INTO fahrraeder VALUES
 (21, 'Bulls Sharptail 2', 21.00000, 1),
 (22, 'Bulls Sharptail 2', 21.00000, 1);
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 ## Gruppierungen
@@ -65,7 +65,7 @@ SELECT bezeichnung, COUNT(fahrradNr)
 FROM fahrraeder
 GROUP BY bezeichnung;
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 Die Anzahl der Gruppen entspricht dann der Anzahl der verschiedenen
@@ -102,7 +102,7 @@ FROM fahrraeder
 GROUP BY bezeichnung
 HAVING COUNT(fahrradNr) > 4;
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 

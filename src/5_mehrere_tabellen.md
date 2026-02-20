@@ -8,7 +8,7 @@ CREATE TABLE fahrradarten (
 );
 ```
 
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -29,7 +29,7 @@ INSERT INTO fahrradarten VALUES
 (14, 'Kinderanhänger');
 ```
 
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -43,7 +43,7 @@ CREATE TABLE fahrraeder (
 );
 ```
 
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 ```sql
@@ -58,7 +58,7 @@ INSERT INTO fahrraeder VALUES
 (8, 'Comus Einrad XM', 8.40, 5);
 ```
 
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 
@@ -69,7 +69,7 @@ Wenn du zu einem Fahrrad die Fahrradart bestimmen willst, reichen die Informatio
 ```sql
 SELECT * FROM fahrraeder;
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 
@@ -81,7 +81,7 @@ Diese Nummer ist ein Fremdschlüssel, der auf den Primärschlüssel der Tabelle 
 ```sql
 SELECT * FROM fahrradarten;
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 
@@ -98,7 +98,7 @@ Das erste Fahrrad ist also ein Einrad.
 SELECT * FROM fahrradarten
 WHERE fahrradartNr = 5;
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 
@@ -146,7 +146,7 @@ SELECT fahrraeder.bezeichnung AS fahrrad,
 FROM
 fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartNr = fahrraeder.fahrradartNr;
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 
@@ -159,7 +159,7 @@ SELECT F.bezeichnung AS fahrrad,
 FROM
 fahrradarten FA JOIN fahrraeder  F ON FA.fahrradartNr = F.fahrradartNr;
 ```
-<codapi-snippet>
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
 ## Abfragen über mehrere Tabellen
