@@ -8,7 +8,7 @@ src = "src"
 theme = "src/book_theme"
 additional-js = ["src/book_theme/loadPGLite.js"]
 
-additional-css = ["./mdbook-admonish.css"]
+additional-css = ["./mdbook-admonish.css", "src/book_theme/codapi-snippet.css"]
 mathjax-support = true
 
 
