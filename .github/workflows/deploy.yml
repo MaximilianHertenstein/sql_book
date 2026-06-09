@@ -28,18 +28,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cargo/bin
-          key: ${{ runner.os }}-cargo-bin-mdbook-0.4.52-quiz-0.4.0-admonish-1.20.0
+          key: ${{ runner.os }}-cargo-bin-mdbook-0.5.2-quiz-0.5.0
           restore-keys: |
             ${{ runner.os }}-cargo-bin-
 
       - name: Install mdBook and plugins
         run: |
-          cargo install mdbook --version 0.4.52 --locked || true
-          cargo install mdbook-quiz --version 0.4.0 --locked || true
-          cargo install mdbook-admonish --version 1.20.0 --locked || true
-
-      - name: Install admonish assets
-        run: mdbook-admonish install .
+          cargo install mdbook --version 0.5.3 --locked || true
+          cargo install mdbook-quiz --version 0.5.0 --locked || true
 
 
 

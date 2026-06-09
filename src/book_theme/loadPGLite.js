@@ -1,4 +1,4 @@
-const dbReady = import("https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.3.15/dist/index.js")
+const dbReady = import("https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.5.1/dist/index.js")
   .then(m => new m.PGlite());
 
 (window.codapi ??= {}).engines ??= {};

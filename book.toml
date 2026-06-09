@@ -1,19 +1,15 @@
 [book]
 authors = ["MaximilianHertenstein"]
 language = "de"
-multilingual = false
+#multilingual = false
 src = "src"
 
 [output.html]
 theme = "src/book_theme"
 additional-js = ["src/book_theme/loadPGLite.js"]
 
-additional-css = ["./mdbook-admonish.css", "src/book_theme/codapi-snippet.css"]
+additional-css = [ "src/book_theme/codapi-snippet.css"]
 mathjax-support = true
 
 
-#[preprocessor.lint]
-[preprocessor.admonish]
-command = "mdbook-admonish"
-assets_version = "3.1.0" # do not edit: managed by `mdbook-admonish install`
 [preprocessor.quiz]

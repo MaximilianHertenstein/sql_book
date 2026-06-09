@@ -131,7 +131,7 @@ Diese Bedingung heißt Join-Bedingung.
 Da die Spalte in beiden Tabellen vorkommt, nutzt du qualifizierte Namen:
 `fahrradarten.fahrradartNr` und `fahrraeder.fahrradartNr`.
 
-```admonish info
+> [!TIP]
 Solche Angaben nennt man qualifizierte Spaltennamen.
 Ein qualifizierter Spaltenname hat die Form `tabellenname.spaltenname`.
 ```
