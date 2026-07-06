@@ -1,4 +1,4 @@
-# Selektion und Projektion
+# Auswahl von Zeilen und Spalten
 
 SQL wird in der Regel nicht als Taschenrechner, sondern als
 Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
@@ -120,7 +120,7 @@ FROM kunden;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
-## Projektionen
+## Auswahl von Spalten
 
 Mit `SELECT`-Befehlen können wir auch nur ausgewählte Spalten
 einer Tabelle anschauen. Hierfür schreibt man hinter `SELECT` die
@@ -138,7 +138,6 @@ FROM kunden;
 
 
 
-Eine solche Auswahl von Spalten einer Tabelle nennt man Projektion.
 
 ## Berechnete Spalten
 
@@ -177,7 +176,7 @@ tagesmietpreis_unter_10_euro FROM fahrraeder;
 
 
 
-## Selektion
+## Auswahl von Zeilen
 
 Wenn du nur Fahrräder mit einem Tagesmietpreis unter 10 € sehen willst,
 filterst du die Tabelle über eine Bedingung.
@@ -197,7 +196,6 @@ WHERE tagesmietpreis < 10;
 
 
 
-Eine solche Auswahl von Zeilen nennt man Selektion.
 
 ## Veranschaulichung
 

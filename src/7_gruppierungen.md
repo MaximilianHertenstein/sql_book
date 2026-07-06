@@ -83,7 +83,7 @@ klar, ob diese pro Gruppe nur einen Wert haben.
 
 
 
-## HAVING
+## Filtern von Gruppen
 
 Mit `WHERE` formulierst du eine Bedingung für Zeilen.
 Es werden nur Zeilen betrachtet, die diese Bedingung erfüllen.
