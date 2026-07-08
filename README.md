@@ -9,9 +9,8 @@ An interactive SQL book built with [mdBook](https://rust-lang.github.io/mdBook/)
 ## Tooling
 
 This project uses:
-- **mdBook v0.4.52** — builds the book
-- **mdbook-quiz v0.4.0** — interactive quiz support
-- **mdbook-admonish v1.20.0** — admonition blocks (notes, tips, warnings)
+- **mdBook v0.5.3** — builds the book
+- **mdbook-quiz v0.5.0** — interactive quiz support
 
 ## Important: Version Compatibility
 
@@ -23,16 +22,12 @@ Install the required CLI tools with Cargo:
 
 ```bash
 # Install mdBook v0.4.x
-cargo install mdbook --version 0.4.52 --locked
+cargo install mdbook --version 0.5.3 --locked
 
 # Install mdbook-quiz v0.4.0
-cargo install mdbook-quiz --version 0.4.0 --locked
+cargo install mdbook-quiz --version 0.5.0 --locked
 
-# Install mdbook-admonish v1.20.0
-cargo install mdbook-admonish --version 1.20.0 --locked
 
-# Install admonish assets
-mdbook-admonish install .
 ```
 
 ## Features

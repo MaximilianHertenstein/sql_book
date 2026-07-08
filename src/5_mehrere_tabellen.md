@@ -134,7 +134,6 @@ Da die Spalte in beiden Tabellen vorkommt, nutzt du qualifizierte Namen:
 > [!TIP]
 Solche Angaben nennt man qualifizierte Spaltennamen.
 Ein qualifizierter Spaltenname hat die Form `tabellenname.spaltenname`.
-```
 
 Auch hinter `SELECT` ist diese Schreibweise wichtig.
 So vermeidest du Mehrdeutigkeiten.
