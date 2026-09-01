@@ -88,13 +88,13 @@ klar, ob diese pro Gruppe nur einen Wert haben.
 Mit `WHERE` formulierst du eine Bedingung für Zeilen.
 Es werden nur Zeilen betrachtet, die diese Bedingung erfüllen.
 
-Wichtig: `WHERE` filtert Zeilen vor der Gruppierung, `HAVING` filtert
-Gruppen nach der Gruppierung.
-
+`WHERE` filtert Zeilen vor der Gruppierung.
 Durch `GROUP BY` entsteht eine gruppierte Ergebnismenge.
-Auch diese Ergebnismenge kannst du filtern: mit `HAVING`.
-In `HAVING` sind nur Aggregatausdrücke oder der Gruppierungsausdruck erlaubt.
-Für andere Ausdrücke ist pro Gruppe kein eindeutiger Einzelwert definiert.
+Auch diese Ergebnismenge kannst du filtern. Dazu nutzt du `HAVING`.
+Hinter `HAVING` steht eine Bedingung an die Gruppen.
+
+In dieser Bedingung sind nur Aggregatausdrücke oder der Gruppierungsausdruck erlaubt.
+Für andere Ausdrücke ist pro Gruppe kein eindeutiger Wert definiert.
 
 ```sql
 SELECT COUNT(fahrradNr), bezeichnung

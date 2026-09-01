@@ -78,7 +78,7 @@ SELECT * FROM klassen;
 
 
 Du kannst auch mehrere Zeilen in einer Anweisung einfügen.
-Trenne die Tupel dafür mit Kommas.
+Trenne die Zeilen dafür mit Kommas.
 
 ```sql
 INSERT INTO klassen

@@ -5,8 +5,7 @@ Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
 *Structured Query Language* aus.
 
 Um Abfragen zu schreiben, müssen wir zunächst eine Datenbank erstellen.
-Deshalb wird zu Beginn jedes Kapitels eine Datenbank neu aufgebaut,
-damit alle Abfragen auf einer definierten Ausgangslage basieren.
+Deshalb wird zu Beginn jedes Kapitels eine Datenbank neu aufgebaut.
 
 ```sql
 CREATE TABLE fahrradarten (
@@ -101,7 +100,7 @@ Um schnell einen Überblick über eine Datenbank zu bekommen, nutzt man
 Diagramme. Darin sind alle Tabellen und ihre Spalten zu sehen, aber
 keine Datensätze. Jedes Rechteck steht für eine Tabelle: oben der
 Tabellenname, darunter die Spalten mit Datentypen. Beziehungen zwischen
-Tabellen sind als Linien eingezeichnet.
+Tabellen sind als Linien eingezeichnet. Im folgenden Diagramm ist die eben erstellte Datenbank dargestellt.
 
 ![](eer_diagram_fahrradverleih.svg)
 
@@ -179,7 +178,7 @@ tagesmietpreis_unter_10_euro FROM fahrraeder;
 ## Auswahl von Zeilen
 
 Wenn du nur Fahrräder mit einem Tagesmietpreis unter 10 € sehen willst,
-filterst du die Tabelle über eine Bedingung.
+filterst du die Tabelle über diese Bedingung.
 
 
 Dafür ergänzt du die `SELECT`-Anweisung um eine `WHERE`-Klausel.
@@ -199,12 +198,12 @@ WHERE tagesmietpreis < 10;
 
 ## Veranschaulichung
 
-In den bisherigen Abfragen steht in `FROM` genau eine Tabelle.
+In den bisherigen Abfragen steht hinter `FROM` genau eine Tabelle.
 Mit `WHERE` filterst du die Zeilen.
 Nur passende Zeilen bleiben übrig.
 Hinter `SELECT` stehen Spaltennamen oder Ausdrücke.
 Diese werden für jede verbleibende Zeile berechnet.
-Die berechneten Werte bilden die Ergebnismenge.
+Die berechneten Werte sind die Ergebnistabelle.
 
 ![](SQL-SELECT.jpg)
 

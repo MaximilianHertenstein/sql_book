@@ -73,8 +73,8 @@ SELECT * FROM fahrraeder;
 </codapi-snippet>
 
 
-In dieser Tabelle steht die Fahrradart nicht als Text.
-In jeder Zeile steht nur die Nummer der Fahrradart.
+In dieser Tabelle steht **nicht** die Bezeichnung der Fahrradart.
+In jeder Zeile steht aber die Nummer der Fahrradart.
 Diese Nummer ist ein Fremdschlüssel, der auf den Primärschlüssel der Tabelle *Fahrradarten* verweist.
 
 
@@ -85,7 +85,13 @@ SELECT * FROM fahrradarten;
 </codapi-snippet>
 
 
-Um die Fahrradart zu bestimmen, suchst du den Wert aus `fahrradartNr` in der Tabelle *Fahrradarten*.
+Um die Fahrradart eines Fahrrads zu bestimmen, kannst du folgendermaßen vorgehen
+
+- Schau in der Zeile des Fahrrads in der Tabelle *Fahrraeder*, welche Nummer in der Spalte *fahrradartNr*  steht.
+- Suche diese Nummer in der Tabelle *Fahrradarten* in der Spalte *fahrradartNr*
+- Lies in der Zeile, in der diese Nummer auftaucht ab,  welche Bezeichnung die *Fahrradart* hat 
+
+in der Tabelle *Fahrradarten*.
 
 
 
@@ -113,7 +119,7 @@ welchen Primärschlüssel verweist.
 
 ## Abfragen über zwei Tabellen
 
-Du kannst Fremdschlüssel nutzen, um Informationen aus mehreren Tabellen zu kombinieren.
+Wir haben eben gesehen, wie man Fremdschlüssel nutzen kann, um die Informationen aus mehreren Tabellen zu kombinieren.
 Diese Verknüpfung funktioniert auch in einer einzigen `SELECT`-Anweisung.
 
 Du schreibst beide Tabellen hinter `FROM`. Zwischen den Tabellen steht `JOIN` (verbinden).
@@ -150,7 +156,7 @@ fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartNr = fahrraeder.fahrradar
 
 
 Damit du nicht immer den ganzen Tabellennamen schreiben musst,
-kannst du Tabellen hinter `FROM` mit Aliasnamen abkürzen.
+kannst du hinter `FROM`   Abkürzungen für Tabellen festlegen..
 
 ```sql
 SELECT F.bezeichnung AS fahrrad,

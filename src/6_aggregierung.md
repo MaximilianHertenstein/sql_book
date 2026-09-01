@@ -35,8 +35,9 @@ INSERT INTO fahrraeder VALUES
 Mit Aggregierungsfunktionen berechnest du aus vielen Werten einen
 einzigen Wert.
 Ein Beispiel ist `AVG`.
-Damit bestimmst du den Durchschnitt einer Spalte,
-z. B. den durchschnittlichen *Tagesmietpreis* aller Fahrräder.
+Damit bestimmst du den Durchschnitt einer Spalte. 
+
+In der folgenden Abfragen wird der durchschnittliche *Tagesmietpreis* aller Fahrräder bestimmt.
 
 ```sql
 SELECT AVG(tagesmietpreis)
@@ -94,10 +95,10 @@ FROM fahrraeder;
 
 
 
-Ohne Gruppierung kannst du nicht beliebige Detailspalten und
+<!-- Ohne Gruppierung kannst du nicht beliebige Detailspalten und
 Aggregatwerte mischen.
 Eine Detailspalte enthält mehrere Werte,
-ein Aggregat liefert genau einen Wert.
+ein Aggregat liefert genau einen Wert. -->
 Die folgende Grafik zeigt den Datenfluss bei der Aggregierung.
 
 
