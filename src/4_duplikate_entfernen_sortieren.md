@@ -39,11 +39,9 @@ FROM kunden;
 </codapi-snippet>
 
 
-Bei der Abfrage werden alle Zeilen der Tabelle `kunden` verarbeitet.
-Der Wert aus der Spalte `geschlecht` wird jeweils in das Ergebnis übernommen.
-Doppelte Werte bleiben dabei zunächst erhalten.
-Mit `DISTINCT` entfernst du diese Duplikate.
-
+Die Abfrage läuft über alle Zeilen von `kunden` und übernimmt jeweils den Wert aus `geschlecht`.
+Doppelte bleiben zuerst drin.
+Mit `DISTINCT` entfernst du sie.
 ```sql
 SELECT DISTINCT geschlecht
 FROM kunden;

@@ -1,11 +1,10 @@
 # Auswahl von Zeilen und Spalten
 
-SQL wird in der Regel nicht als Taschenrechner, sondern als
-Abfragesprache für Datenbanken genutzt. Das sagt auch der volle Name
-*Structured Query Language* aus.
+SQL ist eine Abfragesprache für Datenbanken. Dafür steht der volle Name
+*Structured Query Language*.
 
-Um Abfragen zu schreiben, müssen wir zunächst eine Datenbank erstellen.
-Deshalb wird zu Beginn jedes Kapitels eine Datenbank neu aufgebaut.
+Für die Abfragen brauchst du eine Datenbank.
+Deshalb baut jedes Kapitel die Datenbank zu Beginn neu auf.
 
 ```sql
 CREATE TABLE fahrradarten (
@@ -96,21 +95,18 @@ INSERT INTO kunden VALUES
 
 
 
-Um schnell einen Überblick über eine Datenbank zu bekommen, nutzt man
-Diagramme. Darin sind alle Tabellen und ihre Spalten zu sehen, aber
-keine Datensätze. Jedes Rechteck steht für eine Tabelle: oben der
-Tabellenname, darunter die Spalten mit Datentypen. Beziehungen zwischen
-Tabellen sind als Linien eingezeichnet. Im folgenden Diagramm ist die eben erstellte Datenbank dargestellt.
+Um schnell zu sehen, wie eine Datenbank aufgebaut ist, nutzt du
+Diagramme. Darin stehen alle Tabellen mit Spalten, aber ohne Datensätze. Jedes Rechteck ist eine
+Tabelle: oben der Tabellenname, darunter die Spalten mit Datentypen. Linien zeigen die Beziehungen
+zwischen Tabellen. Das Diagramm zeigt die Datenbank aus diesem Kapitel.
 
 ![](eer_diagram_fahrradverleih.svg)
 
 
 ## Ganze Tabellen anzeigen
 
-Um eine ganze Tabelle anzuzeigen, schreibt man hinter `SELECT` ein
-`*` und in die nächste Zeile das Schlüsselwort `FROM` und
-den Namen der gewünschten Tabelle. Die oben aufgeführte Tabelle erhält
-man mit dem folgenden Befehl.
+Um eine ganze Tabelle zu zeigen, schreibst du hinter `SELECT` ein
+`*` und in die nächste Zeile `FROM` plus Tabellenname. Die Tabelle von oben bekommst du so:
 
 ```sql
 SELECT *
@@ -140,16 +136,8 @@ FROM kunden;
 
 ## Berechnete Spalten
 
-Wir haben bereits gesehen, dass man mit `SELECT`-Anweisungen die
-Werte von Ausdrücken berechnen kann. Das können wir auch mit der Abfrage
-von Spalten verbinden.
-
-Du könntest dich zum Beispiel für Fahrräder interessieren, deren
-Tagesmietpreis unter 10 € liegt.
-
-
-Um auch diese Information anzuzeigen, kannst du die folgende Abfrage
-verwenden:
+Du kennst `SELECT` schon zum Rechnen. Das geht auch mit Spaltenwerten.
+Du willst zum Beispiel sehen, welche Räder unter 10 € kosten:
 
 ```sql
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10
@@ -159,12 +147,9 @@ FROM fahrraeder;
 </codapi-snippet>
 
 
-Für jede Zeile in der Tabelle *Fahrraeder* wird dann aus dem Wert in der
-Spalte *tagesmietpreis* der Wert des angegebenen Ausdrucks berechnet und
-in der Ergebnistabelle angezeigt.
+Für jede Zeile in *fahrraeder* rechnet SQL den Ausdruck aus `tagesmietpreis` aus und zeigt ihn als neue Spalte.
 
-Um nicht immer den Ausdruck selbst im Kopf der Spalte anzuzeigen, ist es
-sinnvoll, mit dem Schlüsselwort `AS` zu arbeiten.
+Damit im Spaltenkopf nicht der ganze Ausdruck steht, benennst du die Spalte mit `AS` um.
 
 ```sql
 SELECT fahrradNr, bezeichnung, tagesmietpreis < 10 AS
@@ -202,8 +187,8 @@ In den bisherigen Abfragen steht hinter `FROM` genau eine Tabelle.
 Mit `WHERE` filterst du die Zeilen.
 Nur passende Zeilen bleiben übrig.
 Hinter `SELECT` stehen Spaltennamen oder Ausdrücke.
-Diese werden für jede verbleibende Zeile berechnet.
-Die berechneten Werte sind die Ergebnistabelle.
+SQL berechnet sie für jede übrige Zeile.
+Das Ergebnis ist die Ergebnistabelle.
 
 ![](SQL-SELECT.jpg)
 

@@ -37,7 +37,7 @@ einzigen Wert.
 Ein Beispiel ist `AVG`.
 Damit bestimmst du den Durchschnitt einer Spalte. 
 
-In der folgenden Abfragen wird der durchschnittliche *Tagesmietpreis* aller Fahrräder bestimmt.
+So berechnest du den durchschnittlichen *Tagesmietpreis* aller Fahrräder:
 
 ```sql
 SELECT AVG(tagesmietpreis)
@@ -99,7 +99,7 @@ FROM fahrraeder;
 Aggregatwerte mischen.
 Eine Detailspalte enthält mehrere Werte,
 ein Aggregat liefert genau einen Wert. -->
-Die folgende Grafik zeigt den Datenfluss bei der Aggregierung.
+Die folgende Grafik zeigt den Datenfluss bei Abfragen mit  Aggregierung.
 
 
 ![](SQL-SELECT-AGGR.jpg)

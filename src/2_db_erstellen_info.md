@@ -115,7 +115,7 @@ CREATE TABLE klassen_mit_pk (
 </codapi-snippet>
 
 
-Dadurch überprüft die Datenbanksoftware automatisch, ob die Werte von `klassen_id` eindeutig sind.
+Die Datenbank lässt dann nur eindeutige Werte für `klassen_id` zu.
 
 ```sql
 INSERT INTO klassen_mit_pk
@@ -145,7 +145,7 @@ CREATE TABLE schueler (
 
 
 
-Dadurch überprüft die Datenbanksoftware automatisch, ob es zu jeder `klassen_id` einen Eintrag in der Tabelle `klassen_mit_pk` gibt.
+Die Datenbank lässt dann nur `klassen_id`-Werte zu, die es in `klassen_mit_pk` wirklich gibt.
 
 ```sql
 INSERT INTO schueler

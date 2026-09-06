@@ -84,7 +84,6 @@ SELECT * FROM fahrradarten;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
-
 Um die Fahrradart eines Fahrrads zu bestimmen, kannst du folgendermaßen vorgehen
 
 - Schau in der Zeile des Fahrrads in der Tabelle *Fahrraeder*, welche Nummer in der Spalte *fahrradartNr*  steht.
@@ -92,7 +91,6 @@ Um die Fahrradart eines Fahrrads zu bestimmen, kannst du folgendermaßen vorgehe
 - Lies in der Zeile, in der diese Nummer auftaucht ab,  welche Bezeichnung die *Fahrradart* hat 
 
 in der Tabelle *Fahrradarten*.
-
 
 
 Zum Beispiel hat das erste Fahrrad die Fahrradartnummer 5.
@@ -108,9 +106,7 @@ WHERE fahrradartNr = 5;
 </codapi-snippet>
 
 
-Genauso findest du für jedes andere Fahrrad die passende Fahrradart.
-In der folgenden Abbildung ist markiert, welcher Fremdschlüssel auf
-welchen Primärschlüssel verweist.
+So findest du zu jedem Fahrrad die Fahrradart. Die Abbildung zeigt, welcher Fremdschlüssel auf welchen Primärschlüssel zeigt.
 
 
 <img src="join_farbig.svg" alt="Join-Diagramm" style="display: block; margin: 0 auto; width: 100%; height: auto; background-color: #fff;" />
@@ -132,7 +128,7 @@ FROM fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartNr = fahrraeder.fahr
 ```
 
 Hinter `ON` legst du fest, welche Zeilen zusammengehören.
-Kombiniert werden Zeilen mit gleichem Wert in `fahrradartNr`.
+SQL kombiniert Zeilen mit gleichem Wert in `fahrradartNr`.
 Diese Bedingung heißt Join-Bedingung.
 Da die Spalte in beiden Tabellen vorkommt, nutzt du qualifizierte Namen:
 `fahrradarten.fahrradartNr` und `fahrraeder.fahrradartNr`.
@@ -156,7 +152,7 @@ fahrradarten JOIN fahrraeder ON fahrradarten.fahrradartNr = fahrraeder.fahrradar
 
 
 Damit du nicht immer den ganzen Tabellennamen schreiben musst,
-kannst du hinter `FROM`   Abkürzungen für Tabellen festlegen..
+kannst du hinter `FROM`   Abkürzungen für Tabellen festlegen.
 
 ```sql
 SELECT F.bezeichnung AS fahrrad,

@@ -45,20 +45,16 @@ INSERT INTO fahrraeder VALUES
 ## Gruppierungen
 
 
-Mithilfe von Gruppierungen können Zeilen der Tabelle anhand des Werts
-einer Spalte oder eines Ausdrucks in Gruppen eingeteilt werden.
-Anschließend kann mit einer Aggregierungsfunktion für jede Gruppe ein
-Wert berechnet werden. Im folgenden Beispiel wurden alle Zeilen der
-Tabelle *Fahrraeder* nach der *Bezeichnung* gruppiert. Für jede dieser
-Gruppen wurde dann die Anzahl der Fahrräder berechnet.
+Mit `GROUP BY` teilst du Zeilen nach dem Wert einer Spalte oder eines Ausdrucks in Gruppen ein.
+Für jede Gruppe berechnest du dann mit einer Aggregierungsfunktion einen Wert.
+Beispiel: Du gruppierst alle Zeilen von *fahrraeder* nach *bezeichnung* und zählst pro Gruppe die Fahrräder.
 
 <img src="gruppierung_farbig.svg" alt="Gruppierung-Diagramm" style="display: block; margin: 0 auto; width: 100%; height: auto; background-color: #fff;" />
 
 
 
 
-Dafür schreibt man hinter die Schlüsselwörter `GROUP` und
-`BY` den Ausdruck, nach dem gruppiert werden soll.
+Dafür schreibst du hinter `GROUP BY` den Ausdruck, nach dem du gruppierst:
 
 ```sql
 SELECT bezeichnung, COUNT(fahrradNr)
@@ -68,15 +64,10 @@ GROUP BY bezeichnung;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
-Die Anzahl der Gruppen entspricht dann der Anzahl der verschiedenen
-Werte, die der Ausdruck in den Zeilen der Tabelle annimmt. In diesem
-Beispiel gibt es genau so viele Gruppen, wie es verschiedene
-*Bezeichnungen* in der Tabelle *Fahrraeder* gibt.
+Du bekommst so viele Gruppen, wie es verschiedene Werte gibt. Hier: eine Gruppe pro *bezeichnung* in *fahrraeder*.
 
-Wenn `GROUP BY` genutzt wird, dürfen hinter `SELECT` nur
-Ausdrücke mit Aggregierungsfunktionen und der Ausdruck, nach dem
-gruppiert wird, genutzt werden. Für alle anderen Ausdrücke ist nicht
-klar, ob diese pro Gruppe nur einen Wert haben.
+Wenn du `GROUP BY` nutzt, darf hinter `SELECT` nur der Gruppierungsausdruck und Ausdrücke mit Aggregierungsfunktionen stehen.
+Bei allen anderen Spalten ist pro Gruppe kein eindeutiger Wert definiert.
 
 
 ![](SQL-SELECT-AGGR-GROUP.jpg)
@@ -86,12 +77,12 @@ klar, ob diese pro Gruppe nur einen Wert haben.
 ## Filtern von Gruppen
 
 Mit `WHERE` formulierst du eine Bedingung für Zeilen.
-Es werden nur Zeilen betrachtet, die diese Bedingung erfüllen.
+SQL betrachtet dann nur Zeilen, die diese Bedingung erfüllen.
 
 `WHERE` filtert Zeilen vor der Gruppierung.
-Durch `GROUP BY` entsteht eine gruppierte Ergebnismenge.
-Auch diese Ergebnismenge kannst du filtern. Dazu nutzt du `HAVING`.
-Hinter `HAVING` steht eine Bedingung an die Gruppen.
+`GROUP BY` gruppiert die übrigen Zeilen.
+Diese Gruppen filterst du mit `HAVING`.
+Hinter `HAVING` steht die Bedingung an die Gruppen.
 
 In dieser Bedingung sind nur Aggregatausdrücke oder der Gruppierungsausdruck erlaubt.
 Für andere Ausdrücke ist pro Gruppe kein eindeutiger Wert definiert.
@@ -107,8 +98,7 @@ HAVING COUNT(fahrradNr) > 4;
 
 
 
-Die folgende Grafik zeigt den Datenfluss für eine
-`SELECT`-Anweisung mit `GROUP BY` und `HAVING`.
+So läuft `SELECT` mit `GROUP BY` und `HAVING` ab:
 
 ![](SQL-SELECT-AGGR-GROUP-HAVING.jpg)
 

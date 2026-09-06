@@ -152,7 +152,7 @@ SELECT 1 = 3 OR 2 > 3;
 <codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
-In der Mathematik gilt die Punkt-vor-Strich-Regel. Diese besagt, dass Mal und Geteilt immer vor Plus oder Minus ausgewertet werden.
+In der Mathematik gilt die Punkt-vor-Strich-Regel: Mal und Geteilt werden vor Plus und Minus ausgewertet.
 
 
 \\[
@@ -165,7 +165,7 @@ Wenn die Addition zuerst ausgewertet werden soll, ist eine Klammer notwendig.
 \\]
 
 
-In *SQL* gibt es eine ähnliche Regel. Diese besagt, dass `AND` vor `OR` ausgewertet wird.
+In *SQL* wird `NOT` zuerst ausgewertet, dann `AND`, dann `OR`.
 
 
 
@@ -223,9 +223,8 @@ SELECT 'ab' < 'abd';
 
 ## Textmustererkennung
 
-Um Strings mit Textmustern zu vergleichen, kann der Operator
-`LIKE` verwendet werden. Dieser stellt zwei Platzhalter zur
-Verfügung:
+Um Strings mit Textmustern zu vergleichen, nutzt du `LIKE`.
+`LIKE` kennt zwei Platzhalter:
 
 1.  `%` steht für beliebig viele Zeichen.
 
@@ -260,10 +259,8 @@ Verfügung:
 
 ## Datumswerte
 
-Datumswerte sind in SQL ein eigener Datentyp mit dem Namen `DATE`. Sie
-werden in Anführungszeichen im Format `yyyy-mm-dd` geschrieben. Die so
-geschriebenen Datumswerte können miteinander verglichen werden. Das spätere
-Datum ist größer.
+Datumswerte haben den Typ `DATE`. Du schreibst sie in Anführungszeichen als `yyyy-mm-dd`.
+Du kannst sie vergleichen: Das spätere Datum ist größer.
 
 ```sql
 SELECT '1949-09-23' > '1941-05-24';
@@ -271,17 +268,15 @@ SELECT '1949-09-23' > '1941-05-24';
 <codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
 </codapi-snippet>
 
-Es ist auch möglich, das Jahr, den Monat oder den Tag als Zahl
-auszuwählen.
+Mit `YEAR`, `MONTH` und `DAY` holst du Jahr, Monat oder Tag als Zahl.
 
 ```sql
-SELECT year('1949-09-23'), month('1949-09-23'), day('1949-09-23');
+SELECT YEAR('1949-09-23'), MONTH('1949-09-23'), DAY('1949-09-23');
 ```
 <codapi-snippet  sandbox="mysql">
 </codapi-snippet>
 
-Mit der Funktion `CURDATE` kann das aktuelle Datum in dem gerade
-erklärten Format bestimmt werden.
+Mit `CURDATE()` bekommst du das aktuelle Datum im gleichen Format.
 
 ```sql
 SELECT CURDATE();
