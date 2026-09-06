@@ -100,8 +100,8 @@ type = "MultipleChoice"
 prompt.prompt = "Du willst sicherstellen, dass jeder Datensatz in `schueler` einer vorhandenen Klasse zugeordnet ist. Welche Ergänzung in CREATE TABLE ist dafür entscheidend?"
 prompt.distractors = [
 	"PRIMARY KEY(klassen_id)",
-	"UNIQUE(klassen_id)",
-	"CHECK(klassen_id > 0)"
+	"FOREIGN KEY(klassen_id)",
+	"REFERENCES klassen(klassen_id)"
 ]
 answer.answer = "FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)"
 context = "Fremdschlüssel sichern die Beziehung zwischen Tabellen."
@@ -133,14 +133,14 @@ id = "e96881aa-4b85-4102-9fc8-c7ab09a0cd4d"
 
 [[questions]]
 type = "MultipleChoice"
-prompt.prompt = "Welche Tabellendefinition sichert am klarsten ab, dass schueler.klassen_id nur vorhandene Klassen referenziert?"
+prompt.prompt = "Was passiert, wenn du in `klassen_mit_pk` zweimal die gleiche `klassen_id` einfügst?"
 prompt.distractors = [
-	"PRIMARY KEY(klassen_id)",
-	"UNIQUE(klassen_id)",
-	"DEFAULT 1"
+	"Die zweite Zeile überschreibt die erste.",
+	"Beide Zeilen stehen danach in der Tabelle.",
+	"Die Tabelle wird automatisch nach `klassen_id` sortiert."
 ]
-answer.answer = "FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)"
-context = "Referentielle Integrität wird über FOREIGN KEY plus REFERENCES hergestellt."
+answer.answer = "Die Datenbank lässt nur eindeutige Werte für `klassen_id` zu."
+context = "Der Primärschlüssel sichert eindeutige Zeilen."
 id = "95c8a193-5f5b-43a8-bb80-18fb6fa2ef79"
 
 [[questions]]

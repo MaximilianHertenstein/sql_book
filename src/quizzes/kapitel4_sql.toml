@@ -24,7 +24,7 @@ type = "MultipleChoice"
 prompt.prompt = "Welche Klausel sortiert eine Ergebnismenge?"
 prompt.distractors = [
 	"WHERE",
-	"HAVING",
+	"SELECT",
 	"DISTINCT"
 ]
 answer.answer = "ORDER BY"
@@ -35,9 +35,9 @@ id = "83f6f1ca-b9f9-4a8e-8d15-5d3225ef95ae"
 type = "MultipleChoice"
 prompt.prompt = "Welche Abfrage entfernt doppelte Werte in einer Spalte korrekt?"
 prompt.distractors = [
-	"SELECT UNIQUE geschlecht FROM kunden;",
 	"SELECT geschlecht DISTINCT FROM kunden;",
-	"SELECT ALL geschlecht FROM kunden;"
+	"SELECT geschlecht FROM kunden ORDER BY geschlecht;",
+	"SELECT geschlecht FROM kunden WHERE DISTINCT;"
 ]
 answer.answer = "SELECT DISTINCT geschlecht FROM kunden;"
 context = "DISTINCT entfernt doppelte Zeilen in der Ergebnismenge."
@@ -67,8 +67,8 @@ type = "MultipleChoice"
 prompt.prompt = "Welche Klausel folgt in einer Sortierabfrage auf FROM kunden?"
 prompt.distractors = [
 	"SORT BY",
-	"HAVING",
-	"GROUP"
+	"WHERE",
+	"SELECT"
 ]
 answer.answer = "ORDER BY"
 context = "Für Sortierung wird ORDER BY genutzt."

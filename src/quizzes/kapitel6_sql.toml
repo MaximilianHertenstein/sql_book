@@ -49,9 +49,9 @@ id = "46f51276-b474-4e81-989e-341d885ef982"
 type = "MultipleChoice"
 prompt.prompt = "Welche Abfrage zählt alle zurückgegebenen Zeilen?"
 prompt.distractors = [
-	"SELECT COUNT(); FROM fahrraeder;",
+	"SELECT COUNT() FROM fahrraeder;",
 	"SELECT SUM(*) FROM fahrraeder;",
-	"SELECT COUNT(ALL) FROM fahrraeder;"
+	"SELECT COUNT FROM fahrraeder;"
 ]
 answer.answer = "SELECT COUNT(*) FROM fahrraeder;"
 context = "COUNT(*) zählt Zeilen unabhängig von einer einzelnen Spalte."
@@ -63,7 +63,7 @@ prompt.prompt = "Welche Abfrage zählt nur verschiedene Bezeichnungen?"
 prompt.distractors = [
 	"SELECT DISTINCT COUNT(bezeichnung) FROM fahrraeder;",
 	"SELECT COUNT(*) DISTINCT bezeichnung FROM fahrraeder;",
-	"SELECT COUNT(UNIQUE bezeichnung) FROM fahrraeder;"
+	"SELECT COUNT(bezeichnung) FROM fahrraeder;"
 ]
 answer.answer = "SELECT COUNT(DISTINCT bezeichnung) FROM fahrraeder;"
 context = "DISTINCT innerhalb von COUNT betrachtet nur verschiedene Werte."
@@ -146,7 +146,7 @@ type = "MultipleChoice"
 prompt.prompt = "Welche SQL-Idee ist korrekt, wenn keine Gruppierung benutzt wird?"
 prompt.distractors = [
 	"Detailspalten und Aggregatspalten lassen sich ohne Einschränkung mischen.",
-	"GROUP BY ist bei COUNT(*) immer Pflicht.",
+	"COUNT(*) braucht immer WHERE.",
 	"Aggregatfunktionen dürfen nur einzeln verwendet werden."
 ]
 answer.answer = "Ohne GROUP BY sind reine Aggregatabfragen möglich, aber keine Mischung mit beliebigen Detailspalten."

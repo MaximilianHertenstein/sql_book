@@ -23,9 +23,9 @@ id = "7ef96b86-438a-430d-b43a-fdca31f1d0c7"
 type = "MultipleChoice"
 prompt.prompt = "Welche Klausel filtert Zeilen in einer Abfrage?"
 prompt.distractors = [
-	"ORDER BY",
-	"GROUP BY",
-	"FROM"
+	"SELECT",
+	"FROM",
+	"AS"
 ]
 answer.answer = "WHERE"
 context = "Die WHERE-Klausel schränkt die Zeilen der Ergebnismenge ein."
@@ -93,7 +93,7 @@ type = "MultipleChoice"
 prompt.prompt = "Du brauchst nur `vorname` und `name` von Kundinnen (`geschlecht = 'w'`). Welche Abfrage passt?"
 prompt.distractors = [
 	"SELECT * FROM kunden WHERE vorname, name AND geschlecht = 'w';",
-	"SELECT vorname, name FROM kunden HAVING geschlecht = 'w';",
+	"SELECT vorname, name FROM kunden WHERE geschlecht = w;",
 	"SELECT vorname name FROM kunden WHERE geschlecht = 'w';"
 ]
 answer.answer = "SELECT vorname, name FROM kunden WHERE geschlecht = 'w';"
@@ -116,9 +116,9 @@ id = "2b8e3eab-1278-4ae4-ab5c-f479286ebf2a"
 type = "MultipleChoice"
 prompt.prompt = "Welche Abfrage kombiniert eine berechnete Spalte und Selektion korrekt?"
 prompt.distractors = [
-	"SELECT fahrradNr, tagesmietpreis < 10 AS billig FROM fahrraeder WHEN tagesmietpreis < 20;",
+	"SELECT fahrradNr, tagesmietpreis < 10 AS billig FROM fahrraeder WHERE billig;",
 	"SELECT fahrradNr, tagesmietpreis < 10 AS billig WHERE tagesmietpreis < 20 FROM fahrraeder;",
-	"SELECT fahrradNr, tagesmietpreis < 10 billig FROM fahrraeder HAVING tagesmietpreis < 20;"
+	"SELECT fahrradNr, tagesmietpreis < 10 AS billig WHERE tagesmietpreis < 20;"
 ]
 answer.answer = "SELECT fahrradNr, tagesmietpreis < 10 AS billig FROM fahrraeder WHERE tagesmietpreis < 20;"
 context = "Berechnete Spalten mit AS und Filterung mit WHERE hinter FROM."
@@ -128,7 +128,7 @@ id = "261df2c7-c8be-4dd4-bcc4-c6efbb146ee2"
 type = "MultipleChoice"
 prompt.prompt = "Welche Aussage trifft auf Projektion zu?"
 prompt.distractors = [
-	"Projektion entfernt immer Duplikate automatisch.",
+	"Projektion steht in der WHERE-Klausel.",
 	"Projektion filtert nur Zeilen.",
 	"Projektion benötigt zwingend ein * hinter SELECT."
 ]
