@@ -187,7 +187,21 @@ SELECT (true OR false) AND false;
 
 ## Strings
 
-Ein weiterer Datentyp in SQL sind Zeichenketten (`VARCHAR`). Vergleiche
+Ein weiterer Datentyp in SQL sind Zeichenketten (`VARCHAR`/`String`). 
+Zeichenketten stehen immer ziwschen zwei Hochkommatas (`'`).
+
+
+Mit Zeichenketten kann man nicht rechnen.
+
+```sql
+SELECT '1' + '2';
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
+</codapi-snippet>
+
+
+
+Vergleiche
 mit Zeichenketten haben oft ein überraschendes Ergebnis.
 
 ```sql
