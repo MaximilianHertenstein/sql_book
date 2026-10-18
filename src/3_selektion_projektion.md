@@ -159,6 +159,16 @@ tagesmietpreis_unter_10_euro FROM fahrraeder;
 </codapi-snippet>
 
 
+Strings schreibt man mit Anführungszeichen und Spaltennamen ohne Anführungszeichen.
+
+```sql
+SELECT name, name = 'Schlauch' 
+FROM kunden;
+```
+<codapi-snippet engine="pglite" sandbox="postgres" editor="none" output-mode="table">
+</codapi-snippet>
+
+
 
 ## Auswahl von Zeilen
 
