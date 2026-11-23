@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "In welcher Spalte schaust du in `fahrraeder` nach, um die Fahrradart zu finden?"
+answer.answer = "fahrradartNr"
+context = "Kapitel 5: Fremdschlüssel nachschlagen"
+id = "7080c177-b78a-4232-89ff-9952a1254f31"

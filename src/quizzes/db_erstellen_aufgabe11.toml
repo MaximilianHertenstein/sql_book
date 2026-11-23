@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche CREATE TABLE-Variante ist korrekt aufgebaut?"
+prompt.distractors = [
+	"CREATE TABLE klassen klassen_id int, stufe varchar(255);",
+	"CREATE TABLE klassen (klassen_id int stufe varchar(255));",
+	"CREATE klassen TABLE (klassen_id int, stufe varchar(255));"
+]
+answer.answer = "CREATE TABLE klassen (klassen_id int, stufe varchar(255));"
+context = "Spaltendefinitionen stehen in Klammern und werden mit Kommas getrennt."
+id = "c11f2f90-aa19-4e89-af4d-ad4b4dc27708"

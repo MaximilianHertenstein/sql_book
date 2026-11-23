@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Zeichen steht hinter SELECT, wenn alle Spalten ausgegeben werden sollen?"
+answer.answer = "*"
+context = "Kapitel 3: Ganze Tabelle ausgeben"
+id = "020259fd-7df3-4ebf-8193-af18456b064a"

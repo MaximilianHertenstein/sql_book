@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du brauchst nur `vorname` und `name` von Kundinnen (`geschlecht = 'w'`). Welche Abfrage passt?"
+prompt.distractors = [
+	"SELECT * FROM kunden WHERE vorname, name AND geschlecht = 'w';",
+	"SELECT vorname, name FROM kunden WHERE geschlecht = w;",
+	"SELECT vorname name FROM kunden WHERE geschlecht = 'w';"
+]
+answer.answer = "SELECT vorname, name FROM kunden WHERE geschlecht = 'w';"
+context = "Anwendung von Projektion (Spaltenwahl) plus Selektion (Zeilenfilter)."
+id = "f8f0f972-a83c-458c-a3a0-f606d6c13f9b"

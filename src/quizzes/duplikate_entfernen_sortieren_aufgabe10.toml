@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Klausel ist für das Entfernen von Duplikaten zuständig: DISTINCT oder ORDER BY?"
+answer.answer = "DISTINCT"
+context = "Kapitel 4: DISTINCT vs. ORDER BY"
+id = "5f5f6b50-8f3f-4b40-9448-421c75d7d9fd"

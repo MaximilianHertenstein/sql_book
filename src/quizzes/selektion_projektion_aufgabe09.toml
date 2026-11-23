@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage ist eine Selektion mit Bedingung auf tagesmietpreis?"
+prompt.distractors = [
+	"SELECT fahrradNr, bezeichnung FROM fahrraeder tagesmietpreis < 10;",
+	"SELECT fahrradNr, bezeichnung FROM fahrraeder WHEN tagesmietpreis < 10;",
+	"SELECT fahrradNr, bezeichnung WHERE tagesmietpreis < 10 FROM fahrraeder;"
+]
+answer.answer = "SELECT fahrradNr, bezeichnung FROM fahrraeder WHERE tagesmietpreis < 10;"
+context = "Selektion erfolgt über WHERE hinter FROM."
+id = "f7f9b75c-5108-4a4d-ac99-394f6c12b897"

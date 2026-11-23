@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche SQL-Abfrage ist als Rechenabfrage syntaktisch korrekt?"
+prompt.distractors = [
+	"CALC 2 + 3;",
+	"SELECT 2 + ;",
+	"FROM SELECT 2 + 3;"
+]
+answer.answer = "SELECT 2 + 3;"
+context = "Rechenabfragen beginnen mit SELECT und enthalten einen vollständigen Ausdruck."
+id = "4f5c236f-3022-4f26-a8f5-8a5c15e2de34"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Zeile berechnet zwei Ergebnisse?"
+prompt.distractors = [
+	"SELECT 3 * 3 (1 - 2) * 3 + 5;",
+	"SELECT 3 * 3; (1 - 2) * 3 + 5;",
+	"SELECT 3 * 3 AND (1 - 2) * 3 + 5;"
+]
+answer.answer = "SELECT 3 * 3, (1 - 2) * 3 + 5;"
+context = "Mehrere Ausdrücke werden in SELECT durch Komma getrennt."
+id = "42f0e6ed-9dd4-4bbf-b1f4-5f6b30f8fd5d"

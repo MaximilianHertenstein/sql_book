@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche JOIN-Bedingung verknüpft Fahrräder mit Fahrradarten korrekt?"
+prompt.distractors = [
+	"ON fahrradarten.bezeichnung = fahrraeder.bezeichnung",
+	"ON fahrradarten.fahrradartnr > fahrraeder.fahrradartnr",
+	"ON fahrraeder.fahrradnr = fahrradarten.fahrradartnr"
+]
+answer.answer = "ON fahrradarten.fahrradartnr = fahrraeder.fahrradartnr"
+context = "Verknüpft werden Primär- und Fremdschlüssel derselben Bedeutung."
+id = "6e04e7a0-e8ce-4cd3-83c1-41fe1ee7ca28"

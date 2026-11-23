@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage entfernt doppelte Werte in einer Spalte korrekt?"
+prompt.distractors = [
+	"SELECT geschlecht DISTINCT FROM kunden;",
+	"SELECT geschlecht FROM kunden ORDER BY geschlecht;",
+	"SELECT geschlecht FROM kunden WHERE DISTINCT;"
+]
+answer.answer = "SELECT DISTINCT geschlecht FROM kunden;"
+context = "DISTINCT entfernt doppelte Zeilen in der Ergebnismenge."
+id = "019f3502-0567-4562-8ff7-d20f4697c061"

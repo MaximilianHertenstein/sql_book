@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Was passiert, wenn du in `klassen_mit_pk` zweimal die gleiche `klassen_id` einfügst?"
+prompt.distractors = [
+	"Die zweite Zeile überschreibt die erste.",
+	"Beide Zeilen stehen danach in der Tabelle.",
+	"Die Tabelle wird automatisch nach `klassen_id` sortiert."
+]
+answer.answer = "Die Datenbank lässt nur eindeutige Werte für `klassen_id` zu."
+context = "Der Primärschlüssel sichert eindeutige Zeilen."
+id = "95c8a193-5f5b-43a8-bb80-18fb6fa2ef79"

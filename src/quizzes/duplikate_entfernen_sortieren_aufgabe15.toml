@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Kombination ist korrekt, wenn du zuerst Duplikate entfernen und dann sortieren willst?"
+prompt.distractors = [
+	"SELECT geschlecht FROM kunden ORDER BY geschlecht DISTINCT;",
+	"SELECT DISTINCT geschlecht ORDER geschlecht;",
+	"SELECT geschlecht DISTINCT FROM kunden ORDER BY geschlecht;"
+]
+answer.answer = "SELECT DISTINCT geschlecht FROM kunden ORDER BY geschlecht;"
+context = "DISTINCT in SELECT-Liste, ORDER BY als eigene Klausel."
+id = "74ac486f-0fa9-44af-b958-2f833705e6af"

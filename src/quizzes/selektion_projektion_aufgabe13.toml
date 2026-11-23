@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage kombiniert eine berechnete Spalte und Selektion korrekt?"
+prompt.distractors = [
+	"SELECT fahrradNr, tagesmietpreis < 10 AS billig FROM fahrraeder WHERE billig;",
+	"SELECT fahrradNr, tagesmietpreis < 10 AS billig WHERE tagesmietpreis < 20 FROM fahrraeder;",
+	"SELECT fahrradNr, tagesmietpreis < 10 AS billig WHERE tagesmietpreis < 20;"
+]
+answer.answer = "SELECT fahrradNr, tagesmietpreis < 10 AS billig FROM fahrraeder WHERE tagesmietpreis < 20;"
+context = "Berechnete Spalten mit AS und Filterung mit WHERE hinter FROM."
+id = "261df2c7-c8be-4dd4-bcc4-c6efbb146ee2"

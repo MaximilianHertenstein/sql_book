@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem Schlüsselwort benennst du eine berechnete Spalte um?"
+answer.answer = "AS"
+context = "Kapitel 3: Berechnete Spalten"
+id = "c9ec7f84-f5d8-461a-91d5-e5578464a848"

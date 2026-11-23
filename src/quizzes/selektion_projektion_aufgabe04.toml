@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel filtert Zeilen in einer Abfrage?"
+prompt.distractors = [
+	"SELECT",
+	"FROM",
+	"AS"
+]
+answer.answer = "WHERE"
+context = "Die WHERE-Klausel schränkt die Zeilen der Ergebnismenge ein."
+id = "36f3f65e-45ad-4f9e-8fb8-97d230ce73cf"

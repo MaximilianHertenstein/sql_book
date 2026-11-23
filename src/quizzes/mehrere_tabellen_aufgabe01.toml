@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches allgemeine SQL-Schlüsselwort verbindet Zeilen aus mehreren Tabellen (1 Wort)?"
+answer.answer = "JOIN"
+context = "Kapitel 5: Mehrere Tabellen"
+id = "c53e611e-16fc-4ee1-9ec6-edc7e4f5f992"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage trifft auf Projektion zu?"
+prompt.distractors = [
+	"Projektion steht in der WHERE-Klausel.",
+	"Projektion filtert nur Zeilen.",
+	"Projektion benötigt zwingend ein * hinter SELECT."
+]
+answer.answer = "Projektion wählt aus, welche Spalten ausgegeben werden."
+context = "Kapitel 3: Projektion"
+id = "1795bb84-6d73-42e5-bf66-962eab278a83"

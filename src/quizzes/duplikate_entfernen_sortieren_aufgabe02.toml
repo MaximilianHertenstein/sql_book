@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter brauchst du, um Ergebnisse zu sortieren?"
+answer.answer = "ORDER BY"
+context = "Kapitel 4: Sortieren"
+id = "359e54e6-b9e4-44a5-bc72-0d9732689396"

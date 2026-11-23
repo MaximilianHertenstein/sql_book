@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "In welchem Format schreibst du Datumswerte in SQL?"
+answer.answer = "yyyy-mm-dd"
+context = "Kapitel 1: Datumswerte vom Typ DATE"
+id = "d42b6170-1be1-4bc0-98da-1a8b29d02370"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu String-Vergleichen in SQL ist richtig?"
+prompt.distractors = [
+	"Strings werden immer numerisch verglichen.",
+	"'10' < '2' ist immer false, weil 10 größer als 2 ist.",
+	"Beim Vergleich entscheidet nur die Länge des Strings."
+]
+answer.answer = "Strings werden lexikalisch verglichen."
+context = "Kapitel 1: Lexikalischer String-Vergleich"
+id = "26098377-b4d9-4c11-a69f-4b9cdd7928d2"

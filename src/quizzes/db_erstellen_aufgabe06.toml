@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort nutzt man im Kapitel, um ein Schema auszuwählen?"
+answer.answer = "USE"
+context = "Kapitel 2: Datenbankschema verwenden"
+id = "33d58f27-0a87-4ac6-a3a4-7f087f754af5"

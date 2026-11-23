@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche SELECT-Liste ist bei GROUP BY bezeichnung zulässig?"
+prompt.distractors = [
+	"SELECT fahrradNr, COUNT(*)",
+	"SELECT tagesmietpreis, COUNT(*)",
+	"SELECT fahrradNr, bezeichnung"
+]
+answer.answer = "SELECT bezeichnung, COUNT(*)"
+context = "Erlaubt sind Gruppierungsausdruck und Aggregatausdrücke."
+id = "9912f42e-cec1-4f11-8139-84c00f2632ee"

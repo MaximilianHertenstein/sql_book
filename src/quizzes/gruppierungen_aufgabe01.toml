@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter brauchst du, um Zeilen nach einer Spalte zu gruppieren?"
+answer.answer = "GROUP BY"
+context = "Kapitel 7: Gruppierung"
+id = "c1079abf-a94d-4f67-b426-04dd5ee4d56f"

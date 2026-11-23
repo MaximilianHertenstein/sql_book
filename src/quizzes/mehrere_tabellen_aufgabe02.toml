@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem SQL-Schlüsselwort formulierst du die Verknüpfungsbedingung zwischen zwei Tabellen (1 Wort)?"
+answer.answer = "ON"
+context = "Kapitel 5: Join-Bedingung"
+id = "9e9ed76f-4edb-4d65-b18a-aee4fc0f1466"

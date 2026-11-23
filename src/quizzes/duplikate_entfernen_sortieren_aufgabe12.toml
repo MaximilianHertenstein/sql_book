@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage liefert eindeutige Geschlechterwerte in aufsteigender Reihenfolge?"
+prompt.distractors = [
+	"SELECT geschlecht FROM kunden ORDER BY ASC DISTINCT;",
+	"SELECT DISTINCT geschlecht ORDER kunden ASC;",
+	"SELECT geschlecht DISTINCT FROM kunden ORDER BY geschlecht ASC;"
+]
+answer.answer = "SELECT DISTINCT geschlecht FROM kunden ORDER BY geschlecht ASC;"
+context = "Korrekte Kombination aus DISTINCT und ORDER BY mit Sortierspalte."
+id = "eaf859d4-c180-4f79-8176-8fbf59c0fd6f"

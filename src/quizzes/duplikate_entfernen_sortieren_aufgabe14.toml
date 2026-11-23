@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage sortiert nach name aufsteigend und bei Gleichstand nach vorname absteigend?"
+prompt.distractors = [
+	"SELECT vorname, name FROM kunden ORDER BY name, vorname DESC ASC;",
+	"SELECT vorname, name FROM kunden ORDER BY name ASC AND vorname DESC;",
+	"SELECT vorname, name FROM kunden ORDER name ASC, vorname DESC;"
+]
+answer.answer = "SELECT vorname, name FROM kunden ORDER BY name ASC, vorname DESC;"
+context = "Mehrstufige Sortierung mit unterschiedlichen Richtungen."
+id = "8fb6c2d4-e8f8-4b58-a4be-486a5ff3f489"

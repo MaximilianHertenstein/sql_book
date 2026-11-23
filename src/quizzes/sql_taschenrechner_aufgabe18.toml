@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu Datumsvergleichen stimmt?"
+prompt.distractors = [
+	"Das frühere Datum ist größer.",
+	"Datumswerte lassen sich nicht mit > vergleichen.",
+	"Datumswerte müssen erst mit ROUND gerundet werden."
+]
+answer.answer = "Das spätere Datum ist größer."
+context = "Kapitel 1: Datumswerte vergleichen"
+id = "42c53ca9-efe1-48ca-8230-4c9ecf8c0a9e"

@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt die SQL-Aggregatfunktion zum Zählen von Zeilen (ohne Klammern)?"
+answer.answer = "COUNT"
+context = "Kapitel 6: Aggregierung"
+id = "dc6bcfdf-b8c5-493c-bfd6-1ee13cfd3f56"

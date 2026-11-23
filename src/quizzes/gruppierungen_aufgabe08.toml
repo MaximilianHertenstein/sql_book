@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Bedingung ist in HAVING bei einer Gruppierung nach bezeichnung zulässig?"
+prompt.distractors = [
+	"HAVING fahrradNr > 4",
+	"HAVING tagesmietpreis > 15",
+	"HAVING bezeichnung = COUNT(*)"
+]
+answer.answer = "HAVING COUNT(fahrradNr) > 4"
+context = "In HAVING sind Aggregat-Ausdrücke oder der Gruppierungsausdruck erlaubt."
+id = "dd3ea8c5-ad65-4507-a3c7-a11122f34265"

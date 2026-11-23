@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welcher Platzhalter bei LIKE steht für genau ein Zeichen?"
+prompt.distractors = [
+	"%",
+	"*",
+	"?"
+]
+answer.answer = "_"
+context = "Bei LIKE steht _ für genau ein Zeichen, % für beliebig viele Zeichen."
+id = "f6ddd3d2-e930-4b64-8d4b-63846e4b7c91"

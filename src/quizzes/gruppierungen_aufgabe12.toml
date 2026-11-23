@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Reihenfolge ist bei Gruppierungsabfragen korrekt?"
+prompt.distractors = [
+	"SELECT ... FROM ... HAVING ... GROUP BY ...",
+	"SELECT ... GROUP BY ... FROM ... HAVING ...",
+	"FROM ... WHERE ... GROUP BY ... SELECT ..."
+]
+answer.answer = "SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ..."
+context = "Klauselreihenfolge bei Gruppierung mit Gruppenfilter."
+id = "9a6668dd-f328-4eb7-b5ca-486008ad0ea0"

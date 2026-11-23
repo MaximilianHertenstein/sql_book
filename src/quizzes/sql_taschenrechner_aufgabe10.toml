@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welcher Operator vergleicht Strings mit Platzhaltern wie % und _?"
+answer.answer = "LIKE"
+context = "Kapitel 1: Textmustererkennung"
+id = "8ccf2ed8-b2b6-49de-8dff-ae2d49262766"

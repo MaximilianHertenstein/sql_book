@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zählt alle zurückgegebenen Zeilen?"
+prompt.distractors = [
+	"SELECT COUNT() FROM fahrraeder;",
+	"SELECT SUM(*) FROM fahrraeder;",
+	"SELECT COUNT FROM fahrraeder;"
+]
+answer.answer = "SELECT COUNT(*) FROM fahrraeder;"
+context = "COUNT(*) zählt Zeilen unabhängig von einer einzelnen Spalte."
+id = "ff6f9b6a-91fd-4084-b7ce-c8659d9b3554"

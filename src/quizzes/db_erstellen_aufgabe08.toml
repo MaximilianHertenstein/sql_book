@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter leiten einen Fremdschlüssel ein?"
+answer.answer = "FOREIGN KEY"
+context = "Kapitel 2: Fremdschlüssel"
+id = "b8a1882f-c8c5-423e-83f3-948f4fd54b01"

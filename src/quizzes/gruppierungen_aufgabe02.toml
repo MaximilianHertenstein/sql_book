@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem SQL-Schlüsselwort filterst du Gruppen nach der Aggregation (1 Wort)?"
+answer.answer = "HAVING"
+context = "Kapitel 7: HAVING"
+id = "db57f047-24cc-4de6-ab08-42e0e318cd13"

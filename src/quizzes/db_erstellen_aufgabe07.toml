@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Definition setzt korrekt einen Primärschlüssel in CREATE TABLE?"
+prompt.distractors = [
+	"PRIMARY (klassen_id)",
+	"KEY PRIMARY klassen_id",
+	"PRIMARY KEY klassen_id"
+]
+answer.answer = "PRIMARY KEY(klassen_id)"
+context = "Der Primärschlüssel wird mit PRIMARY KEY(Spalte) angegeben."
+id = "3217ef8e-30da-4f76-9735-a8f4d4d9ac2b"

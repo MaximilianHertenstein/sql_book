@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welchen Wahrheitswert liefert SELECT (true OR false) AND false; ?"
+answer.answer = "false"
+context = "Die Klammer ändert die Auswertungsreihenfolge."
+id = "8de90f31-c605-4db8-8e03-dd7f1b2f7e12"

@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welchen Wahrheitswert liefert SELECT NOT true OR true AND false; ?"
+answer.answer = "false"
+context = "NOT wird zuerst, dann AND, dann OR ausgewertet."
+id = "4cfa89f0-c1f4-4e8b-8c3d-06cbe4da6551"

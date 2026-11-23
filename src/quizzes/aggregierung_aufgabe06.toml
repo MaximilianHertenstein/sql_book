@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Aggregatfunktion liefert die Summe aller Werte?"
+answer.answer = "SUM"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "46f51276-b474-4e81-989e-341d885ef982"

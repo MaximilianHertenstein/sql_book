@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zeigt ganzzahlige Division (Integer-Division)?"
+prompt.distractors = [
+	"SELECT 10 / 4.0;",
+	"SELECT 10.0 / 4;",
+	"SELECT ROUND(10.0 / 4, 1);"
+]
+answer.answer = "SELECT 10 / 4;"
+context = "Sind beide Operanden Integer, wird ganzzahlig dividiert."
+id = "a4d21257-17f8-41d2-928b-a5d8fcc2e51f"

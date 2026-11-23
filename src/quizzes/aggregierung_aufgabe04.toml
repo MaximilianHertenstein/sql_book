@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aggregatfunktion berechnet den Durchschnitt?"
+prompt.distractors = [
+	"SUM",
+	"MIN",
+	"COUNT"
+]
+answer.answer = "AVG"
+context = "AVG berechnet den Mittelwert der Werte einer Spalte."
+id = "0bdf7f6f-6ec1-44ca-93ef-ec1efe62257d"

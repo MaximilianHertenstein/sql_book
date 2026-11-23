@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche INSERT-Abfrage fügt zwei Klassenzeilen in einem Statement korrekt ein?"
+prompt.distractors = [
+	"INSERT INTO klassen VALUES (1, '12', 'D', 'H207'); VALUES (2, 'BF1', 'P', 'H205');",
+	"INSERT INTO klassen VALUES (1, '12', 'D', 'H207') (2, 'BF1', 'P', 'H205');",
+	"INSERT klassen INTO VALUES (1, '12', 'D', 'H207'), (2, 'BF1', 'P', 'H205');"
+]
+answer.answer = "INSERT INTO klassen VALUES (1, '12', 'D', 'H207'), (2, 'BF1', 'P', 'H205');"
+context = "Mehrere Tupel werden in VALUES kommasepariert in einem Statement eingefügt."
+id = "aca5b1d6-55a8-4f73-9844-b9af139816f9"

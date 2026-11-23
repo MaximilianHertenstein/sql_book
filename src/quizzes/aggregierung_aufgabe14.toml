@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu COUNT(DISTINCT bezeichnung) ist korrekt?"
+prompt.distractors = [
+	"Es zählt alle Zeilen inklusive Dopplungen.",
+	"Es berechnet den Durchschnitt verschiedener Bezeichnungen.",
+	"Es liefert den größten String-Wert."
+]
+answer.answer = "Es zählt, wie viele unterschiedliche Bezeichnungen vorhanden sind."
+context = "Kapitel 6: DISTINCT innerhalb von COUNT"
+id = "defcc92b-0f0d-45ed-9764-91d2ebe03689"

@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort verwendet man in SQL, um einer berechneten Spalte einen Namen zu geben?"
+answer.answer = "AS"
+context = "Kapitel 1: Benennung von Ergebnisspalten"
+id = "a00346df-3e13-4f2a-89b7-00b2a714db9b"

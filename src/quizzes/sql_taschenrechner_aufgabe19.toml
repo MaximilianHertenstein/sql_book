@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welcher Funktion bekommst du das aktuelle Datum?"
+answer.answer = "CURDATE"
+context = "Kapitel 1: Aktuelles Datum"
+id = "1eef7df2-63cf-481b-9529-f309d49dd43a"

@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt der Fachbegriff für die Auswahl bestimmter Spalten (1 Wort)?"
+answer.answer = "Projektion"
+context = "Kapitel 3: Projektion"
+id = "cad38d16-1a5a-4a57-aa93-278f78455a8c"

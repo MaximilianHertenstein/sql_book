@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel sortiert eine Ergebnismenge?"
+prompt.distractors = [
+	"WHERE",
+	"SELECT",
+	"DISTINCT"
+]
+answer.answer = "ORDER BY"
+context = "ORDER BY sortiert die ausgegebenen Zeilen nach einer oder mehreren Spalten."
+id = "83f6f1ca-b9f9-4a8e-8d15-5d3225ef95ae"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Schlüsselwort-Kombination legt eine Tabelle an?"
+prompt.distractors = [
+	"CREATE INTO",
+	"INSERT TABLE",
+	"TABLE CREATE"
+]
+answer.answer = "CREATE TABLE"
+context = "Zum Anlegen einer Tabelle wird CREATE TABLE verwendet."
+id = "dc65f747-fd4b-4b6e-a164-fe6da6ce4ecf"

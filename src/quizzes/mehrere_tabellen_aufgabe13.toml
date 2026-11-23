@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche FROM-Klausel mit Aliasen ist korrekt?"
+prompt.distractors = [
+	"FROM fahrradarten FA JOIN fahrraeder F FA.fahrradartnr = F.fahrradartnr",
+	"FROM fahrradarten FA fahrraeder F ON FA.fahrradartnr = F.fahrradartnr",
+	"FROM FA fahrradarten JOIN F fahrraeder ON FA.fahrradartnr = F.fahrradartnr"
+]
+answer.answer = "FROM fahrradarten FA JOIN fahrraeder F ON FA.fahrradartnr = F.fahrradartnr"
+context = "Korrekte Join-Struktur mit Aliasen und ON-Bedingung."
+id = "c59a4893-8923-4b8c-be69-d25824751403"

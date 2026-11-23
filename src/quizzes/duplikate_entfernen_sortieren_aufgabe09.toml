@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage sortiert zuerst nach name absteigend und bei Gleichstand nach vorname aufsteigend?"
+prompt.distractors = [
+	"SELECT vorname, name FROM kunden ORDER BY name, vorname DESC ASC;",
+	"SELECT vorname, name FROM kunden ORDER BY name DESC AND vorname ASC;",
+	"SELECT vorname, name FROM kunden ORDER name DESC, vorname ASC;"
+]
+answer.answer = "SELECT vorname, name FROM kunden ORDER BY name DESC, vorname ASC;"
+context = "Mehrere Sortierspalten werden in ORDER BY durch Kommas getrennt."
+id = "cf853cd7-ff16-4c78-84ce-cfb6d649f118"

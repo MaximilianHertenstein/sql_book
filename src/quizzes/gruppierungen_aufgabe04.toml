@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel gruppiert Zeilen nach einem gemeinsamen Wert?"
+prompt.distractors = [
+	"ORDER BY",
+	"HAVING",
+	"WHERE"
+]
+answer.answer = "GROUP BY"
+context = "GROUP BY fasst Zeilen mit gleichem Wert zusammen."
+id = "0db0f6ac-00f4-47a8-bc48-2e576738e7fc"

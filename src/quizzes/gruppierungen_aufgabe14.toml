@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu WHERE und HAVING stimmt?"
+prompt.distractors = [
+	"HAVING filtert immer vor GROUP BY.",
+	"WHERE kann Aggregatbedingungen wie COUNT(*) > 3 direkt prüfen.",
+	"WHERE und HAVING sind in Gruppierungsabfragen austauschbar."
+]
+answer.answer = "WHERE filtert Zeilen vor der Gruppierung, HAVING filtert Gruppen nach der Gruppierung."
+context = "Kapitel 7: Unterschied WHERE vs. HAVING"
+id = "af417a3d-9d1c-4f57-b8db-6d93e0a0db38"

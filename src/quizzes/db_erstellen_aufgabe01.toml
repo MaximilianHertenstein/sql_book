@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter brauchst du, um eine neue Tabelle anzulegen?"
+answer.answer = "CREATE TABLE"
+context = "Kapitel 2: Datenbank erstellen"
+id = "4a74f3f8-fd6a-4f3b-8a70-2fc13f9afc88"

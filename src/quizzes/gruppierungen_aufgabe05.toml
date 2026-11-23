@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel filtert Zeilen vor der Gruppierung?"
+prompt.distractors = [
+	"HAVING",
+	"ORDER BY",
+	"COUNT"
+]
+answer.answer = "WHERE"
+context = "WHERE wird vor GROUP BY ausgewertet."
+id = "4339c6dc-52ab-4a36-8388-78dfffc73112"

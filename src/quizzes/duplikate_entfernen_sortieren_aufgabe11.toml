@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du willst eine Namensliste ohne Doppelnennungen und alphabetisch sortiert. Welche SQL-Idee ist richtig?"
+prompt.distractors = [
+	"Nur ORDER BY reicht aus.",
+	"Nur DISTINCT reicht aus.",
+	"Erst ORDER BY, dann DISTINCT als eigene Klausel am Ende."
+]
+answer.answer = "DISTINCT für Duplikate und ORDER BY für die Reihenfolge kombinieren."
+context = "DISTINCT und ORDER BY haben unterschiedliche Aufgaben und können zusammen genutzt werden."
+id = "ad8f7e0a-d40f-4be4-89b8-54d9f1b79ab2"

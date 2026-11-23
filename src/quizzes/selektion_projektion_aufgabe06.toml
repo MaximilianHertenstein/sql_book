@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort gibt an, aus welcher Tabelle gelesen wird?"
+answer.answer = "FROM"
+context = "Kapitel 3: SELECT-FROM"
+id = "4b0879a9-c4a8-4dd8-bf02-f7c28265dba5"

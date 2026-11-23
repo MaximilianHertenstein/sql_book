@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu DISTINCT ist korrekt?"
+prompt.distractors = [
+	"DISTINCT sortiert immer automatisch alphabetisch.",
+	"DISTINCT wirkt nur zusammen mit ORDER BY.",
+	"DISTINCT darf nur mit Zahlen verwendet werden."
+]
+answer.answer = "DISTINCT entfernt doppelte Zeilen aus der Ergebnismenge."
+context = "Kapitel 4: Funktion von DISTINCT"
+id = "e53ec29d-c98a-4893-a8d3-48e30061e8d4"

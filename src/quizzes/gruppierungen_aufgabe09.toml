@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Aggregatfunktion wird im Kapitel verwendet, um die Größe einer Gruppe zu bestimmen?"
+answer.answer = "COUNT"
+context = "Kapitel 7: Gruppengröße pro Gruppe"
+id = "d08ee61b-774b-4de9-9ee7-c10a38cb2af8"

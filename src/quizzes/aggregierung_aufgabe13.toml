@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage liefert gleichzeitig kleinsten und größten Tagesmietpreis?"
+prompt.distractors = [
+	"SELECT SUM(tagesmietpreis), AVG(tagesmietpreis) FROM fahrraeder;",
+	"SELECT COUNT(tagesmietpreis), AVG(tagesmietpreis) FROM fahrraeder;",
+	"SELECT MIN(tagesmietpreis) OR MAX(tagesmietpreis) FROM fahrraeder;"
+]
+answer.answer = "SELECT MIN(tagesmietpreis), MAX(tagesmietpreis) FROM fahrraeder;"
+context = "Mehrere Aggregatfunktionen können gemeinsam abgefragt werden."
+id = "0fb83487-fcf5-43f6-ab74-7e54f21e42a5"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage ist eine Projektion auf zwei Spalten?"
+prompt.distractors = [
+	"SELECT * FROM kunden WHERE vorname, name;",
+	"SELECT vorname name FROM kunden;",
+	"FROM kunden SELECT vorname, name;"
+]
+answer.answer = "SELECT vorname, name FROM kunden;"
+context = "Bei einer Projektion stehen die gewünschten Spalten hinter SELECT."
+id = "cc74b9d5-f52d-4fac-b46d-8a7fed25a4c0"

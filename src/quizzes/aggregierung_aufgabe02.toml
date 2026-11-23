@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt die SQL-Aggregatfunktion für den Durchschnitt (ohne Klammern)?"
+answer.answer = "AVG"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "72f4ec1e-63ac-4f98-be64-cf4ee6f6f8d9"

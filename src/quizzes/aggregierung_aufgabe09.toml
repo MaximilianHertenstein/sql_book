@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu Aggregierungen stimmt?"
+prompt.distractors = [
+	"Mit Aggregatfunktionen darf nie mehr als ein Ausdruck hinter SELECT stehen.",
+	"COUNT und AVG dürfen nicht in derselben Abfrage stehen.",
+	"Aggregatfunktionen funktionieren nur mit WHERE."
+]
+answer.answer = "Mehrere Aggregatfunktionen können gemeinsam in einer SELECT-Liste stehen."
+context = "Kapitel 6: Mehrere aggregierte Werte in einer Abfrage"
+id = "f8d62269-bf1f-4743-9dee-1213ea273b81"

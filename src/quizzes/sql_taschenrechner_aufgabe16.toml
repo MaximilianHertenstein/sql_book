@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage beschreibt das Ergebnis von SELECT 10/4, 10/4.0; am besten?"
+prompt.distractors = [
+	"Beide Ergebnisse sind gleich und ganzzahlig.",
+	"Beide Ergebnisse sind gleich und mit Nachkommastellen.",
+	"Der Ausdruck ist ungültig, weil Datentypen gemischt werden."
+]
+answer.answer = "Die erste Division ist ganzzahlig, die zweite liefert eine Kommazahl."
+context = "Integer-Division vs. Division mit mindestens einem nicht-ganzzahligen Operanden."
+id = "d8622e4b-e0a3-4f70-ae81-95f7b9658edf"

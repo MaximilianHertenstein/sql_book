@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du willst je Fahrrad die Fahrradart anzeigen. Welche Spaltenauswahl passt fachlich am besten?"
+prompt.distractors = [
+	"Nur fahrraeder.fahrradNr",
+	"Nur fahrradarten.fahrradartNr",
+	"Nur fahrraeder.fahrradartNr"
+]
+answer.answer = "fahrraeder.bezeichnung AS fahrrad und fahrradarten.bezeichnung AS fahrradart"
+context = "Für verständliche Ausgabe werden sprechende Bezeichnungen statt nur Schlüsselnummern gewählt."
+id = "d57722f5-d986-4e06-aeb8-ecb6f7614cc5"

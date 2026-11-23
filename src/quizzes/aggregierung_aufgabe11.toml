@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Wenn du wissen willst, wie viele Fahrräder insgesamt vorhanden sind, welche Funktion ist fachlich passend?"
+prompt.distractors = [
+	"AVG(fahrradNr)",
+	"SUM(fahrradNr)",
+	"MAX(fahrradNr)"
+]
+answer.answer = "COUNT(*)"
+context = "Gesamtanzahlen von Zeilen werden mit COUNT(*) bestimmt."
+id = "e77f0568-0f11-4fee-ba30-a73ce4e555a8"

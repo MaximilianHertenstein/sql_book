@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche SQL-Idee ist korrekt, wenn keine Gruppierung benutzt wird?"
+prompt.distractors = [
+	"Detailspalten und Aggregatspalten lassen sich ohne Einschränkung mischen.",
+	"COUNT(*) braucht immer WHERE.",
+	"Aggregatfunktionen dürfen nur einzeln verwendet werden."
+]
+answer.answer = "Ohne GROUP BY sind reine Aggregatabfragen möglich, aber keine Mischung mit beliebigen Detailspalten."
+context = "Kapitel 6: Regel zu Aggregaten ohne Gruppierung"
+id = "84a2d807-ea1f-4b5e-bcde-d25541936da4"

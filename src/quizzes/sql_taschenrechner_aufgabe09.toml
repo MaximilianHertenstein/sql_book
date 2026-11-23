@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Funktion nutzt man zum Runden auf eine feste Anzahl von Nachkommastellen?"
+answer.answer = "ROUND"
+context = "Kapitel 1: Funktionen"
+id = "bbf58af6-f53a-4b37-8d11-1b7af0a8f3b9"

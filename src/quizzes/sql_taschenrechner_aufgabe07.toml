@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welcher logische Operator hat ohne Klammern Vorrang vor OR?"
+answer.answer = "AND"
+context = "Kapitel 1: Boolesche Vorrangregeln"
+id = "afc7e8dc-1a95-4abe-a845-a2f8853f3279"

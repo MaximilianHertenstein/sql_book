@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Reihenfolge ist fachlich sinnvoll, um mit einer neuen Datenbank zu arbeiten?"
+prompt.distractors = [
+	"USE Schule; dann CREATE SCHEMA Schule; dann CREATE TABLE ...",
+	"CREATE TABLE ...; dann CREATE SCHEMA Schule; dann USE Schule;",
+	"CREATE SCHEMA Schule; dann CREATE TABLE ...; USE Schule;"
+]
+answer.answer = "CREATE SCHEMA Schule; dann USE Schule; dann CREATE TABLE ..."
+context = "Zuerst Schema anlegen, dann auswählen, danach Tabellen erstellen."
+id = "e96881aa-4b85-4102-9fc8-c7ab09a0cd4d"

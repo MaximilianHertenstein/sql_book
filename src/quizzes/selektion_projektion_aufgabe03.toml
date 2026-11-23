@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt der Fachbegriff für die Auswahl bestimmter Zeilen (1 Wort)?"
+answer.answer = "Selektion"
+context = "Kapitel 3: Selektion"
+id = "7ef96b86-438a-430d-b43a-fdca31f1d0c7"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Warum sind qualifizierte Spaltennamen bei JOINs mit gleichnamigen Spalten wichtig?"
+prompt.distractors = [
+	"Damit SQL schneller ausführt.",
+	"Damit automatisch nach Primärschlüsseln sortiert wird.",
+	"Damit WHERE-Klauseln entfallen."
+]
+answer.answer = "Damit eindeutig ist, aus welcher Tabelle eine Spalte stammt."
+context = "Kapitel 5: Eindeutigkeit bei Spaltennamen"
+id = "f4d56699-a45d-40d2-8347-cd8b5ace5411"

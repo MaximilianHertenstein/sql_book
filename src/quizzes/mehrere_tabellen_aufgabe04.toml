@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welches Schlüsselwort leitet bei einem Join die Verknüpfungsbedingung ein?"
+prompt.distractors = [
+	"WHERE",
+	"FROM",
+	"AND"
+]
+answer.answer = "ON"
+context = "Mit ON wird festgelegt, wie die Tabellen beim Join verbunden werden."
+id = "c6e877e3-4b56-4c86-b629-604ce58c8e30"

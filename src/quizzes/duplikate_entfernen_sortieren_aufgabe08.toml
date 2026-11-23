@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel folgt in einer Sortierabfrage auf FROM kunden?"
+prompt.distractors = [
+	"SORT BY",
+	"WHERE",
+	"SELECT"
+]
+answer.answer = "ORDER BY"
+context = "Für Sortierung wird ORDER BY genutzt."
+id = "e34961be-3978-4089-8de9-0d92492b992d"

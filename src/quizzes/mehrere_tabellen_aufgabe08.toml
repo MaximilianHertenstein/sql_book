@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt die Bedingung hinter ON fachlich (2 Wörter)?"
+answer.answer = "Join-Bedingung"
+context = "Kapitel 5: Fachbegriff für die Verknüpfungsbedingung"
+id = "7f44b6cf-af81-47d8-a4db-ddab970ce515"

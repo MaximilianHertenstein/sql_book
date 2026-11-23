@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche SQL-Klausel wird vor HAVING ausgewertet, um Zeilen vor der Gruppierung zu filtern?"
+answer.answer = "WHERE"
+context = "Kapitel 7: Reihenfolge"
+id = "75983633-d149-492f-93aa-f95f8042fd44"

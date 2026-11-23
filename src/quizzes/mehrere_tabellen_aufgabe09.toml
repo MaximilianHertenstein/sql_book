@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu mehreren JOINs ist korrekt?"
+prompt.distractors = [
+	"Bei drei Tabellen reicht genau eine ON-Bedingung.",
+	"Mehrere JOINs dürfen nicht in einer FROM-Klausel stehen.",
+	"Qualifizierte Spaltennamen sind bei gleichen Spaltennamen verboten."
+]
+answer.answer = "Bei mehreren JOINs braucht jede Verknüpfung eine passende ON-Bedingung."
+context = "Kapitel 5: Abfragen über mehrere Tabellen"
+id = "d8be59f5-7eb9-4f3c-bb0e-c36be7e487f7"

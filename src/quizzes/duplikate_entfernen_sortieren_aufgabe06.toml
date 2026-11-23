@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort steht in ORDER BY für aufsteigende Sortierung?"
+answer.answer = "ASC"
+context = "Kapitel 4: Sortierrichtung"
+id = "4f34ed11-da8d-4e19-a9e5-660b8e197f14"

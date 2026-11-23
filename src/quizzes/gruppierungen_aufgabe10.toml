@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage ist korrekt?"
+prompt.distractors = [
+	"HAVING ersetzt immer GROUP BY.",
+	"WHERE kann nur nach GROUP BY stehen.",
+	"Bei GROUP BY dürfen in SELECT beliebige Detailspalten ohne Aggregation stehen."
+]
+answer.answer = "Bei GROUP BY dürfen in SELECT nur Aggregatausdrücke und Gruppierungsausdrücke stehen."
+context = "Kapitel 7: Zulässige Ausdrücke bei Gruppierung"
+id = "82ee93fa-e223-4734-a16c-bde4f474f7d0"

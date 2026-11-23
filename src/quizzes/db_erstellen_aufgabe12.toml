@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Du willst sicherstellen, dass jeder Datensatz in `schueler` einer vorhandenen Klasse zugeordnet ist. Welche Ergänzung in CREATE TABLE ist dafür entscheidend?"
+prompt.distractors = [
+	"PRIMARY KEY(klassen_id)",
+	"FOREIGN KEY(klassen_id)",
+	"REFERENCES klassen(klassen_id)"
+]
+answer.answer = "FOREIGN KEY(klassen_id) REFERENCES klassen(klassen_id)"
+context = "Fremdschlüssel sichern die Beziehung zwischen Tabellen."
+id = "3e8cbe5e-c0d8-4bc6-9842-3926ba1dbdb1"

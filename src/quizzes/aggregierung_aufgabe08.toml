@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zählt nur verschiedene Bezeichnungen?"
+prompt.distractors = [
+	"SELECT DISTINCT COUNT(bezeichnung) FROM fahrraeder;",
+	"SELECT COUNT(*) DISTINCT bezeichnung FROM fahrraeder;",
+	"SELECT COUNT(bezeichnung) FROM fahrraeder;"
+]
+answer.answer = "SELECT COUNT(DISTINCT bezeichnung) FROM fahrraeder;"
+context = "DISTINCT innerhalb von COUNT betrachtet nur verschiedene Werte."
+id = "eaaeb8f7-9fa5-470f-a94e-c79cadf3b058"

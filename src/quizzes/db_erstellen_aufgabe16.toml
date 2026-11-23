@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu PRIMARY KEY ist korrekt?"
+prompt.distractors = [
+	"PRIMARY KEY ist nur eine Sortierhilfe.",
+	"PRIMARY KEY ersetzt CREATE TABLE.",
+	"PRIMARY KEY wird nur in INSERT genutzt."
+]
+answer.answer = "PRIMARY KEY identifiziert jede Zeile eindeutig."
+context = "Kapitel 2: Bedeutung des Primärschlüssels"
+id = "ee6225eb-19a3-42f9-8016-cc71887553c2"

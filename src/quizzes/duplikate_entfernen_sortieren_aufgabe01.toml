@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches SQL-Schlüsselwort entfernt doppelte Zeilen aus einer Ergebnismenge?"
+answer.answer = "DISTINCT"
+context = "Kapitel 4: Duplikate entfernen"
+id = "45d9eb2c-f22c-4b2f-813d-9883f8dc0218"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Was bedeutet ORDER BY name DESC?"
+prompt.distractors = [
+	"Sortiere nach name aufsteigend.",
+	"Filtere nur Zeilen mit name = 'DESC'.",
+	"Entferne Duplikate aus name."
+]
+answer.answer = "Sortiere nach name absteigend."
+context = "DESC bedeutet absteigende Reihenfolge."
+id = "57bd87dd-cf53-4f59-8af3-b5a56fed3636"

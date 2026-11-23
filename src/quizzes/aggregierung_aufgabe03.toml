@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie heißt die SQL-Aggregatfunktion für den größten Wert (ohne Klammern)?"
+answer.answer = "MAX"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "f3ea78df-4f8d-4485-b13f-e34ed3d47328"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klauselreihenfolge ist in einer einfachen Filterabfrage korrekt?"
+prompt.distractors = [
+	"WHERE ... FROM ... SELECT ...",
+	"SELECT ... WHERE ... FROM ...",
+	"FROM ... SELECT ... WHERE ..."
+]
+answer.answer = "SELECT ... FROM ... WHERE ..."
+context = "Die Standardreihenfolge bei Selektion/Projektion."
+id = "2b8e3eab-1278-4ae4-ab5c-f479286ebf2a"

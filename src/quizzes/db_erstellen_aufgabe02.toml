@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche 2 SQL-Schlüsselwörter markieren den Primärschlüssel?"
+answer.answer = "PRIMARY KEY"
+context = "Kapitel 2: Schlüssel"
+id = "5f6ca9e7-e0ef-4609-8268-d4f8fe2b5a8a"

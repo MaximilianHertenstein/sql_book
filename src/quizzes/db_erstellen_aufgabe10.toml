@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage zu INSERT INTO ... VALUES ist korrekt?"
+prompt.distractors = [
+	"Mehrere Zeilen müssen mit AND getrennt werden.",
+	"VALUES darf nur genau eine Zeile enthalten.",
+	"INSERT benötigt kein Tabellenname."
+]
+answer.answer = "Mehrere Zeilen können in VALUES durch Kommas getrennt werden."
+context = "Kapitel 2: Mehrere Datensätze einfügen"
+id = "f79f4f07-4fd7-4e44-8df9-81a8db93adcf"

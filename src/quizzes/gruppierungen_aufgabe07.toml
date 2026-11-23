@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage zählt Fahrräder pro Bezeichnung korrekt?"
+prompt.distractors = [
+	"SELECT bezeichnung, COUNT(fahrradNr) FROM fahrraeder;",
+	"SELECT COUNT(fahrradNr) FROM fahrraeder GROUP bezeichnung;",
+	"SELECT bezeichnung, COUNT(fahrradNr) FROM fahrraeder HAVING bezeichnung;"
+]
+answer.answer = "SELECT bezeichnung, COUNT(fahrradNr) FROM fahrraeder GROUP BY bezeichnung;"
+context = "Gruppierung nach bezeichnung und Aggregation mit COUNT pro Gruppe."
+id = "d835c932-c396-4701-ae72-464964722a53"

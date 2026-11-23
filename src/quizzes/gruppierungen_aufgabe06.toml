@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Klausel filtert Gruppen nach der Aggregation?"
+prompt.distractors = [
+	"WHERE",
+	"ORDER BY",
+	"FROM"
+]
+answer.answer = "HAVING"
+context = "HAVING filtert auf Gruppenebene nach GROUP BY."
+id = "4d944964-9dd1-4c03-9118-dcb9528036bc"

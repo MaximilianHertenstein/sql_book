@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Wozu dienen Tabellenaliase in JOIN-Abfragen?"
+prompt.distractors = [
+	"Sie ändern den Tabellennamen dauerhaft in der Datenbank.",
+	"Sie ersetzen die ON-Bedingung.",
+	"Sie filtern Zeilen wie WHERE."
+]
+answer.answer = "Sie verkürzen Schreibweise und verbessern Lesbarkeit in der Abfrage."
+context = "Kapitel 5: Tabellen mit Aliasnamen abkürzen"
+id = "231b0a8f-3ca6-4ca7-b571-d3700730ddff"

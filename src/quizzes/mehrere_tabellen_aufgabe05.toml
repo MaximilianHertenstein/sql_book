@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Wie nennt man die Schreibweise tabellenname.spaltenname (2 Wörter)?"
+answer.answer = "qualifizierter Spaltenname"
+context = "Kapitel 5: Eindeutige Spaltenangaben bei JOINs"
+id = "566ba55f-79f8-4a62-bd5f-38ad6c96b651"

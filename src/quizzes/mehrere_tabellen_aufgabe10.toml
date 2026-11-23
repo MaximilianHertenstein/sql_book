@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage nutzt Aliasnamen korrekt?"
+prompt.distractors = [
+	"SELECT FA.bezeichnung FROM fahrradarten AS JOIN fahrraeder F ON ...",
+	"SELECT FA.bezeichnung FROM fahrradarten FA fahrraeder F ON FA.fahrradartnr = F.fahrradartnr;",
+	"SELECT FA.bezeichnung FROM fahrradarten FA JOIN fahrraeder F FA.fahrradartnr = F.fahrradartnr;"
+]
+answer.answer = "SELECT FA.bezeichnung FROM fahrradarten FA JOIN fahrraeder F ON FA.fahrradartnr = F.fahrradartnr;"
+context = "Aliasnamen stehen direkt hinter den Tabellennamen; die Join-Bedingung folgt mit ON."
+id = "6e5fbe40-9f24-4168-adf4-8c8a54515984"

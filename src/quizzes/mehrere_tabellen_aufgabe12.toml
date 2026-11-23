@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage über ON in JOIN-Abfragen ist korrekt?"
+prompt.distractors = [
+	"ON ist optional, wenn Spaltennamen gleich heißen.",
+	"ON ersetzt die FROM-Klausel.",
+	"ON sortiert das Ergebnis nach der Join-Spalte."
+]
+answer.answer = "ON enthält die Bedingung, welche Zeilen aus beiden Tabellen zusammengehören."
+context = "Kapitel 5: Join-Bedingung"
+id = "b7c614a0-5e83-42fd-9008-a923f3b7f370"

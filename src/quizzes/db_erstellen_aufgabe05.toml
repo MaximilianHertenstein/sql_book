@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem SQL-Befehl erstellt man ein Datenbankschema?"
+answer.answer = "CREATE SCHEMA"
+context = "Kapitel 2: Datenbankschema erstellen"
+id = "ba5faaf0-87d5-4c7e-8fa9-58ceda94a2cf"

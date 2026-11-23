@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Kombination ist ohne GROUP BY syntaktisch zulässig?"
+prompt.distractors = [
+	"SELECT bezeichnung, COUNT(*) FROM fahrraeder;",
+	"SELECT bezeichnung, AVG(tagesmietpreis) FROM fahrraeder;",
+	"SELECT bezeichnung, MAX(tagesmietpreis), MIN(tagesmietpreis) FROM fahrraeder;"
+]
+answer.answer = "SELECT COUNT(*), AVG(tagesmietpreis) FROM fahrraeder;"
+context = "Ohne GROUP BY sind reine Aggregat-Ausdrücke zusammen zulässig."
+id = "6de9a9f8-3340-4ed6-8837-40d24f7ec698"

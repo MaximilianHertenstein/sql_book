@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welche Aggregatfunktion liefert den kleinsten Wert?"
+answer.answer = "MIN"
+context = "Kapitel 6: Aggregatfunktionen"
+id = "8a9ce182-87df-4ebb-881f-c47581e7cde4"

@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Aussage trifft zu?"
+prompt.distractors = [
+	"Selektion wählt Spalten, Projektion wählt Zeilen.",
+	"Selektion und Projektion bedeuten in SQL dasselbe.",
+	"Projektion benötigt immer eine WHERE-Klausel."
+]
+answer.answer = "Projektion wählt Spalten, Selektion wählt Zeilen."
+context = "Kapitel 3: Begriffe Selektion und Projektion"
+id = "94957807-a0ba-45f7-9698-8a89ebf3f2e8"

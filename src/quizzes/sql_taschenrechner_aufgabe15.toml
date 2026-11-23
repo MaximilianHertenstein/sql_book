@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Abfrage ist ein korrektes Beispiel für LIKE mit genau einem Zeichen zwischen Hu und er?"
+prompt.distractors = [
+	"SELECT 'Huber' LIKE 'Hu%er_';",
+	"SELECT 'Huber' LIKE 'Hu__ber';",
+	"SELECT 'Huber' LIKE 'Hu%';"
+]
+answer.answer = "SELECT 'Huber' LIKE 'Hu_er';"
+context = "Der Platzhalter _ steht für genau ein Zeichen."
+id = "e698c65e-f043-4826-98b0-0ef32cb50033"

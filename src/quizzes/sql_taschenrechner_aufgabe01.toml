@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Mit welchem SQL-Schlüsselwort beginnen Rechenabfragen?"
+answer.answer = "SELECT"
+context = "Kapitel 1: SQL als Taschenrechner"
+id = "8dc04293-cf9d-4bf6-b289-df4c9cd4dd14"

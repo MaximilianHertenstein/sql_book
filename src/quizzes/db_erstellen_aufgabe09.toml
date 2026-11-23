@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Schlüsselwort verbindet beim Fremdschlüssel auf die Zieltabelle?"
+answer.answer = "REFERENCES"
+context = "Kapitel 2: Fremdschlüsselreferenz"
+id = "d0d772f0-d8c6-45e8-8a4b-14cdb2cb37bf"

@@ -1,0 +1,6 @@
+[[questions]]
+type = "ShortAnswer"
+prompt.prompt = "Welches Ergebnis liefert die SQL-Abfrage SELECT 2 + 3?"
+answer.answer = "5"
+context = "Kapitel 1: Rechnen mit SQL"
+id = "a89c57f4-f8a7-4f3b-97ee-b8f0ef1ef4af"

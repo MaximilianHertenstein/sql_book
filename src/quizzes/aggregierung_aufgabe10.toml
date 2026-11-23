@@ -1,0 +1,11 @@
+[[questions]]
+type = "MultipleChoice"
+prompt.prompt = "Welche Funktion gibt den größten Tagesmietpreis zurück?"
+prompt.distractors = [
+	"MIN(tagesmietpreis)",
+	"SUM(tagesmietpreis)",
+	"AVG(tagesmietpreis)"
+]
+answer.answer = "MAX(tagesmietpreis)"
+context = "MAX liefert den größten Wert in einer Spalte."
+id = "f2f0f4ec-c2fa-4f8e-bfe2-2e7d7eadef3f"
